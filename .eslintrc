@@ -1,0 +1,129 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": ["./tsconfig.json", "./tsconfig.node.json"],
+        "tsconfigRootDir": "./",
+        "ecmaFeatures": {
+            "jsx": true
+          }
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "settings": {
+        "solid": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "typescript": {} // TypeScript 경로 및 설정을 자동으로 인식
+          }
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "prettier",
+        "import",
+        "solid"
+    ],
+    "extends": [
+        "airbnb-base",
+        "airbnb-typescript/base",
+        "prettier",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/recommended",
+        "plugin:prettier/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
+    "rules": {
+        "linebreak-style": 0, // 줄 바꿈 스타일 강제
+        "import/prefer-default-export": 0, // 단일개체 내보내기
+        "prettier/prettier": 0, // prettier 일치
+        "no-use-before-define": 0, // 변수 선언전 사용금지
+        "import/no-unresolved": 0,// 잘못된 경로방지
+        "import/no-extraneous-dependencies": 0, // 종속성 경고
+        "@typescript-eslint/no-shadow": "off", // 스코프가 가려지는 것 방지
+        "no-param-reassign": 0, // 재할당 방지
+        "no-restricted-syntax": 0, // 특정구문제한
+        "jsx-uses-vars": "off",
+        "solid/reactivity": "warn", // solid 문법 준수
+        "solid/jsx-no-undef": "error",
+        "solid/components-return-once": "error",
+        "solid/event-handlers": "error",
+        "solid/jsx-no-duplicate-props": "error",
+        "solid/jsx-no-script-url": "error",
+        "solid/no-innerhtml": "error",
+        "solid/no-react-deps": "error",
+        "solid/no-react-specific-props": "error",
+        "solid/no-unknown-namespaces": "error",
+        "solid/prefer-for": "error",
+        "solid/self-closing-comp": "error",
+        "solid/style-prop": "error",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "no-restricted-imports": [
+            "error",
+            {
+                "patterns": [
+                    "../*"
+                ],
+                "paths": [
+                    {
+                        "name": "solid",
+                        "importNames": [
+                            "default"
+                        ],
+                        "message": "import Solid from 'solid' makes bundle size larger."
+                    }
+                ]
+            }
+        ],
+        "@typescript-eslint/consistent-type-imports": [
+            "error",
+            {
+                "prefer": "type-imports",
+                "disallowTypeAnnotations": true
+            }
+        ],
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "type", 
+                    "builtin",
+                    "external",
+                    "internal",
+                    "parent",
+                    "sibling",
+                    "index",
+                    "unknown"
+                ],
+                "pathGroups": [
+                    {
+                        "pattern": "solid*",
+                        "group": "builtin",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@/**",
+                        "group": "internal",
+                        "position": "after"
+                    }
+                ],
+                "newlines-between": "never" // import 빈줄추가
+            }
+        ],
+        "jsx-a11y/no-noninteractive-element-interactions": 0
+    }
+}
