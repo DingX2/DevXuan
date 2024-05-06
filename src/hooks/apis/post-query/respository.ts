@@ -1,7 +1,7 @@
-import axios from 'axios';
+import ky from 'ky';
 
 export class PostRepository {
     static getPost() {
-        return axios.get('');
+        return ky.get('');
     }
 }
