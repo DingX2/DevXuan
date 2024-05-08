@@ -4,3 +4,4 @@ bun.lockb
 .eslintrc
 .github
 dist
+vite.config.ts

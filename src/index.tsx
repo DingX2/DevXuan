@@ -1,6 +1,5 @@
 import { render } from 'solid-js/web';
-import { App } from './App';
+import { Router } from './Router';
+import 'normalize.css';
 
-const root = document.getElementById('root');
-
-render(() => <App />, root!);
+render(() => <Router />, document.getElementById('root')!);
