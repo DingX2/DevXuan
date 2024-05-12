@@ -8,6 +8,6 @@ interface Props {
     height?: string | number;
 }
 
-export const Logo: Component<Props> = ({ width = 120, height = 30 }) => {
+export const Logo: Component<Props> = ({ width = 40, height = 30 }) => {
     return <Image src={home} width={width} height={height} alt={name} />;
 };
