@@ -1,7 +1,8 @@
 import type { ParentComponent } from 'solid-js';
 import { styled } from 'solid-styled-components';
-import { Stack, Text } from '@/components/atoms';
+import { Stack, Text, Image } from '@/components/atoms';
 import { Card } from '@/components/molecules';
+import profile from '@/assets/profile.png';
 
 interface Props {}
 
@@ -31,6 +32,16 @@ export const ProfileCard: ParentComponent<Props> = ({ children }) => {
                         </Text>
                     </Stack>
                 </Stack>
+                <Image
+                    src={profile}
+                    alt="profile"
+                    width={300}
+                    height={200}
+                    useAbsolute
+                    zIndex={100}
+                    bottom={0}
+                    center
+                />
             </Card>
             {children}
         </ProfileCardComponent>
