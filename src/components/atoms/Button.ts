@@ -5,6 +5,7 @@ interface Props {
     color?: string;
     size?: number;
     fontSize?: number;
+    link?: string;
 }
 
 export const Button = styled.button<Props>`
@@ -13,4 +14,5 @@ export const Button = styled.button<Props>`
     padding: 0.5rem 1rem;
     border-radius: 5px;
     font-size: ${({ fontSize }) => fontSize};
+    cursor: pointer;
 `;
