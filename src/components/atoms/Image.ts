@@ -1,6 +1,7 @@
 import { styled } from 'solid-styled-components';
+import type { Style } from '@/types';
 
-interface Props {
+interface Props extends Style {
     width?: string | number;
     height?: string | number;
     useAbsolute?: boolean;
@@ -13,6 +14,10 @@ interface Props {
  * Image component.
  * @param {string | number} width - Image width.
  * @param {string | number} height - Image height.
+ * @param {boolean} useAbsolute - absolute 설정
+ * @param {boolean} center - 가로 중앙 설정
+ * @param {number} bottom -  absolute시 위치설정
+ * @param {number} zIndex - z-index 설정
  */
 export const Image = styled.img<Props>`
     width: ${({ width = '100%' }) => (typeof width === 'number' ? `${width}px` : width)};
@@ -22,4 +27,5 @@ export const Image = styled.img<Props>`
     ${({ useAbsolute, bottom }) => (useAbsolute ? `bottom: ${bottom || 0}px` : '')};
     object-fit: cover;
     ${({ center }) => (center ? 'left: 50%;' : '')}
+    ${({ sx }) => sx}
 `;
