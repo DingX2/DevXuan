@@ -26,6 +26,9 @@ export const Image = styled.img<Props>`
     z-index: ${({ zIndex }) => zIndex || 0};
     ${({ useAbsolute, bottom }) => (useAbsolute ? `bottom: ${bottom || 0}px` : '')};
     object-fit: cover;
-    ${({ center }) => (center ? 'left: 50%;' : '')}
+    ${({ center, width = '100%' }) => {
+        const numericWidth = typeof width === 'number' ? width : parseFloat(width);
+        return center ? `left: calc(50% - ${numericWidth / 2}px);` : '';
+    }}
     ${({ sx }) => sx}
 `;
