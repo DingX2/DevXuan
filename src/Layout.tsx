@@ -1,5 +1,5 @@
 import type { ParentComponent } from 'solid-js';
-import { GlobalStyle } from '@/components/common';
+import { GlobalStyle } from '@/components/commons';
 import { Header, Footer } from '@/components/organisms';
 
 export const Layout: ParentComponent = ({ children }) => {
