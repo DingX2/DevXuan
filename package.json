@@ -14,14 +14,10 @@
     "type-check:watch": "tsc --noEmit --watch"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.2",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2",
-    "@fortawesome/react-fontawesome": "^0.2.0",
     "@solidjs/router": "^0.13.3",
     "@tanstack/solid-query": "^5.35.1",
-    "framer-motion": "^11.1.8",
     "ky": "^1.2.4",
-    "normalize.css": "^8.0.1",
+    "motion": "^10.17.0",
     "solid-fontawesome": "^0.2.1",
     "solid-js": "^1.8.15",
     "solid-styled-components": "^0.28.5"
