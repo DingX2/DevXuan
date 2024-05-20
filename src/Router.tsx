@@ -1,6 +1,6 @@
 import type { VoidComponent } from 'solid-js';
 import { Router as SolidRouter, Route } from '@solidjs/router';
-import { Home, NotFound, About, Skill, Work, Contact } from '@/pages';
+import { Home, NotFound, About, Skill, Work, Contact, Test } from '@/pages';
 import { Layout } from './Layout';
 
 export const Router: VoidComponent = () => {
@@ -11,6 +11,7 @@ export const Router: VoidComponent = () => {
             <Route path="/skill" component={Skill} />
             <Route path="/work" component={Work} />
             <Route path="/contact" component={Contact} />
+            <Route path="/test" component={Test} />
             <Route path="/*" component={NotFound} />
         </SolidRouter>
     );

@@ -4,3 +4,4 @@ export * from './Skill';
 export * from './Work';
 export * from './Contact';
 export * from './NotFound';
+export * from './Test';
