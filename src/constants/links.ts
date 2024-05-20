@@ -11,5 +11,5 @@ export const links: Link[] = [
     { href: '/about', Child: 'About' },
     { href: '/skill', Child: 'Skill' },
     { href: '/work', Child: 'Work' },
-    { href: '/contact', Child: 'Contact' },
+    { href: '/blog', Child: 'Blog' },
 ];
