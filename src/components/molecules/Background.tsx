@@ -7,7 +7,7 @@ export const Background: ParentComponent = ({ children }) => {
             center
             sx={
                 /* css */ `
-                position: absolute;
+                position: relative;
                 left: 0;
                 width: 100%;
                 z-index: -99;
