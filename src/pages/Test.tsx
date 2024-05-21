@@ -1,5 +1,6 @@
 import { Stack, Box, Button, Image, Logo, Text } from '@/components/atoms';
-import { Background, Card, Nav, Speech } from '@/components/molecules';
+import { Background, Card, Speech } from '@/components/molecules';
+import { History } from '@/components/organisms';
 
 export const Test = () => {
     return (
@@ -16,11 +17,12 @@ export const Test = () => {
             </Stack>
 
             <Stack direction="column">
-                <Speech>테스트용입니다</Speech>
-                <Background />
-                <Card shadow />
-                <Card borderColor="#000" />
-                <Nav />
+                <Background height="50">
+                    <Speech>테스트용입니다</Speech>
+                    <Card shadow />
+                    <Card borderColor="#000" />
+                </Background>
+                <History />
             </Stack>
         </Stack>
     );
