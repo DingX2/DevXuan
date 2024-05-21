@@ -70,7 +70,8 @@
                 "jsx": "never",
                 "ts": "never",
                 "tsx": "never",
-                "json": "never"
+                "json": "never",
+                "mdx": "never"
             }
         ],
         "no-restricted-imports": [
