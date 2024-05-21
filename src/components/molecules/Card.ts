@@ -1,7 +1,8 @@
 import type { ParentComponent } from 'solid-js';
 import { styled } from 'solid-styled-components';
+import type { Style } from '@/types';
 
-interface Props {
+interface Props extends Style {
     width?: number;
     height?: number;
     top?: boolean;
@@ -9,13 +10,16 @@ interface Props {
     bottom?: boolean;
     shadow?: boolean;
     borderColor?: string;
+    padding?: string;
 }
 
 export const Card: ParentComponent<Props> = styled.div`
     display: flex;
     flex-direction: column;
-    width: ${({ width }) => width || 300}px;
+    width: ${({ width }) => width || 300}vw;
+    max-width: 1080px;
     height: ${({ height }) => height || 300}px;
+    ${({ padding }) => `padding: ${padding};`}
     background: rgba(255, 255, 255, 0.1);
     ${({ shadow }) => (shadow ? 'box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);' : '')};
     backdrop-filter: blur(2.5px);
@@ -34,4 +38,5 @@ export const Card: ParentComponent<Props> = styled.div`
         }
         return '';
     }};
+    ${({ sx }) => sx};
 `;
