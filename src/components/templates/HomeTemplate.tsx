@@ -1,6 +1,59 @@
 import type { Component } from 'solid-js';
+import { Image, Stack, Text } from '@/components/atoms';
+import { Background } from '@/components/molecules';
 import { ProfileCard } from '@/components/organisms';
 
 export const HomeTemplate: Component = () => {
-    return <ProfileCard />;
+    return (
+        <>
+            <Image
+                src="/image/computer.svg"
+                width={200}
+                useAbsolute
+                sx="
+                    transform: translate(-50%, -50%) rotate(-15deg);
+                    top: 26%;
+                    left: 38%;"
+                zIndex={1}
+            />
+            <Image
+                src="/image/coffee.svg"
+                width={200}
+                useAbsolute
+                sx="
+                    transform: translate(-50%, -50%) rotate(-15deg);
+                    top: 50%;
+                    left: 90%;"
+            />
+            <Image
+                src="/image/camera.svg"
+                width={100}
+                useAbsolute
+                sx="
+                    transform: translate(-50%, -50%) rotate(55deg);
+                    top: 23%;
+                    left: 76%;"
+            />
+            <Background height="100" image="/image/background_holographic.jpg" />
+            <ProfileCard>
+                <Stack direction="row">
+                    <Stack direction="column" useFlexGap spacing={10}>
+                        <Text component="h1" fontSize="50px">
+                            FrontEnd {'\n'} Developer
+                        </Text>
+                        <Text component="span">@DevXuan</Text>
+                    </Stack>
+                    <Stack direction="column" center>
+                        <Text component="span" textAlign="end" position="right">
+                            이수현
+                        </Text>
+                        <Text component="p" textAlign="end" position="right">
+                            더 나은 세상을 만들고 싶어요.
+                        </Text>
+                    </Stack>
+                </Stack>
+                <Image src="/image/profile.png" alt="profile" width={300} useAbsolute zIndex={100} bottom={0} center />
+            </ProfileCard>
+        </>
+    );
 };
