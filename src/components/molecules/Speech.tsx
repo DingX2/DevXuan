@@ -13,6 +13,7 @@ const style = {
 
     box: /* css */ `
         width: fit-content;
+        height: fit-content;
         position: relative;
         padding: 0.5rem 1rem;
         margin-left: 1rem;
@@ -24,7 +25,7 @@ const style = {
 export const Speech: ParentComponent<Props> = ({ children }) => {
     return (
         <Box sx={style.box}>
-            <Image src="/image/Speech.svg" width={24} height={24} useAbsolute sx={style.tail} />
+            <Image src="/image/speech.svg" width={24} height={24} useAbsolute sx={style.tail} />
             <Text fontSize="14px">{children}</Text>
         </Box>
     );
