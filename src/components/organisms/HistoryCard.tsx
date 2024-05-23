@@ -12,17 +12,7 @@ interface Props {
 export const HistoryCard: ParentComponent<Props> = ({ children, title, subtitle, content, link }) => {
     return (
         <Stack direction="row" alignItemCenter useFlexGap spacing={10}>
-            <Image src="/image/Typescript_logo.svg" width={50} height={50} />
-            <Card width={40} shadow middle padding="25px 24px 0">
-                <Stack direction="column" useFlexGap spacing={10}>
-                    <Text fontSize="18px">{subtitle}</Text>
-                    <Text fontSize="22px">{title}</Text>
-                    <Text color="#666">{content}</Text>
-                    <Box>
-                        <Image src="/image/Typescript_logo.svg" height="166px" sx="margin: 0 -24px;" />
-                    </Box>
-                </Stack>
-            </Card>
+            <Image src="/image/typescript_logo.svg" width={50} height={50} />
             <Box width="630px" backgroundColor="#eee" direction="column" useFlexGap spacing={5} padding="1rem">
                 <Speech>프로젝트</Speech>
                 <Text fontSize="18px">{subtitle}</Text>
@@ -33,6 +23,16 @@ export const HistoryCard: ParentComponent<Props> = ({ children, title, subtitle,
                 </Link>
                 {children}
             </Box>
+            <Card width={40} shadow middle padding="25px 24px 0">
+                <Stack direction="column" useFlexGap spacing={10}>
+                    <Text fontSize="18px">{subtitle}</Text>
+                    <Text fontSize="22px">{title}</Text>
+                    <Text color="#666">{content}</Text>
+                    <Box>
+                        <Image src="/image/typescript_logo.svg" height="166px" sx="margin: 0 -24px;" />
+                    </Box>
+                </Stack>
+            </Card>
         </Stack>
     );
 };
