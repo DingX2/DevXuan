@@ -72,7 +72,9 @@ export const drawDot = (x: number, y: number) => {
     const svgImage = useCachedImage(imageSource);
 
     if (!svgImage.complete) {
-        svgImage.onload = () => drawImageWithColor(svgImage, color, x, y, ctx);
+        svgImage.onload = () => {
+            drawImageWithColor(svgImage, color, x, y, ctx);
+        };
     } else {
         drawImageWithColor(svgImage, color, x, y, ctx);
     }
@@ -121,14 +123,21 @@ export const handleClick = (event: MouseEvent, ref: HTMLCanvasElement) => {
 const redrawDots = () => {
     const { ctx } = canvasState();
     if (!ctx) return;
-
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     dots().forEach((dot) => {
-        ctx.beginPath();
-        ctx.arc(dot.x, dot.y, dot.radius, 0, 2 * Math.PI);
-        ctx.fillStyle = dot.color;
-        ctx.fill();
+        if (dot.image) {
+            const img = new Image();
+            img.onload = () => {
+                drawImageWithColor(img, dot.color, dot.x, dot.y, ctx);
+            };
+            img.src = dot.image.src;
+        } else {
+            ctx.beginPath();
+            ctx.arc(dot.x, dot.y, dot.radius, 0, 2 * Math.PI);
+            ctx.fillStyle = dot.color;
+            ctx.fill();
+        }
     });
 };
 
