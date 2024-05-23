@@ -1,13 +1,14 @@
 import type { Component } from 'solid-js';
 import { FontAwesomeIcon } from 'solid-fontawesome';
 import { Stack, Text, Box } from '@/components/atoms';
-import { Background, Speech } from '@/components/molecules';
+import { Canvas, Speech } from '@/components/molecules';
 import { ProfileCard } from '@/components/organisms';
 
 export const AboutTemplate: Component = () => {
     return (
         <>
-            <Background height="100" image="/image/oilpaint.svg" />
+            {/* <Background height="100" image="/image/oilpaint.svg" /> */}
+            <Canvas width="100vw" height="100vh" />
             <ProfileCard>
                 <Stack direction="row">
                     <Stack direction="column" useFlexGap spacing={10}>
