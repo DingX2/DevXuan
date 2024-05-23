@@ -1,6 +1,7 @@
 import { Stack, Box, Button, Image, Logo, Text } from '@/components/atoms';
-import { Background, Card, Speech } from '@/components/molecules';
+import { Background, Card, Speech, Content, Canvas } from '@/components/molecules';
 import { History } from '@/components/organisms';
+import { backgrounds } from '@/constants';
 
 export const Test = () => {
     return (
@@ -17,7 +18,11 @@ export const Test = () => {
             </Stack>
 
             <Stack direction="column">
-                <Background height="50">
+                <Content />
+                <Canvas width="300" height="200" />
+                <Background height="20" select sx={backgrounds.gradient} />
+                <Background height="10" select sx={backgrounds.grid} />
+                <Background height="10" image="/image/Speech.svg">
                     <Speech>테스트용입니다</Speech>
                     <Card shadow />
                     <Card borderColor="#000" />
