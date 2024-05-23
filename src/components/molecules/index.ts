@@ -4,3 +4,4 @@ export * from './ImageBox';
 export * from './Background';
 export * from './Speech';
 export * from './Content';
+export * from './Canvas';

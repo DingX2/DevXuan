@@ -1,4 +1,5 @@
 import { type Component, createSignal, onMount, onCleanup } from 'solid-js';
+import { canvas } from '@/constants';
 import { type Style } from '@/types';
 
 interface Props extends Style {
@@ -12,24 +13,76 @@ const [canvasState, setCanvasState] = createSignal<{ rect: DOMRect | null; ctx: 
     rect: null,
     ctx: null,
 });
-const colors = ['#B2ADEF', '#8CE1F9', '#B0C1E4', '#EDF0EF', '#249BEB', '#FBB2E2'];
-const [dots, setDots] = createSignal<{ x: number; y: number; radius: number; color: string }[]>([]);
+const [dots, setDots] = createSignal<
+    { x: number; y: number; radius: number; color: string; image: HTMLImageElement }[]
+>([]);
+const [imageCache, setImageCache] = createSignal<{ [key: string]: HTMLImageElement }>({});
+
+const useCachedImage = (src: string): HTMLImageElement => {
+    const cache = imageCache();
+    if (cache[src]) {
+        return cache[src];
+    }
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+        setImageCache((prev) => ({ ...prev, [src]: img }));
+    };
+    return img;
+};
 
 export const getRandomColor = () => {
-    return colors[Math.floor(Math.random() * colors.length)];
+    return canvas.colors[Math.floor(Math.random() * canvas.colors.length)];
+};
+
+const drawImageWithColor = (
+    svgImage: HTMLImageElement,
+    color: string,
+    x: number,
+    y: number,
+    ctx: CanvasRenderingContext2D,
+) => {
+    const width = 100;
+    const height = 100;
+    const offsetX = x - width / 2;
+    const offsetY = y - height / 2;
+
+    const offScreenCanvas = document.createElement('canvas');
+    const offScreenCtx = offScreenCanvas.getContext('2d');
+    offScreenCanvas.width = width;
+    offScreenCanvas.height = height;
+    if (!offScreenCtx) return;
+
+    offScreenCtx.drawImage(svgImage, 0, 0, width, height);
+
+    offScreenCtx.globalCompositeOperation = 'source-in';
+    offScreenCtx.fillStyle = color;
+    offScreenCtx.fillRect(0, 0, width, height);
+
+    ctx.drawImage(offScreenCanvas, offsetX, offsetY, width, height);
+    setDots((dots) => [...dots, { x, y, radius: 10, color, image: svgImage }]);
 };
 
 export const drawDot = (x: number, y: number) => {
     const color = getRandomColor();
     const { ctx } = canvasState();
-
     if (!ctx) return;
+
+    const imageSource = canvas.imageSources[Math.floor(Math.random() * canvas.imageSources.length)];
+    const svgImage = useCachedImage(imageSource);
+
+    if (!svgImage.complete) {
+        svgImage.onload = () => drawImageWithColor(svgImage, color, x, y, ctx);
+    } else {
+        drawImageWithColor(svgImage, color, x, y, ctx);
+    }
+
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, 2 * Math.PI);
     ctx.fillStyle = color;
     ctx.fill();
+
     setPos({ x, y });
-    setDots((dots) => [...dots, { x, y, radius: 10, color }]);
 };
 
 let intervalId: NodeJS.Timeout | undefined;
@@ -42,7 +95,6 @@ export const autoplay = (mode: boolean) => {
     const drawRandomDot = () => {
         const x = Math.random() * rect.width;
         const y = Math.random() * rect.height;
-
         drawDot(x, y);
     };
 
@@ -112,7 +164,7 @@ export const Canvas: Component<Props> = (props) => {
             width: 100vw;
             height: 100vh;
             border: none;
-            z-index: -10;
+            z-index: 0;
             ${props.sx}
             `,
     };

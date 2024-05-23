@@ -1,19 +1,30 @@
-import type { Component } from 'solid-js';
-import { FontAwesomeIcon } from 'solid-fontawesome';
+import { type Component, createSignal } from 'solid-js';
 import { Stack, Text, Box } from '@/components/atoms';
-import { Canvas, Speech } from '@/components/molecules';
+import { Canvas, Speech, Background, autoplay } from '@/components/molecules';
 import { ProfileCard } from '@/components/organisms';
 
 export const AboutTemplate: Component = () => {
+    let canvasRef!: HTMLCanvasElement;
+    const [clicked, setClicked] = createSignal<boolean>(false);
+
+    const animateCanvas = () => {
+        const newState = !clicked();
+        autoplay(newState);
+        setClicked(newState);
+    };
+
     return (
         <>
-            {/* <Background height="100" image="/image/oilpaint.svg" /> */}
-            <Canvas width="100vw" height="100vh" />
+            <Background height="100" image="/image/oilpaint.svg" />
+            <Canvas width="100vw" height="100vh" ref={canvasRef} />
+            <button onClick={animateCanvas} style={{ position: 'relative', 'z-index': 2 }}>
+                Feedback
+            </button>
+
             <ProfileCard>
                 <Stack direction="row">
                     <Stack direction="column" useFlexGap spacing={10}>
                         <Box direction="column">
-                            <FontAwesomeIcon icon="fa-solid fa-comments" />
                             <Speech>피드백</Speech>
                             <Text component="p" textAlign="end" position="right">
                                 피드백으로 개선하는 구현은 {'\n'} 여러 번 덧칠하며 완성하는 유화와 비슷합니다.
