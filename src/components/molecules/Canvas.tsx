@@ -1,6 +1,7 @@
 import { type Component, createSignal, onMount, onCleanup } from 'solid-js';
 import { canvas } from '@/constants';
 import { type Style } from '@/types';
+import { debounce } from '@/utils';
 
 interface Props extends Style {
     width?: string;
@@ -159,23 +160,26 @@ export const Canvas: Component<Props> = (props) => {
         }
     };
 
-    const handleResize = () => {
-        if (canvasRef) {
-            updateCanvasSize(canvasRef);
-        }
-    };
+    const handleResize = debounce({
+        func: () => {
+            if (canvasRef) {
+                updateCanvasSize(canvasRef);
+            }
+        },
+        delay: 300,
+    });
 
     const style = {
         canvas: ` /* css */ 
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            border: none;
-            z-index: 0;
-            ${props.sx}
-            `,
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                border: none;
+                z-index: 0;
+                ${props.sx}
+                `,
     };
 
     onMount(() => {
