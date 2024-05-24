@@ -3,7 +3,7 @@ import { Text, Stack, Link } from '@/components/atoms';
 
 export const Footer: Component = () => {
     return (
-        <Stack direction="column">
+        <Stack direction="column" sx="position: relative; z-index: 10;">
             <Stack direction="row" center alignItemCenter spacing={10}>
                 <Link href="http://localhost:5173/contact" target="_blank">
                     {'MIT License'}
