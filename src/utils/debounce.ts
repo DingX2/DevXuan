@@ -9,6 +9,8 @@ interface Props<T extends (...args: unknown[]) => void> {
  * @param {T} func - The function to debounce.
  * @param {number} delay - The number of milliseconds to delay.
  * @returns {(...args: Parameters<T>) => void} - Returns the new debounced function.
+ *
+ * @example debounce({ func: () => console.log('debounce'), delay: 1000 });
  */
 
 export const debounce = <T extends (...args: unknown[]) => void>({ func, delay }: Props<T>) => {
