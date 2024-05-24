@@ -1,6 +1,6 @@
 import { type Component, createSignal } from 'solid-js';
 import { Stack, Text, Box } from '@/components/atoms';
-import { Canvas, Speech, Background, autoplay } from '@/components/molecules';
+import { Canvas, Speech, autoplay } from '@/components/molecules';
 import { ProfileCard } from '@/components/organisms';
 
 export const AboutTemplate: Component = () => {
@@ -15,7 +15,6 @@ export const AboutTemplate: Component = () => {
 
     return (
         <>
-            <Background height="100" image="/image/oilpaint.svg" />
             <Canvas width="100vw" height="100vh" ref={canvasRef} />
             <button onClick={animateCanvas} style={{ position: 'relative', 'z-index': 2 }}>
                 Feedback

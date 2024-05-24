@@ -1,9 +1,19 @@
+import { createSignal } from 'solid-js';
 import { Stack, Box, Button, Image, Logo, Text } from '@/components/atoms';
-import { Background, Card, Speech, Content, Canvas } from '@/components/molecules';
+import { Background, Card, Speech, Content, Canvas, autoplay } from '@/components/molecules';
 import { History } from '@/components/organisms';
 import { backgrounds } from '@/constants';
 
 export const Test = () => {
+    let canvasRef!: HTMLCanvasElement;
+    const [clicked, setClicked] = createSignal<boolean>(false);
+
+    const animateCanvas = () => {
+        const newState = !clicked();
+        autoplay(newState);
+        setClicked(newState);
+    };
+
     return (
         <Stack direction="column">
             <Stack direction="column">
@@ -16,10 +26,11 @@ export const Test = () => {
                 <Logo />
                 <Text>Text</Text>
             </Stack>
-
+            <Canvas width="100vw" height="100vh" ref={canvasRef} />
             <Stack direction="column">
                 <Content />
-                <Canvas width="300" height="200" />
+
+                <button onClick={animateCanvas}>Animate Canvas</button>
                 <Background height="20" select sx={backgrounds.gradient} />
                 <Background height="10" select sx={backgrounds.grid} />
                 <Background height="10" image="/image/Speech.svg">
