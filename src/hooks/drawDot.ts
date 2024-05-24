@@ -1,6 +1,7 @@
 import type { Accessor, Setter } from 'solid-js';
 import type { Dot } from '@/types';
 import { useCachedImage, getRandom } from '@/utils';
+import { canvas } from '@/constants';
 
 /**
  * 점이나 이미지를 그리는 함수
@@ -10,7 +11,7 @@ import { useCachedImage, getRandom } from '@/utils';
  * @param {HTMLCanvasElement} canvasRef - 캔버스 엘리먼트
  * @param {string[] | string} colors - 컬러 색상표 or 저장된 컬러
  * @param {Dot[]} [dots] - 점 정보
- * @param {(dots: Dot[]) => void} [setDots] - 점 정보 업데이트 함수
+ * @param {(value: Dot[]) => void} [setDots] - 점 정보 업데이트 함수
  * @param {string[] | HTMLImageElement} [imageSource] - 이미지 소스 또는 저장된 이미지 소스
  * @param {Accessor} imageCache - 이미지 캐시
  * @param {Setter} setImageCache - 이미지 캐시 업데이트 함수
@@ -26,7 +27,7 @@ export const drawDot = (
     canvasRef: HTMLCanvasElement,
     colors?: string[] | string,
     dots?: Dot[],
-    setDots?: (dots: Dot[]) => void,
+    setDots?: (value: Dot[]) => void,
     imageSources?: string[] | HTMLImageElement,
     imageCache?: Accessor<{ [key: string]: HTMLImageElement }>,
     setImageCache?: Setter<{ [key: string]: HTMLImageElement }>,
@@ -37,16 +38,12 @@ export const drawDot = (
         typeof colors === 'string' ? colors : getRandom({ array: colors || [], length: colors?.length || 0 });
 
     let actualImage: HTMLImageElement | string = '';
-    if (imageSources instanceof HTMLImageElement) {
+    if (Array.isArray(imageSources) && imageSources.length > 0) {
+        const dotImage = getRandom({ array: canvas.imageSources, length: canvas.imageSources.length });
+        actualImage = useCachedImage(dotImage, imageCache, setImageCache);
+    } else if (imageSources instanceof HTMLImageElement) {
         actualImage = imageSources;
-    } else if (Array.isArray(imageSources)) {
-        if (imageSources.length > 0 && imageCache && setImageCache) {
-            actualImage = useCachedImage(imageSources[0], imageCache, setImageCache);
-        } else {
-            actualImage = '';
-        }
-    }
-    if (typeof imageSources === 'string' && imageCache && setImageCache) {
+    } else if (typeof imageSources === 'string') {
         actualImage = useCachedImage(imageSources, imageCache, setImageCache);
     }
 
@@ -68,23 +65,18 @@ export const drawDot = (
         offScreenCtx.fillRect(0, 0, width, height);
 
         ctx.drawImage(offScreenCanvas, offsetX, offsetY, width, height);
-        const newDot = { x, y, radius: 10, actualColor, image: svgImage };
+        const newDot: Dot = { x, y, radius: 10, color: actualColor, image: svgImage };
         if (setDots && dots) {
-            setDots([...dots, newDot]);
+            const newDots: Dot[] = [...dots, newDot];
+            setDots(newDots);
         }
     };
 
-    if (option === 'Image' && typeof actualImage === 'string') {
-        const svgImage = useCachedImage(actualImage, imageCache, setImageCache);
-        svgImage.src = actualImage;
-
-        if (!svgImage.complete) {
-            svgImage.onload = () => {
-                drawImageWithColor(svgImage);
-            };
-        } else {
-            drawImageWithColor(svgImage);
+    if (option === 'Image') {
+        if (typeof actualImage === 'string') {
+            return;
         }
+        drawImageWithColor(actualImage);
     } else if (option === 'Dot') {
         ctx.beginPath();
         ctx.arc(x, y, 10, 0, 2 * Math.PI);
@@ -105,5 +97,5 @@ export const drawDot = (
         }
     }
 
-    console.log(actualColor, actualImage, x, y);
+    console.log(x, y, dots);
 };
