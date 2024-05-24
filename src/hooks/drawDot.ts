@@ -72,11 +72,17 @@ export const drawDot = (
         }
     };
 
-    if (option === 'Image') {
-        if (typeof actualImage === 'string') {
-            return;
+    if (option === 'Image' && typeof actualImage !== 'string') {
+        if (!actualImage.complete) {
+            actualImage.onload = () => {
+                if (typeof actualImage === 'string') {
+                    return;
+                }
+                drawImageWithColor(actualImage);
+            };
+        } else {
+            drawImageWithColor(actualImage);
         }
-        drawImageWithColor(actualImage);
     } else if (option === 'Dot') {
         ctx.beginPath();
         ctx.arc(x, y, 10, 0, 2 * Math.PI);
@@ -96,6 +102,4 @@ export const drawDot = (
             ctx.fill();
         }
     }
-
-    console.log(x, y, dots);
 };
