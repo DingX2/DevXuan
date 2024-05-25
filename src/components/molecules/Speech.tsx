@@ -8,7 +8,7 @@ const style = {
         position: absolute;
         top: 0;
         left: -5px;
-        z-index: -1;
+        z-index: 10;
     `,
 
     box: /* css */ `
@@ -19,6 +19,7 @@ const style = {
         margin-left: 1rem;
         border-radius: 13px;
         background-color: #efefef;
+        z-index: 11;
     `,
 };
 
@@ -26,7 +27,9 @@ export const Speech: ParentComponent<Props> = ({ children }) => {
     return (
         <Box sx={style.box}>
             <Image src="/image/speech.svg" width={24} height={24} useAbsolute sx={style.tail} />
-            <Text fontSize="14px">{children}</Text>
+            <Text fontSize="14px" sx="z-index:11;">
+                {children}
+            </Text>
         </Box>
     );
 };
