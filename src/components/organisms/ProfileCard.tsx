@@ -20,7 +20,7 @@ export const ProfileCard: ParentComponent<Props> = ({ children }) => {
 
     return (
         <ProfileCardComponent onClick={handleFlip}>
-            <Card width={80} height={550} middle>
+            <Card width={80} height={550} middle borderColor="#fff" shadow  >
                 <Stack direction="column" sx="padding: 1rem;">
                     <Nav />
                     {children}
