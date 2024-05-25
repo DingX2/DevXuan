@@ -1,7 +1,8 @@
-import type { Accessor, Setter } from 'solid-js';
+import { type Accessor, type Setter } from 'solid-js';
 import type { Dot } from '@/types';
 import { useCachedImage, getRandom } from '@/utils';
 import { canvas } from '@/constants';
+// import { DotsContext } from '@/contexts';
 
 /**
  * 점이나 이미지를 그리는 함수
@@ -34,6 +35,8 @@ export const drawDot = (
 ) => {
     const ctx = canvasRef.getContext('2d');
     if (!ctx) return;
+    // const dotsUtils = useContext(DotsContext);
+
     const actualColor =
         typeof colors === 'string' ? colors : getRandom({ array: colors || [], length: colors?.length || 0 });
 
@@ -102,4 +105,6 @@ export const drawDot = (
             ctx.fill();
         }
     }
+
+    // console.log(x, y, dotsUtils?.dotsUtils.dot);
 };

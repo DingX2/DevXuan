@@ -2,19 +2,24 @@ import { type Component, createSignal } from 'solid-js';
 import { Stack, Text, Box } from '@/components/atoms';
 import { Canvas, Speech, autoplay } from '@/components/molecules';
 import { ProfileCard } from '@/components/organisms';
+// import { DotsProvider, DotsContext, useCounter } from '@/contexts';
 
 export const AboutTemplate: Component = () => {
     let canvasRef!: HTMLCanvasElement;
-    const [clicked, setClicked] = createSignal<boolean>(false);
+    const [clicked, setClicked] = createSignal<boolean>(true);
 
     const animateCanvas = () => {
         const newState = !clicked();
+        // const [dots, { set, add, get }] = useCounter();
+        // console.log(dots());
+
         autoplay(newState);
         setClicked(newState);
     };
 
     return (
         <>
+            {/* <DotsProvider> */}
             <Canvas width="100vw" height="100vh" ref={canvasRef} />
             <button onClick={animateCanvas} style={{ position: 'relative', 'z-index': 2 }}>
                 Feedback
@@ -40,6 +45,7 @@ export const AboutTemplate: Component = () => {
                     </Stack>
                 </Stack>
             </ProfileCard>
+            {/* </DotsProvider> */}
         </>
     );
 };

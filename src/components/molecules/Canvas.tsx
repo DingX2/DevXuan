@@ -14,7 +14,7 @@ const [dots, setDots] = createSignal<Dot[]>([]);
 const [imageCache, setImageCache] = createSignal<{ [key: string]: HTMLImageElement }>({});
 
 let intervalId: NodeJS.Timeout | undefined;
-let isAutoplayRunning = false;
+let isAutoplayRunning = true;
 
 export const autoplay = (mode: boolean) => {
     const { rect, ctx } = canvasState();
@@ -23,18 +23,7 @@ export const autoplay = (mode: boolean) => {
     const drawRandomDot = () => {
         const x = Math.random() * rect.width;
         const y = Math.random() * rect.height;
-        drawDot(
-            x,
-            y,
-            'Image',
-            canvasRef!,
-            canvas.colors,
-            dots(),
-            setDots,
-            canvas.imageSources,
-            imageCache,
-            setImageCache,
-        );
+        drawDot(x, y, 'Image', canvasRef!, canvas.colors, [], setDots, canvas.imageSources, imageCache, setImageCache);
     };
 
     if (mode && !isAutoplayRunning) {
@@ -54,8 +43,7 @@ export const handleClick = (event: MouseEvent, ref: HTMLCanvasElement) => {
     const x = (event.clientX - rect.left) * (ref.width / rect.width);
     const y = (event.clientY - rect.top) * (ref.height / rect.height);
 
-    console.log('click', ctx, rect, x, y);
-    drawDot(x, y, 'Image', ref, canvas.colors, dots(), setDots, canvas.imageSources, imageCache, setImageCache);
+    drawDot(x, y, 'Image', ref, canvas.colors, [], setDots, canvas.imageSources, imageCache, setImageCache);
 };
 
 export const Canvas: Component<Props> = (props) => {
