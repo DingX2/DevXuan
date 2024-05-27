@@ -8,5 +8,9 @@ export const backgrounds = {
     gradient: `
         background: rgb(252,244,255);
         background: linear-gradient(198deg, rgba(252,244,255,1) 0%, rgba(171,182,255,1) 100%);
-`,
+    `,
+    sunset: `
+        background: rgb(254,211,208);
+        background: linear-gradient(0deg, rgba(254,211,208,1) 4%, rgba(251,202,229,1) 34%, rgba(193,155,221,1) 66%, rgba(107,104,191,1) 100%);
+    `,
 };
