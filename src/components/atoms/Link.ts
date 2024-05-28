@@ -14,8 +14,9 @@ export const Link = styled(A)<Props>`
     justify-content: center;
     flex-direction: row;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     color: black;
+    font-weight: 500;
     text-decoration-line: none;
 
     &:hover {
