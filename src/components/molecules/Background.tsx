@@ -22,7 +22,7 @@ export const Background: ParentComponent<Props> = ({ children, height, image, se
                         left: 0;
                         top: 0;
                         width: 100%;
-                        height: ${height}vh;
+                        height: ${height};
                         z-index: -99;
                         object-fit: cover;
                     `
@@ -37,7 +37,7 @@ export const Background: ParentComponent<Props> = ({ children, height, image, se
                     position: absolute;
                     left: 0;
                     width: 100%;
-                    height: ${height}vh;
+                    height: ${height};
                     z-index: -99;
                     ${sx}
                 `
