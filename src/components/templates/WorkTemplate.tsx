@@ -2,7 +2,7 @@ import { type Component, createSignal, For, onMount, onCleanup } from 'solid-js'
 import { Stack, Box, Image } from '@/components/atoms';
 import { Background, Nav } from '@/components/molecules';
 import { CategoryCard, HistoryCard } from '@/components/organisms';
-import { projectSkills, backgrounds, projects, animation } from '@/constants';
+import { projectSkills, backgrounds, projects, animation, dandelion } from '@/constants';
 
 export const WorkTemplate: Component = () => {
     const initialShowDetails: boolean[] = Array.from({ length: Object.keys(projects).length }, () => false);
@@ -51,7 +51,18 @@ export const WorkTemplate: Component = () => {
                             height="40px"
                             padding="1rem;"
                             backgroundColor="#fff"
-                            sx="position: relative; align-items: center; margin-top: 2rem; top:0; z-index:99;"
+                            sx={
+                                /* css */ `
+                                position: relative; 
+                                align-items: center;
+                                margin-top: 2rem; 
+                                top: 0; 
+                                z-index:99;
+                                @media (max-width: 600px) {
+                                    width: 100%;
+                                }
+                                `
+                            }
                         >
                             <Nav />
                         </Box>
@@ -136,38 +147,19 @@ export const WorkTemplate: Component = () => {
                         )}
                     </For>
                 </Stack>
-                <Image
-                    src="/image/dandelionOne.svg"
-                    width={60}
-                    zIndex={3}
-                    useAbsolute
-                    sx="top: 240px;"
-                    {...animationSet().wind}
-                />
-                <Image
-                    src="/image/dandelionTwo.svg"
-                    useAbsolute
-                    width={100}
-                    zIndex={3}
-                    sx="top: 200px;"
-                    {...animationSet().wind2}
-                />
-                <Image
-                    src="/image/dandelionTwo.svg"
-                    useAbsolute
-                    width={70}
-                    zIndex={3}
-                    sx="top: 800px;"
-                    {...animationSet().wind4}
-                />
-                <Image
-                    src="/image/dandelionTwo.svg"
-                    useAbsolute
-                    width={50}
-                    zIndex={10}
-                    sx="top: 600px;"
-                    {...animationSet().wind3}
-                />
+
+                <For each={dandelion}>
+                    {({ src, width, top, animation, zIndex }) => (
+                        <Image
+                            src={src}
+                            width={width}
+                            zIndex={zIndex}
+                            useAbsolute
+                            sx={`top: ${top}px;`}
+                            {...animationSet()[animation]}
+                        />
+                    )}
+                </For>
             </Stack>
         </>
     );

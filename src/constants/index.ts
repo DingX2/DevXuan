@@ -8,3 +8,4 @@ export * from './colors';
 export * from './homeImage';
 export * from './projects';
 export * from './animation';
+export * from './dandelion';
