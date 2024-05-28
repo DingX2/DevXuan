@@ -2,13 +2,14 @@ import type { ParentComponent } from 'solid-js';
 import type { TextWithColor } from '@/types';
 import { Box, Stack } from '@/components/atoms';
 import { CardHeader, CardContent } from '@/components/molecules';
+import { animation } from '@/constants';
 
 interface Props {
     title: string;
     subtitle: string;
     projectDuration: string;
     skills: TextWithColor[];
-    content: string;
+    hashtag: string;
     projectImage?: string;
     link?: string;
     show: boolean;
@@ -27,11 +28,7 @@ export const HistoryCard: ParentComponent<Props> = (props) => {
                     padding="1rem"
                     pointer
                     onClick={props.handleClick}
-                    sx={`flex: 1;`}
-                    initial={{ opacity: 0, y: 50, scale: 1 }}
-                    animate={{ opacity: 1, y: 0, transition: { delay: 0.05 } }}
-                    transition={{ duration: 0.25, easing: 'ease-out' }}
-                    exit={{ opacity: 0, y: -50, scale: 1 }}
+                    {...animation().pop}
                 >
                     <CardHeader
                         category="자세히보기"
@@ -41,7 +38,7 @@ export const HistoryCard: ParentComponent<Props> = (props) => {
                         skills={props.skills}
                     />
 
-                    <CardContent content={props.content} projectImage={props.projectImage} link={props.link} />
+                    <CardContent content={props.hashtag} projectImage={props.projectImage} link={props.link} />
 
                     {props.children}
                 </Box>
@@ -63,7 +60,7 @@ export const HistoryCard: ParentComponent<Props> = (props) => {
                         skills={props.skills}
                     />
 
-                    <CardContent content={props.content} projectImage={props.projectImage} link={props.link} />
+                    <CardContent content={props.hashtag} projectImage={props.projectImage} link={props.link} />
                 </Box>
             )}
         </Stack>

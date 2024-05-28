@@ -1,7 +1,6 @@
 import { createSignal } from 'solid-js';
 import { Stack, Box, Button, Image, Logo, Text } from '@/components/atoms';
 import { Background, Card, Speech, Content, Canvas, autoplay } from '@/components/molecules';
-import { History } from '@/components/organisms';
 import { backgrounds } from '@/constants';
 
 export const Test = () => {
@@ -38,7 +37,6 @@ export const Test = () => {
                     <Card shadow />
                     <Card borderColor="#000" />
                 </Background>
-                <History />
             </Stack>
         </Stack>
     );

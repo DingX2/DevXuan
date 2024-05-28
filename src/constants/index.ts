@@ -6,3 +6,5 @@ export * from './canvas';
 export * from './projectSkills';
 export * from './colors';
 export * from './homeImage';
+export * from './projects';
+export * from './animation';
