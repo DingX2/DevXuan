@@ -1,4 +1,4 @@
-import { type Component, createSignal, createEffect, For, onMount, onCleanup } from 'solid-js';
+import { type Component, createSignal, For, onMount, onCleanup } from 'solid-js';
 import { Stack, Box, Image } from '@/components/atoms';
 import { Background, Nav } from '@/components/molecules';
 import { CategoryCard, HistoryCard } from '@/components/organisms';
@@ -21,24 +21,18 @@ export const WorkTemplate: Component = () => {
 
     const updateScreenHeight = () => {
         if (backgroundRef) {
-            console.log(backgroundRef?.scrollHeight);
             setScreenHeight(backgroundRef?.scrollHeight);
             setAnimationSet(animation(screenHeight()));
         }
-        console.log('update', screenHeight(), animationSet());
+        console.log('update', backgroundRef?.scrollHeight, screenHeight(), animationSet());
     };
 
     onMount(() => {
-        updateScreenHeight();
+        setTimeout(updateScreenHeight, 0);
         window.addEventListener('resize', updateScreenHeight);
         onCleanup(() => {
             window.removeEventListener('resize', updateScreenHeight);
         });
-    });
-
-    createEffect(() => {
-        updateScreenHeight();
-        console.log(animationSet(), screenHeight());
     });
 
     return (
@@ -46,35 +40,58 @@ export const WorkTemplate: Component = () => {
             <Stack
                 direction="column"
                 useFlexGap
-                sx={`align-items: center; position: relative; height: ${screenHeight()}px; overflow: hidden;`}
+                sx={`position: relative; overflow: hidden; height: ${screenHeight()}px;`}
             >
-                <Background
-                    height="fit-content"
-                    select
-                    sx={`${backgrounds.sunset} align-items: center; width: auto;`}
-                    ref={backgroundRef}
-                >
+                <Background height={screenHeight()?.toString() ?? '0'} select sx={`${backgrounds.sunset}`} />
+
+                <Stack sx={`${backgrounds.sunset}`} ref={backgroundRef}>
                     <Stack sx="align-items: center;">
                         <Box
                             width="70%"
                             height="40px"
                             padding="1rem;"
                             backgroundColor="#fff"
-                            sx="position: relative; align-items: center; margin-top: 1rem; top:0; z-index:99;"
+                            sx="position: relative; align-items: center; margin-top: 2rem; top:0; z-index:99;"
                         >
                             <Nav />
                         </Box>
                     </Stack>
+
+                    <Stack direction="row" sx="justify-content: space-between;">
+                        <Stack direction="row" sx="width: fit-content; height: 40px;">
+                            <Box
+                                width="320px"
+                                direction="column"
+                                height={`calc(100% + 80px)`}
+                                backgroundColor="#000"
+                                sx="position: relative; border-radius: 0; top: -80px;"
+                            />
+
+                            <Image
+                                src="/image/veranda.svg"
+                                alt="veranda"
+                                width={100}
+                                sx="position: relative; margin-right: 4rem; visibility: hidden;"
+                            />
+                        </Stack>
+
+                        <Box
+                            width="90%"
+                            height={`calc(100% + 80px)`}
+                            backgroundColor="#000"
+                            sx=" position: relative; border-radius: 0; z-index: 5; top: -80px;"
+                        />
+                    </Stack>
                     <For each={Object.values(projects)}>
                         {(props, index) => (
-                            <Stack direction="row" sx="justify-content: space-between z-index:100;">
-                                <Stack direction="row" sx="width: fit-content;">
+                            <Stack direction="row" sx="justify-content: space-between;">
+                                <Stack direction="row" sx="width: fit-content; align-items: flex-start">
                                     <Box
                                         width="320px"
                                         direction="column"
-                                        height="auto"
+                                        height="100%"
                                         backgroundColor="#000"
-                                        sx="position: relative; border-radius: 0; justify-content: start; top: -80px; padding-top: 90px; margin-bottom: -80px;"
+                                        sx="flex-grow: 1; position: relative; border-radius: 0; justify-content: start; z-index: 2;"
                                         padding="1rem 1.5rem 4rem"
                                     >
                                         <CategoryCard
@@ -91,14 +108,15 @@ export const WorkTemplate: Component = () => {
                                         src="/image/veranda.svg"
                                         alt="veranda"
                                         width={100}
-                                        sx="position: relative; object-fit: contain; left: -6px; margin-right: 4rem;"
+                                        sx="position: relative; align-items: start; object-fit: contain; left: -6px; top: 150px; margin-right: 4rem;"
                                     />
                                 </Stack>
 
                                 <Box
-                                    width="80%"
+                                    width="90%"
+                                    height="auto"
                                     backgroundColor="#000"
-                                    sx="position: relative; border-radius: 0px; top: -80px; padding-top: 90px; margin-bottom: -80px;"
+                                    sx="flex-grow: 1; position: relative; border-radius: 0; justify-content: start; z-index: 5;"
                                     padding="1rem 3rem 4rem"
                                 >
                                     <HistoryCard
@@ -111,16 +129,45 @@ export const WorkTemplate: Component = () => {
                                         show={showDetails()[index()]}
                                         handleClick={() => handleClick(index())}
                                     >
-                                        detail ...
+                                        detail ... detail ... detail ... detail ... detail ... detail ... detail ...
                                     </HistoryCard>
                                 </Box>
                             </Stack>
                         )}
                     </For>
-                </Background>
-                <Image src="/image/dandelionOne.svg" useAbsolute width={100} zIndex={-10} {...animationSet().wind} />
-                <Image src="/image/dandelionTwo.svg" useAbsolute width={50} zIndex={-10} {...animationSet().wind2} />
-                <Image src="/image/dandelionTwo.svg" useAbsolute width={50} zIndex={-10} {...animationSet().wind2} />
+                </Stack>
+                <Image
+                    src="/image/dandelionOne.svg"
+                    width={60}
+                    zIndex={3}
+                    useAbsolute
+                    sx="top: 240px;"
+                    {...animationSet().wind}
+                />
+                <Image
+                    src="/image/dandelionTwo.svg"
+                    useAbsolute
+                    width={100}
+                    zIndex={3}
+                    sx="top: 200px;"
+                    {...animationSet().wind2}
+                />
+                <Image
+                    src="/image/dandelionTwo.svg"
+                    useAbsolute
+                    width={70}
+                    zIndex={3}
+                    sx="top: 800px;"
+                    {...animationSet().wind4}
+                />
+                <Image
+                    src="/image/dandelionTwo.svg"
+                    useAbsolute
+                    width={50}
+                    zIndex={10}
+                    sx="top: 600px;"
+                    {...animationSet().wind3}
+                />
             </Stack>
         </>
     );

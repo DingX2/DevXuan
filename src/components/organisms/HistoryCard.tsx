@@ -18,7 +18,7 @@ interface Props {
 
 export const HistoryCard: ParentComponent<Props> = (props) => {
     return (
-        <Stack direction="row" alignItemCenter useFlexGap spacing={10} center>
+        <Stack direction="row" useFlexGap spacing={10} center>
             {props.show ? (
                 <Box
                     backgroundColor="#fff"
@@ -29,6 +29,7 @@ export const HistoryCard: ParentComponent<Props> = (props) => {
                     pointer
                     onClick={props.handleClick}
                     {...animation().pop}
+                    sx="z-index: 20;"
                 >
                     <CardHeader
                         category="자세히보기"
@@ -51,6 +52,7 @@ export const HistoryCard: ParentComponent<Props> = (props) => {
                     padding="1rem"
                     pointer
                     onClick={props.handleClick}
+                    sx="z-index: 20;"
                 >
                     <CardHeader
                         category="프로젝트"
