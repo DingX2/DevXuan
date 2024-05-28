@@ -8,7 +8,23 @@ export const Nav: Component = () => {
     const currentLocation = createMemo(() => location.pathname);
 
     return (
-        <Stack direction="row" spacing="40" useFlexGap center sx="position: absolute; top: 0;">
+        <Stack
+            direction="row"
+            spacing="30"
+            useFlexGap
+            center
+            sx={
+                /* css */ `
+                position: absolute; 
+                top: 0; 
+                z-index: 99;   
+                @media (max-width: 600px) {
+                    gap: 0px;
+                    fontSize: 12px;
+                }
+                `
+            }
+        >
             <For each={links}>
                 {({ href, Child }) => (
                     <Link href={href} target="_self" classList={{ active: currentLocation() === href }}>
