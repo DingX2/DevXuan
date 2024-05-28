@@ -1,4 +1,5 @@
 import { styled } from 'solid-styled-components';
+import { Motion } from 'solid-motionone';
 import type { Style } from '@/types';
 
 interface Props extends Style {
@@ -19,7 +20,7 @@ interface Props extends Style {
  * @param {number} bottom -  absolute시 위치설정
  * @param {number} zIndex - z-index 설정
  */
-export const Image = styled.img<Props>`
+export const Image = styled(Motion.img)<Props>`
     width: ${({ width = '100%' }) => (typeof width === 'number' ? `${width}px` : width)};
     height: ${({ height = 'auto' }) => (typeof height === 'number' ? `${height}px` : height)};
     position: ${({ useAbsolute }) => (useAbsolute ? 'absolute' : 'relative')};
