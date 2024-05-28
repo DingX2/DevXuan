@@ -31,7 +31,7 @@ interface Props extends Style {
  * @param {string} fontSize - font-size
  * @param {'start' | 'center' | 'end' | 'justify'} textAlign - text-align
  * @param {'left' | 'center' | 'right'} position - position
- * @param {boolean} boolean - 굵게 유무
+ * @param {boolean} bold - 굵게 유무
  */
 
 export const Text: ParentComponent<Props> = ({

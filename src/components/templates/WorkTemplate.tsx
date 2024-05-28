@@ -7,7 +7,9 @@ import { projectSkills, backgrounds, projects, animation } from '@/constants';
 export const WorkTemplate: Component = () => {
     const initialShowDetails: boolean[] = Array.from({ length: Object.keys(projects).length }, () => false);
     const [showDetails, setShowDetails] = createSignal<boolean[]>(initialShowDetails);
-    const [animationSet, setAnimationSet] = createSignal(animation(window.innerWidth));
+    const [screenHeight, setScreenHeight] = createSignal<number>();
+    const [animationSet, setAnimationSet] = createSignal(animation(0));
+    let backgroundRef: HTMLDivElement | undefined;
 
     const handleClick = (index: number) => {
         setShowDetails((prev) => {
@@ -17,38 +19,41 @@ export const WorkTemplate: Component = () => {
         });
     };
 
-    const updateScreenWidth = () => {
-        setAnimationSet(animation(window.innerWidth));
+    const updateScreenHeight = () => {
+        if (backgroundRef) {
+            console.log(backgroundRef?.scrollHeight);
+            setScreenHeight(backgroundRef?.scrollHeight);
+            setAnimationSet(animation(screenHeight()));
+        }
+        console.log('update', screenHeight(), animationSet());
     };
 
     onMount(() => {
-        updateScreenWidth();
-        window.addEventListener('resize', updateScreenWidth);
+        updateScreenHeight();
+        window.addEventListener('resize', updateScreenHeight);
         onCleanup(() => {
-            window.removeEventListener('resize', updateScreenWidth);
+            window.removeEventListener('resize', updateScreenHeight);
         });
     });
 
     createEffect(() => {
-        setAnimationSet(animation(window.innerWidth));
-        console.log(window.innerWidth, animationSet());
+        updateScreenHeight();
+        console.log(animationSet(), screenHeight());
     });
 
     return (
         <>
-            <Image
-                src="/image/dandelionOne.svg"
-                width={50}
-                useAbsolute
-                zIndex={3}
-                sx={'top: 0;'}
-                {...animationSet().wind}
-            />
-
-            <Image src="/image/dandelionTwo.svg" width={50} useAbsolute zIndex={3} {...animationSet().wind2} />
-
-            <Stack direction="column" useFlexGap sx="align-items: center;">
-                <Background height="fit-content" select sx={`${backgrounds.sunset} align-items: center;`}>
+            <Stack
+                direction="column"
+                useFlexGap
+                sx={`align-items: center; position: relative; height: ${screenHeight()}px; overflow: hidden;`}
+            >
+                <Background
+                    height="fit-content"
+                    select
+                    sx={`${backgrounds.sunset} align-items: center; width: auto;`}
+                    ref={backgroundRef}
+                >
                     <Stack sx="align-items: center;">
                         <Box
                             width="70%"
@@ -60,10 +65,9 @@ export const WorkTemplate: Component = () => {
                             <Nav />
                         </Box>
                     </Stack>
-                    x``
                     <For each={Object.values(projects)}>
                         {(props, index) => (
-                            <Stack direction="row" sx="justify-content: space-between">
+                            <Stack direction="row" sx="justify-content: space-between z-index:100;">
                                 <Stack direction="row" sx="width: fit-content;">
                                     <Box
                                         width="320px"
@@ -114,6 +118,9 @@ export const WorkTemplate: Component = () => {
                         )}
                     </For>
                 </Background>
+                <Image src="/image/dandelionOne.svg" useAbsolute width={100} zIndex={-10} {...animationSet().wind} />
+                <Image src="/image/dandelionTwo.svg" useAbsolute width={50} zIndex={-10} {...animationSet().wind2} />
+                <Image src="/image/dandelionTwo.svg" useAbsolute width={50} zIndex={-10} {...animationSet().wind2} />
             </Stack>
         </>
     );

@@ -1,49 +1,50 @@
 import { type ParentComponent, Show } from 'solid-js';
-import { Stack, Image } from '@/components/atoms';
+import { Stack } from '@/components/atoms';
 import { type Style } from '@/types';
 
 interface Props extends Style {
     height: string;
     image?: string;
     select?: boolean;
+    ref?: HTMLDivElement | ((el: HTMLDivElement) => void);
 }
 
-export const Background: ParentComponent<Props> = ({ children, height, image, select, sx = '' }) => {
+export const Background: ParentComponent<Props> = (props) => {
     return (
         <Show
-            when={select}
+            when={props.select}
             fallback={
-                <Image
-                    src={image}
-                    alt="background"
+                <Stack
+                    ref={props.ref}
                     sx={
                         /* css */ `
+                        height: ${props.height};
                         position: absolute;
                         left: 0;
                         top: 0;
-                        width: 100%;
-                        height: ${height};
                         z-index: -99;
-                        object-fit: cover;
+                        background: url(${props.image}) no-repeat center center / cover;
+                        ${props.sx}
                     `
                     }
                 />
             }
         >
             <Stack
+                ref={props.ref}
                 center
                 sx={
                     /* css */ `
+                    height: ${props.height};
                     position: absolute;
                     left: 0;
-                    width: 100%;
-                    height: ${height};
+                    top: 0;
                     z-index: -99;
-                    ${sx}
+                    ${props.sx}
                 `
                 }
             >
-                <Stack>{children}</Stack>
+                {props.children}
             </Stack>
         </Show>
     );
