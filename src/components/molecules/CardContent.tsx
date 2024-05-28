@@ -7,23 +7,23 @@ interface Props {
     link?: string;
 }
 
-export const CardContent: ParentComponent<Props> = ({ content, projectImage, link, children }) => {
+export const CardContent: ParentComponent<Props> = (props) => {
     return (
         <>
             <Text fontSize="14px;" color="#666">
-                {content}
+                {props.content}
             </Text>
-            {projectImage && (
+            {props.projectImage && (
                 <Box>
-                    <Image src={projectImage} height="166px" sx="margin: 0 -24px;" />
+                    <Image src={props.projectImage} height="auto" sx="margin: 0 -24px;" />
                 </Box>
             )}
-            {link && (
-                <Link href={link} target="_blank">
-                    {link}
+            {props.link && (
+                <Link href={props.link} target="_blank">
+                    {props.link}
                 </Link>
             )}
-            s{children}
+            {props.children}
         </>
     );
 };
