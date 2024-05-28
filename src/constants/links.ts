@@ -10,6 +10,6 @@ export const links: Link[] = [
     { href: '/', Child: Logo },
     { href: '/about', Child: '자기소개' },
     { href: '/skill', Child: '기술 스택' },
-    { href: '/work', Child: '경력' },
+    { href: '/work', Child: '이력' },
     { href: '/blog', Child: '블로그' },
 ];

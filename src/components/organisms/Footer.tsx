@@ -5,7 +5,7 @@ export const Footer: Component = () => {
     return (
         <Stack direction="column" sx="position: relative; z-index: 10;">
             <Stack direction="row" center alignItemCenter spacing={10}>
-                <Link href="http://localhost:5173/contact" target="_blank">
+                <Link href="https://github.com/DingX2/DevXuan" target="_blank">
                     {'MIT License'}
                 </Link>
                 <Text textAlign="center">SooHyeon Lee © 2024</Text>
