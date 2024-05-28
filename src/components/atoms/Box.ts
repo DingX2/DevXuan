@@ -1,3 +1,4 @@
+import { Motion } from 'solid-motionone';
 import { styled } from 'solid-styled-components';
 import type { Style } from '@/types';
 
@@ -9,6 +10,7 @@ interface Props extends Style {
     spacing?: number | string;
     useFlexGap?: boolean;
     padding?: string;
+    pointer?: boolean;
 }
 
 /**
@@ -19,8 +21,9 @@ interface Props extends Style {
  * @param {number | string} spacing - gap
  * @param {boolean} useFlexGap - gap 사용유무
  * @param {string} padding - padding
+ * @param {boolean} pointer - pointer
  */
-export const Box = styled.div<Props>`
+export const Box = styled(Motion.div)<Props>`
     width: ${({ width }) => width || '100%'};
     height: ${({ height }) => height || '100%'};
     display: flex;
@@ -31,5 +34,6 @@ export const Box = styled.div<Props>`
     border-radius: 13px;
     ${({ padding }) => (padding ? `padding: ${padding};` : '')}
     ${({ useFlexGap, spacing }) => (useFlexGap ? `gap: ${spacing || 0}px; ` : `margin-top: ${spacing || 0}px;`)}
+    ${({ pointer }) => (pointer ? `cursor: pointer;` : '')}
     ${({ sx }) => sx}
 `;
