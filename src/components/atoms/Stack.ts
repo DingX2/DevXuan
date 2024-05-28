@@ -4,6 +4,7 @@ import type { Style } from '@/types';
 
 interface Props extends Style, ParentProps {
     direction?: 'column-reverse' | 'column' | 'row-reverse' | 'row';
+    position?: 'relative' | 'absolute' | 'static';
     spacing?: number | string;
     useFlexGap?: boolean;
     alignItemCenter?: boolean;
@@ -16,7 +17,8 @@ interface Props extends Style, ParentProps {
  *
  * @param {Props} props - Stack 컴포넌트에서 사용되는 Props입니다.
  * @param {ParentProps} [children] - Stack에 포함될 자식 요소입니다.
- * @param {'column-reverse' | 'column' | 'row-reverse' | 'row'} [direction='column'] - Stack 내 자식 요소들의 나열 방향입니다.
+ * @param {'column-reverse' | 'absolute' | 'row-reverse' | 'row'} [direction='column'] - Stack 내 자식 요소들의 나열 방향입니다.
+ * @param {'relative' | 'absolute' | 'static'} [position='relative'] - Stack 내 자식 요소들의 position입니다.
  * @param {boolean} [left=false] - Stack 내 자식 요소들을 좌측에 정렬합니다.
  * @param {boolean} [center=false] - Stack 내 자식 요소들을 가운데에 정렬합니다.
  * @param {boolean} [right=false] - Stack 내 자식 요소들을 우측에 정렬합니다.
@@ -29,6 +31,7 @@ export const Stack = styled.div<Props>`
     width: 100%;
     flex-direction: ${({ direction }) => direction || 'column'};
     align-items: ${({ alignItemCenter }) => (alignItemCenter ? 'center' : '')};
+    ${({ position }) => `position: ${position};`}
     ${({ useFlexGap, spacing }) => (useFlexGap ? `gap: ${spacing || 0}px; ` : `margin-top: ${spacing || 0}px;`)}
     ${({ sx }) => sx}
     ${({ left, center, right }) => {
