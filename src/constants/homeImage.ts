@@ -62,7 +62,7 @@ export const homeImages = [
     {
         src: '/image/home/liquid.svg',
         width: 350,
-        zIndex: -1,
+        zIndex: 0,
         sx: `
             transform: translate(-50%, -50%) rotate(10deg);
             top: 50%;
@@ -72,7 +72,7 @@ export const homeImages = [
     {
         src: '/image/home/liquid.svg',
         width: 200,
-        zIndex: -1,
+        zIndex: 0,
         sx: `
             transform: translate(-50%, -0%) rotate(140deg);
             top: 50%;
@@ -82,7 +82,7 @@ export const homeImages = [
     {
         src: '/image/home/cloud.svg',
         width: 300,
-        zIndex: -1,
+        zIndex: 0,
         sx: `
             transform: translate(-50%, -50%) rotate(0deg);
             top: 80%;
@@ -92,7 +92,7 @@ export const homeImages = [
     {
         src: '/image/home/cloud2.svg',
         width: 200,
-        zIndex: -1,
+        zIndex: 0,
         sx: `
             transform: translate(-50%, -50%) rotate(0deg);
             top: 30%;
