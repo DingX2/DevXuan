@@ -1,7 +1,7 @@
 import { type Component, createMemo, For } from 'solid-js';
 import { useLocation } from '@solidjs/router';
 import { Link, Stack } from '@/components/atoms';
-import { links } from '@/constants/links';
+import { links, mobileHome } from '@/constants';
 
 export const Nav: Component = () => {
     const location = useLocation();
@@ -18,10 +18,7 @@ export const Nav: Component = () => {
                 position: absolute; 
                 top: 0; 
                 z-index: 99;   
-                @media (max-width: 600px) {
-                    gap: 0px;
-                    fontSize: 12px;
-                }
+                ${mobileHome.mobile}
                 `
             }
         >

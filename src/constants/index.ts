@@ -9,3 +9,4 @@ export * from './homeImage';
 export * from './projects';
 export * from './animation';
 export * from './dandelion';
+export * from './mobile/mobileHome';

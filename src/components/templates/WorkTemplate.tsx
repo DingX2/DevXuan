@@ -1,8 +1,8 @@
 import { type Component, createSignal, For, onMount, onCleanup } from 'solid-js';
 import { Stack, Box, Image } from '@/components/atoms';
-import { Background, Nav } from '@/components/molecules';
+import { Nav } from '@/components/molecules';
 import { CategoryCard, HistoryCard } from '@/components/organisms';
-import { projectSkills, backgrounds, projects, animation, dandelion } from '@/constants';
+import { projectSkills, backgrounds, projects, animation, dandelion, mobileHome } from '@/constants';
 
 export const WorkTemplate: Component = () => {
     const initialShowDetails: boolean[] = Array.from({ length: Object.keys(projects).length }, () => false);
@@ -24,7 +24,6 @@ export const WorkTemplate: Component = () => {
             setScreenHeight(backgroundRef?.scrollHeight);
             setAnimationSet(animation(screenHeight()));
         }
-        console.log('update', backgroundRef?.scrollHeight, screenHeight(), animationSet());
     };
 
     onMount(() => {
@@ -37,13 +36,7 @@ export const WorkTemplate: Component = () => {
 
     return (
         <>
-            <Stack
-                direction="column"
-                useFlexGap
-                sx={`position: relative; overflow: hidden; height: ${screenHeight()}px;`}
-            >
-                <Background height={screenHeight()?.toString() ?? '0'} select sx={`${backgrounds.sunset}`} />
-
+            <Stack direction="column" useFlexGap sx={`position: relative; overflow: hidden;`}>
                 <Stack sx={`${backgrounds.sunset}`} ref={backgroundRef}>
                     <Stack sx="align-items: center;">
                         <Box
@@ -58,9 +51,7 @@ export const WorkTemplate: Component = () => {
                                 margin-top: 2rem; 
                                 top: 0; 
                                 z-index:99;
-                                @media (max-width: 600px) {
-                                    width: 100%;
-                                }
+                                ${mobileHome.tablet}
                                 `
                             }
                         >
@@ -68,7 +59,7 @@ export const WorkTemplate: Component = () => {
                         </Box>
                     </Stack>
 
-                    <Stack direction="row" sx="justify-content: space-between;">
+                    <Stack direction="row" sx={`justify-content: space-between; ${mobileHome.mobileStack}`}>
                         <Stack direction="row" sx="width: fit-content; height: 40px;">
                             <Box
                                 width="320px"
@@ -88,26 +79,35 @@ export const WorkTemplate: Component = () => {
 
                         <Box
                             width="90%"
-                            height={`calc(100% + 80px)`}
+                            height="120px"
                             backgroundColor="#000"
-                            sx=" position: relative; border-radius: 0; z-index: 5; top: -80px;"
+                            sx={`position: relative; border-radius: 0; z-index: 5; top: -80px; margin-bottom: -80px;
+                            ${mobileHome.mobileHidden}`}
                         />
                     </Stack>
+
                     <For each={Object.values(projects)}>
                         {(props, index) => (
-                            <Stack direction="row" sx="justify-content: space-between;">
+                            <Stack direction="row" sx={`justify-content: space-between; ${mobileHome.mobileStack}`}>
                                 <Stack direction="row" sx="width: fit-content; align-items: flex-start">
                                     <Box
-                                        width="320px"
                                         direction="column"
                                         height="100%"
                                         backgroundColor="#000"
-                                        sx="flex-grow: 1; position: relative; border-radius: 0; justify-content: start; z-index: 2;"
-                                        padding="1rem 1.5rem 4rem"
+                                        sx={
+                                            /* css */ `
+                                                min-width: 320px;
+                                                flex-grow: 1; 
+                                                position: relative; border-radius: 0; justify-content: start; z-index: 2;
+                                                padding: 1rem 1.5rem 4rem;
+                                                ${mobileHome.mobileBox}
+                                                `
+                                        }
                                     >
                                         <CategoryCard
                                             category={props.category}
-                                            title={props.organizationTitle}
+                                            organization={props.organizationTitle}
+                                            title={props.title}
                                             content={props.organizationContent}
                                             duration={props.organizationDuration}
                                             show={showDetails()[index()]}
@@ -127,8 +127,17 @@ export const WorkTemplate: Component = () => {
                                     width="90%"
                                     height="auto"
                                     backgroundColor="#000"
-                                    sx="flex-grow: 1; position: relative; border-radius: 0; justify-content: start; z-index: 5;"
-                                    padding="1rem 3rem 4rem"
+                                    sx={
+                                        /* css */ `
+                                            flex-grow: 1;
+                                            position: relative; 
+                                            border-radius: 0; 
+                                            justify-content: start; 
+                                            z-index: 5;
+                                            padding: 1rem 1.5rem 4rem;
+                                            ${mobileHome.mobileBox}
+                                            `
+                                    }
                                 >
                                     <HistoryCard
                                         title={props.projectTitle}
