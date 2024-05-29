@@ -1,17 +1,14 @@
 import { type Component, For } from 'solid-js';
 import { Text, Stack } from '@/components/atoms';
 import { ImageBox } from '@/components/molecules';
-import { skills } from '@/constants';
+import { skills, backgrounds } from '@/constants';
 
 export const SkillTemplate: Component = () => {
     return (
         <>
-            <Stack direction="column" useFlexGap spacing={10}>
-                <Text>Skill</Text>
-                <Stack direction="row" useFlexGap spacing={10}>
-                    <ImageBox image="/image/Typescript_logo.svg" width={24} height={24}>
-                        <Text>HTML</Text>
-                    </ImageBox>
+            <Stack direction="column" useFlexGap spacing={10} sx={backgrounds.grid}>
+                <Text fontSize="30px">Skill</Text>
+                <Stack direction="row" useFlexGap spacing={10} sx="flex-wrap: wrap;">
                     <For each={skills}>
                         {({ language }) => (
                             <For each={language}>
