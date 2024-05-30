@@ -14,7 +14,6 @@ export const redraw = (ref: HTMLCanvasElement, ctx: CanvasRenderingContext2D | n
     if (!ctx) return;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    console.log('redraw', dots);
     dots.forEach((dot) => {
         drawDot(dot.x, dot.y, 'Redraw', ref, dot.color, undefined, undefined, dot.image, undefined, undefined);
     });

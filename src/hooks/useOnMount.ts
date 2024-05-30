@@ -22,20 +22,17 @@ interface Props {
 
 export const useOnMount = ({ ref, func, setter, resizeFunc }: Props) => {
     onMount(() => {
-        console.log('ref', ref);
         if (!ref) return;
         func(ref, setter);
         window.addEventListener('resize', resizeFunc);
 
         onCleanup(() => {
-            console.log('Removing resize event listener');
             window.removeEventListener('resize', resizeFunc);
         });
     });
 
     createEffect(() => {
         if (ref) {
-            console.log('Updating canvas size');
             func(ref, setter);
         }
     });
