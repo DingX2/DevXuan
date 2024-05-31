@@ -2,6 +2,7 @@ import { type Component, For } from 'solid-js';
 import { Image, Stack, Text } from '@/components/atoms';
 import { ProfileCard } from '@/components/organisms';
 import { backgrounds, homeImages } from '@/constants';
+import { animation } from '@/utils';
 
 export const HomeTemplate: Component = () => {
     return (
@@ -9,7 +10,7 @@ export const HomeTemplate: Component = () => {
             <For each={homeImages}>
                 {({ src, width, sx, zIndex }) => <Image src={src} width={width} sx={sx} zIndex={zIndex} useAbsolute />}
             </For>
-            <ProfileCard>
+            <ProfileCard {...animation().pop}>
                 <Stack direction="row">
                     <Stack direction="column" useFlexGap spacing={10}>
                         <Text component="h1" fontSize="50px">

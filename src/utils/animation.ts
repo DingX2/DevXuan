@@ -68,4 +68,6 @@ export const animation = (screenWidth: number = 0): Animations => ({
         animate: { opacity: 1, y: 0, rotateY: 0, transition: { delay: 0.05, duration: 0.5, ease: 'ease-in-out' } },
         exit: { opacity: 0, y: -50, scale: 1, rotateY: -90, transition: { duration: 0.5, ease: 'ease-in-out' } },
     },
+    scaleUp: { initial: { scale: 1 }, animate: { scale: 1.1, transition: { duration: 0.3, ease: 'easeInOut' } } },
+    scaleDown: { initial: { scale: 1.1 }, animate: { scale: 1, transition: { duration: 0.3, ease: 'easeInOut' } } },
 });
