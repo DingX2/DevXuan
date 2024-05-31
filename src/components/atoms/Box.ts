@@ -11,17 +11,19 @@ interface Props extends Style {
     useFlexGap?: boolean;
     padding?: string;
     pointer?: boolean;
+    onClick?: () => void;
 }
 
 /**
- * @param {string} width - The width of the box.
- * @param {string} height - The height of the box.
- * @param {string} backgroundColor - background color
+ * @param {string} width - 너비
+ * @param {string} height - 높이
+ * @param {string} backgroundColor - 배경색
  * @param {'column' | 'row'} direction - 방향
  * @param {number | string} spacing - gap
  * @param {boolean} useFlexGap - gap 사용유무
  * @param {string} padding - padding
  * @param {boolean} pointer - pointer
+ * @param {() => void} onClick - 클릭이벤트
  */
 export const Box = styled(Motion.div)<Props>`
     width: ${({ width }) => width || '100%'};
