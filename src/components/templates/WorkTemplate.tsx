@@ -2,7 +2,8 @@ import { type Component, createSignal, For, onMount, onCleanup } from 'solid-js'
 import { Stack, Box, Image } from '@/components/atoms';
 import { Nav } from '@/components/molecules';
 import { CategoryCard, HistoryCard } from '@/components/organisms';
-import { projectSkills, backgrounds, projects, animation, dandelion, mobileHome } from '@/constants';
+import { projectSkills, backgrounds, projects, dandelion, mobileHome } from '@/constants';
+import { animation } from '@/utils';
 
 export const WorkTemplate: Component = () => {
     const initialShowDetails: boolean[] = Array.from({ length: Object.keys(projects).length }, () => false);

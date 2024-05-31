@@ -1,29 +1,4 @@
-interface BasicAnimationConfig {
-    initial: { x?: number; y?: number; opacity?: number; scale?: number };
-    animate: {
-        x?: number | number[];
-        y?: number | number[];
-        rotate?: number | number[];
-        opacity?: number | number[];
-        scale?: number | number[];
-        transition?: { delay?: number };
-    };
-    transition: { duration: number; ease: string; repeat?: number; repeatType?: string };
-    exit?: { opacity: number; y: number; scale: number };
-}
-
-interface WindAnimationConfig extends BasicAnimationConfig {
-    animate: { x: number[]; y: number[]; rotate: number[] };
-}
-
-interface Animations {
-    wind: WindAnimationConfig;
-    wind2: WindAnimationConfig;
-    wind3: WindAnimationConfig;
-    wind4: WindAnimationConfig;
-    pop: BasicAnimationConfig;
-    [key: string]: BasicAnimationConfig;
-}
+import { type Animations } from '@/types';
 
 export const animation = (screenWidth: number = 0): Animations => ({
     wind: {
@@ -87,5 +62,10 @@ export const animation = (screenWidth: number = 0): Animations => ({
         animate: { opacity: 1, y: 0, transition: { delay: 0.05 } },
         transition: { duration: 0.25, ease: 'ease-out' },
         exit: { opacity: 0, y: -50, scale: 1 },
+    },
+    flip: {
+        initial: { opacity: 0, y: 50, scale: 1, rotateY: 90 },
+        animate: { opacity: 1, y: 0, rotateY: 0, transition: { delay: 0.05, duration: 0.5, ease: 'ease-in-out' } },
+        exit: { opacity: 0, y: -50, scale: 1, rotateY: -90, transition: { duration: 0.5, ease: 'ease-in-out' } },
     },
 });
