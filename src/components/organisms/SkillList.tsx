@@ -22,7 +22,7 @@ export const SkillList: ParentComponent<Props> = (props) => {
                 {(category, index) => (
                     <ImageBox
                         image={category.image}
-                        width="100"
+                        width="50"
                         imgWidth={24}
                         height={24}
                         hoverText={category.description}

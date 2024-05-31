@@ -1,4 +1,4 @@
-import { type Component, For, createSignal } from 'solid-js';
+import { type Component, For, createSignal, createMemo } from 'solid-js';
 import { Text, Stack } from '@/components/atoms';
 import { SkillList } from '@/components/organisms';
 import { skills, backgrounds } from '@/constants';
@@ -9,16 +9,17 @@ export const SkillTemplate: Component = () => {
         ...Array<boolean>(skill.language.length).fill(false),
         ...Array<boolean>(skill.library.length).fill(false),
         ...Array<boolean>(skill.css.length).fill(false),
-        ...Array<boolean>(skill.tooling.length).fill(false),
-        ...Array<boolean>(skill.Server.length).fill(false),
+        ...Array<boolean>(skill.tooling_DevOps.length).fill(false),
+        ...Array<boolean>(skill.backend.length).fill(false),
+        ...Array<boolean>(skill.server.length).fill(false),
+        ...Array<boolean>(skill.OS.length).fill(false),
     ]);
 
     const [click, setClick] = createSignal<boolean[][]>(initialState);
-
-    const offsets = getCategoryIndex(skills);
-    console.log(offsets);
+    const offsets = createMemo(() => getCategoryIndex(skills));
 
     const handleClick = (skillIndex: number, subIndex: number) => {
+        console.log(skillIndex, subIndex, offsets());
         setClick((prev) => {
             const newClick = prev.map((row, i) =>
                 i === skillIndex ? row.map((item, j) => (j === subIndex ? !item : item)) : row,
@@ -28,98 +29,116 @@ export const SkillTemplate: Component = () => {
     };
 
     return (
-        <Stack direction="column" useFlexGap spacing={10} sx={backgrounds.grid}>
-            <Text fontSize="30px">Skill</Text>
+        <Stack direction="column" useFlexGap spacing={10} sx={`padding: 2rem; ${backgrounds.grid}`}>
+            <Text fontSize="30px" sx="margin-top: 1rem;">
+                Skill
+            </Text>
             <For each={skills} fallback={<div>Loading...</div>}>
                 {(skill, skillIndex) => (
                     <SkillList
                         categories={skill.language}
                         skillIndex={skillIndex()}
-                        clickState={click()[skillIndex()].slice(0, skill.language.length)}
+                        clickState={click()[skillIndex()].slice(offsets()[0][0], offsets()[0][1] + 1)}
                         handleClick={(_, subIdx) => handleClick(skillIndex(), subIdx)}
                     />
                 )}
             </For>
 
-            <Text fontSize="30px">Library</Text>
+            <Text fontSize="24px" sx="margin-top: 1rem;">
+                Library
+            </Text>
             <For each={skills} fallback={<div>Loading...</div>}>
                 {(skill, skillIndex) => (
                     <SkillList
                         categories={skill.library}
                         skillIndex={skillIndex()}
-                        clickState={click()[skillIndex()].slice(
-                            skill.language.length,
-                            skill.language.length + skill.library.length,
-                        )}
-                        handleClick={(_, subIdx) => handleClick(skillIndex(), skill.language.length + subIdx)}
+                        clickState={click()[skillIndex()].slice(offsets()[1][0], offsets()[1][1] + 1)}
+                        handleClick={(_, subIdx) => handleClick(skillIndex(), offsets()[1][0] + subIdx)}
                     />
                 )}
             </For>
 
-            <Text fontSize="30px">CSS</Text>
-            <For each={skills} fallback={<div>Loading...</div>}>
-                {(skill, skillIndex) => (
-                    <SkillList
-                        categories={skill.css}
-                        skillIndex={skillIndex()}
-                        clickState={click()[skillIndex()].slice(
-                            skill.language.length + skill.library.length,
-                            skill.language.length + skill.library.length + skill.css.length,
+            <Stack direction="row">
+                <Stack direction="column" useFlexGap spacing={10}>
+                    <Text fontSize="24px" sx="margin-top: 1rem;">
+                        CSS
+                    </Text>
+                    <For each={skills} fallback={<div>Loading...</div>}>
+                        {(skill, skillIndex) => (
+                            <SkillList
+                                categories={skill.css}
+                                skillIndex={skillIndex()}
+                                clickState={click()[skillIndex()].slice(offsets()[2][0], offsets()[2][1] + 1)}
+                                handleClick={(_, subIdx) => handleClick(skillIndex(), offsets()[2][0] + subIdx)}
+                            />
                         )}
-                        handleClick={(_, subIdx) =>
-                            handleClick(skillIndex(), skill.language.length + skill.library.length + subIdx)
-                        }
-                    />
-                )}
-            </For>
+                    </For>
 
-            <Text fontSize="30px">Tooling</Text>
-            <For each={skills} fallback={<div>Loading...</div>}>
-                {(skill, skillIndex) => (
-                    <SkillList
-                        categories={skill.tooling}
-                        skillIndex={skillIndex()}
-                        clickState={click()[skillIndex()].slice(
-                            skill.language.length + skill.library.length + skill.css.length,
-                            skill.language.length + skill.library.length + skill.css.length + skill.tooling.length,
+                    <Text fontSize="24px" sx="margin-top: 1rem;">
+                        Tooling / DevOps
+                    </Text>
+                    <For each={skills} fallback={<div>Loading...</div>}>
+                        {(skill, skillIndex) => (
+                            <SkillList
+                                categories={skill.tooling_DevOps}
+                                skillIndex={skillIndex()}
+                                clickState={click()[skillIndex()].slice(offsets()[3][0], offsets()[3][1] + 1)}
+                                handleClick={(_, subIdx) => handleClick(skillIndex(), offsets()[3][0] + subIdx)}
+                            />
                         )}
-                        handleClick={(_, subIdx) =>
-                            handleClick(
-                                skillIndex(),
-                                skill.language.length + skill.library.length + skill.css.length + subIdx,
-                            )
-                        }
-                    />
-                )}
-            </For>
+                    </For>
+                </Stack>
+            </Stack>
 
-            <Text fontSize="30px">Server</Text>
-            <For each={skills} fallback={<div>Loading...</div>}>
-                {(skill, skillIndex) => (
-                    <SkillList
-                        categories={skill.Server}
-                        skillIndex={skillIndex()}
-                        clickState={click()[skillIndex()].slice(
-                            skill.language.length + skill.library.length + skill.css.length + skill.tooling.length,
-                            skill.language.length +
-                                skill.library.length +
-                                skill.css.length +
-                                skill.tooling.length +
-                                skill.Server.length,
+            <Stack direction="row">
+                <Stack direction="column" useFlexGap spacing={10}>
+                    <Text fontSize="24px" sx="margin-top: 1rem;">
+                        Backend
+                    </Text>
+                    <For each={skills} fallback={<div>Loading...</div>}>
+                        {(skill, skillIndex) => (
+                            <SkillList
+                                categories={skill.backend}
+                                skillIndex={skillIndex()}
+                                clickState={click()[skillIndex()].slice(offsets()[4][0], offsets()[4][1] + 1)}
+                                handleClick={(_, subIdx) => handleClick(skillIndex(), offsets()[4][0] + subIdx)}
+                            />
                         )}
-                        handleClick={(_, subIdx) =>
-                            handleClick(
-                                skillIndex(),
-                                skill.language.length +
-                                    skill.library.length +
-                                    skill.css.length +
-                                    skill.tooling.length +
-                                    subIdx,
-                            )
-                        }
-                    />
-                )}
-            </For>
+                    </For>
+                </Stack>
+
+                <Stack direction="column" useFlexGap spacing={10}>
+                    <Text fontSize="24px" sx="margin-top: 1rem;">
+                        Server
+                    </Text>
+                    <For each={skills} fallback={<div>Loading...</div>}>
+                        {(skill, skillIndex) => (
+                            <SkillList
+                                categories={skill.server}
+                                skillIndex={skillIndex()}
+                                clickState={click()[skillIndex()].slice(offsets()[5][0], offsets()[5][1] + 1)}
+                                handleClick={(_, subIdx) => handleClick(skillIndex(), offsets()[5][0] + subIdx)}
+                            />
+                        )}
+                    </For>
+                </Stack>
+
+                <Stack direction="column" useFlexGap spacing={10}>
+                    <Text fontSize="24px" sx="margin-top: 1rem;">
+                        OS
+                    </Text>
+                    <For each={skills} fallback={<div>Loading...</div>}>
+                        {(skill, skillIndex) => (
+                            <SkillList
+                                categories={skill.OS}
+                                skillIndex={skillIndex()}
+                                clickState={click()[skillIndex()].slice(offsets()[6][0], offsets()[6][1] + 1)}
+                                handleClick={(_, subIdx) => handleClick(skillIndex(), offsets()[6][0] + subIdx)}
+                            />
+                        )}
+                    </For>
+                </Stack>
+            </Stack>
         </Stack>
     );
 };
