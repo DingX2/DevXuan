@@ -2,6 +2,7 @@ import { type Component, For, createSignal } from 'solid-js';
 import { Text, Stack } from '@/components/atoms';
 import { SkillList } from '@/components/organisms';
 import { skills, backgrounds } from '@/constants';
+import { getCategoryIndex } from '@/utils';
 
 export const SkillTemplate: Component = () => {
     const initialState: boolean[][] = skills.map((skill) => [
@@ -13,6 +14,9 @@ export const SkillTemplate: Component = () => {
     ]);
 
     const [click, setClick] = createSignal<boolean[][]>(initialState);
+
+    const offsets = getCategoryIndex(skills);
+    console.log(offsets);
 
     const handleClick = (skillIndex: number, subIndex: number) => {
         setClick((prev) => {
