@@ -2,7 +2,7 @@ import type { ParentComponent } from 'solid-js';
 import type { TextWithColor } from '@/types';
 import { Box, Stack } from '@/components/atoms';
 import { CardHeader, CardContent } from '@/components/molecules';
-import { animation } from '@/constants';
+import { animation } from '@/utils';
 
 interface Props {
     title: string;
