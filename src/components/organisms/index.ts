@@ -4,3 +4,4 @@ export * from './ProfileCard';
 export * from './HistoryCard';
 export * from './CategoryCard';
 export * from './SkillList';
+export * from './BlogCard';
