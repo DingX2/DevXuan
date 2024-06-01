@@ -31,7 +31,7 @@ export const ProfileCard: ParentComponent = ({ children }) => {
             <ProfileCardComponent onClick={handleFlip}>
                 <Card width={80} height={550} middle borderColor="#fff" shadow>
                     <Stack direction="column" sx="padding: 1rem;">
-                        <Nav />
+                        <Nav useAbsolute />
                         {children}
                     </Stack>
                 </Card>

@@ -1,5 +1,6 @@
 import { type Component, For, createSignal, createMemo } from 'solid-js';
 import { Text, Stack } from '@/components/atoms';
+import { Nav } from '@/components/molecules';
 import { SkillList } from '@/components/organisms';
 import { skills, backgrounds } from '@/constants';
 import { getCategoryIndex } from '@/utils';
@@ -19,7 +20,6 @@ export const SkillTemplate: Component = () => {
     const offsets = createMemo(() => getCategoryIndex(skills));
 
     const handleClick = (skillIndex: number, subIndex: number) => {
-        console.log(skillIndex, subIndex, offsets());
         setClick((prev) => {
             const newClick = prev.map((row, i) =>
                 i === skillIndex ? row.map((item, j) => (j === subIndex ? !item : item)) : row,
@@ -30,6 +30,7 @@ export const SkillTemplate: Component = () => {
 
     return (
         <Stack direction="column" useFlexGap spacing={10} sx={`padding: 2rem; ${backgrounds.grid}`}>
+            <Nav useAbsolute useBox />
             <Text fontSize="30px" sx="margin-top: 1rem;">
                 Skill
             </Text>

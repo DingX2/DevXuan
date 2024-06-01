@@ -39,26 +39,7 @@ export const WorkTemplate: Component = () => {
         <>
             <Stack direction="column" useFlexGap sx={`position: relative; overflow: hidden;`}>
                 <Stack sx={`${backgrounds.sunset}`} ref={backgroundRef}>
-                    <Stack sx="align-items: center;">
-                        <Box
-                            width="70%"
-                            height="40px"
-                            padding="1rem;"
-                            backgroundColor="#fff"
-                            sx={
-                                /* css */ `
-                                position: relative; 
-                                align-items: center;
-                                margin-top: 2rem; 
-                                top: 0; 
-                                z-index:99;
-                                ${mobileHome.tablet}
-                                `
-                            }
-                        >
-                            <Nav />
-                        </Box>
-                    </Stack>
+                    <Nav useBox />
 
                     <Stack direction="row" sx={`justify-content: space-between; ${mobileHome.mobileStack}`}>
                         <Stack direction="row" sx="width: fit-content; height: 40px;">
