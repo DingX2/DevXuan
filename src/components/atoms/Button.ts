@@ -26,11 +26,15 @@ export const Button = styled.button<Props>`
     background-repeat: no-repeat;
     background-position: center;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: ${({ icon, width = icon ? '24px' : '100%' }) => width};
     height: ${({ icon, height = icon ? '24px' : 'auto' }) => height};
     ${({ icon }) => (icon ? 'border: none;' : '')}
 
-    color: #000;
+    color: ${({ color }) => color};
     background-color: ${({ backgroundColor }) => backgroundColor || 'transparent'};
     padding: 0.5rem 1rem;
     border-radius: 5px;
