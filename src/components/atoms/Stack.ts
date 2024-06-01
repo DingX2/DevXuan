@@ -24,6 +24,7 @@ interface Props extends Style, ParentProps {
  * @param {boolean} [right=false] - Stack 내 자식 요소들을 우측에 정렬합니다.
  * @param {number | string} [spacing=0] - Stack 내 자식 요소들 간의 간격입니다.
  * @param {boolean} [useFlexGap=false] - CSS flexbox 속성인 gap을 사용할지 여부입니다.
+ * @param {boolean} [alignItemCenter=false] - Stack 내 자식 요소들을 세로 가운데에 정렬합니다.
  * @returns {JSX.Element} Stack 컴포넌트의 JSX.Element를 반환합니다.
  */
 export const Stack = styled.div<Props>`
