@@ -50,7 +50,7 @@ export const Nav: Component<Props> = (props) => {
                         useFlexGap
                         spacing={30}
                         backgroundColor="#fff"
-                        sx={`position: relative; align-items: center; margin-top: 2rem; top: 0; z-index: 99; ${mobileHome.tablet}`}
+                        sx={`position: relative; align-items: center; margin-top: 2rem; top: 0; z-index: 99; ${mobileHome.mobile} ${mobileHome.tablet}`}
                     >
                         <NavLinks />
                     </Box>

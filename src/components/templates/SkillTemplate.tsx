@@ -1,6 +1,5 @@
 import { type Component, For, createSignal, createMemo } from 'solid-js';
 import { Text, Stack } from '@/components/atoms';
-import { Nav } from '@/components/molecules';
 import { SkillList } from '@/components/organisms';
 import { skills, backgrounds } from '@/constants';
 import { getCategoryIndex } from '@/utils';
@@ -30,7 +29,6 @@ export const SkillTemplate: Component = () => {
 
     return (
         <Stack direction="column" useFlexGap spacing={10} sx={`padding: 2rem; ${backgrounds.grid}`}>
-            <Nav useAbsolute useBox />
             <Text fontSize="30px" sx="margin-top: 1rem;">
                 Skill
             </Text>
@@ -74,7 +72,8 @@ export const SkillTemplate: Component = () => {
                             />
                         )}
                     </For>
-
+                </Stack>
+                <Stack direction="column" useFlexGap spacing={10}>
                     <Text fontSize="24px" sx="margin-top: 1rem;">
                         Tooling / DevOps
                     </Text>
