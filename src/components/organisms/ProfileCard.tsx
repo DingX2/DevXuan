@@ -13,9 +13,7 @@ export const ProfileCard: ParentComponent = ({ children }) => {
 
     const handleFlip = () => {
         setFlipped(!flipped);
-        if (location.pathname === '/about') {
-            navigate('/');
-        } else {
+        if (location.pathname === '/') {
             navigate('/about');
         }
     };
