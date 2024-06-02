@@ -5,4 +5,4 @@ export * from './HistoryCard';
 export * from './CategoryCard';
 export * from './SkillList';
 export * from './BlogCard';
-export * from './BlogPage';
+export * from './BlogList';

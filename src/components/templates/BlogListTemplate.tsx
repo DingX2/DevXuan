@@ -1,10 +1,10 @@
 import { type Component, createEffect, createSignal } from 'solid-js';
 import axios from 'axios';
 import { Stack } from '@/components/atoms';
-import { BlogPage } from '@/components/organisms';
+import { BlogList } from '@/components/organisms';
 import type { Blog } from '@/types';
 
-export const BlogPageTemplate: Component = () => {
+export const BlogListTemplate: Component = () => {
     const [data, setData] = createSignal<Blog | undefined>(undefined);
 
     const fetchData = async () => {
@@ -29,7 +29,7 @@ export const BlogPageTemplate: Component = () => {
     return (
         <Stack>
             {data() ? (
-                <BlogPage
+                <BlogList
                     id={data()!.id}
                     title={data()!.title}
                     subtitle={data()!.subtitle}

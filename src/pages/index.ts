@@ -5,3 +5,5 @@ export * from './Work';
 export * from './NotFound';
 export * from './Test';
 export * from './Blog';
+export * from './BlogCreate';
+export * from './BlogPage';
