@@ -12,18 +12,15 @@ export const BlogListTemplate: Component = () => {
             const res = await axios.get<Blog>('/api/posts');
             setData(res.data);
         } catch (error) {
-            console.error('Error fetching blog data:', error);
+            console.error('Error fetching posts:', error);
         }
     };
 
     createEffect(() => {
-        fetchData()
-            .then(() => {
-                // Promise resolved
-            })
-            .catch((error) => {
-                console.error('Error in createEffect:', error);
-            });
+        fetchData().then(
+            () => {},
+            () => {},
+        );
     });
 
     return (
