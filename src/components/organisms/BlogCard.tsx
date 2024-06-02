@@ -2,10 +2,11 @@ import { type ParentComponent } from 'solid-js';
 import { Box, Text, Stack, Image } from '@/components/atoms';
 
 interface Props {
+    id: number;
     title: string;
     subtitle: string;
     writeDate: string;
-    image: string;
+    image?: string;
 }
 
 export const BlogCard: ParentComponent<Props> = (props) => {
