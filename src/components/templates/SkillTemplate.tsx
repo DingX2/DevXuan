@@ -1,7 +1,7 @@
 import { type Component, For, createSignal, createMemo } from 'solid-js';
 import { Text, Stack } from '@/components/atoms';
 import { SkillList } from '@/components/organisms';
-import { skills, backgrounds } from '@/constants';
+import { skills, backgrounds, mobileHome } from '@/constants';
 import { getCategoryIndex } from '@/utils';
 
 export const SkillTemplate: Component = () => {
@@ -57,7 +57,7 @@ export const SkillTemplate: Component = () => {
                 )}
             </For>
 
-            <Stack direction="row">
+            <Stack direction="row" sx={mobileHome.mobileStack}>
                 <Stack direction="column" useFlexGap spacing={10}>
                     <Text fontSize="24px" sx="margin-top: 1rem;">
                         CSS
@@ -90,7 +90,7 @@ export const SkillTemplate: Component = () => {
                 </Stack>
             </Stack>
 
-            <Stack direction="row">
+            <Stack direction="row" sx={mobileHome.mobileStack}>
                 <Stack direction="column" useFlexGap spacing={10}>
                     <Text fontSize="24px" sx="margin-top: 1rem;">
                         Backend
