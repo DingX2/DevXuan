@@ -11,6 +11,7 @@ interface Props extends Style, ParentProps {
     left?: boolean;
     center?: boolean;
     right?: boolean;
+    between?: boolean;
 }
 /**
  * Stack 컴포넌트는 자식 요소를 상하 또는 좌우로 나열하는 레이아웃을 구현할 때 사용하는 컴포넌트입니다.
@@ -22,6 +23,7 @@ interface Props extends Style, ParentProps {
  * @param {boolean} [left=false] - Stack 내 자식 요소들을 좌측에 정렬합니다.
  * @param {boolean} [center=false] - Stack 내 자식 요소들을 가운데에 정렬합니다.
  * @param {boolean} [right=false] - Stack 내 자식 요소들을 우측에 정렬합니다.
+ * @param {boolean} [between=false] - Stack 내 자식 요소들을 우측에 정렬합니다.
  * @param {number | string} [spacing=0] - Stack 내 자식 요소들 간의 간격입니다.
  * @param {boolean} [useFlexGap=false] - CSS flexbox 속성인 gap을 사용할지 여부입니다.
  * @param {boolean} [alignItemCenter=false] - Stack 내 자식 요소들을 세로 가운데에 정렬합니다.
@@ -35,7 +37,7 @@ export const Stack = styled.div<Props>`
     ${({ position }) => `position: ${position};`}
     ${({ useFlexGap, spacing }) => (useFlexGap ? `gap: ${spacing || 0}px; ` : `margin-top: ${spacing || 0}px;`)}
     ${({ sx }) => sx}
-    ${({ left, center, right }) => {
+    ${({ left, center, right, between }) => {
         if (left) {
             return 'justify-content: flex-start;';
         }
@@ -44,6 +46,9 @@ export const Stack = styled.div<Props>`
         }
         if (right) {
             return 'justify-content: flex-end;';
+        }
+        if (between) {
+            return 'justify-content: space-between;';
         }
         return '';
     }};
