@@ -1,24 +1,14 @@
 import { type Component, createSignal, For, onMount, onCleanup } from 'solid-js';
 import { Stack, Box, Image } from '@/components/atoms';
 import { Nav } from '@/components/molecules';
-import { CategoryCard, HistoryCard } from '@/components/organisms';
+import { ProjectList } from '@/components/organisms';
 import { projectSkills, backgrounds, projects, dandelion, mobileHome } from '@/constants';
 import { animation } from '@/utils';
 
 export const WorkTemplate: Component = () => {
-    const initialShowDetails: boolean[] = Array.from({ length: Object.keys(projects).length }, () => false);
-    const [showDetails, setShowDetails] = createSignal<boolean[]>(initialShowDetails);
+    let backgroundRef: HTMLDivElement | undefined;
     const [screenHeight, setScreenHeight] = createSignal<number>();
     const [animationSet, setAnimationSet] = createSignal(animation(0));
-    let backgroundRef: HTMLDivElement | undefined;
-
-    const handleClick = (index: number) => {
-        setShowDetails((prev) => {
-            const newShowDetails = [...prev];
-            newShowDetails[index] = !newShowDetails[index];
-            return newShowDetails;
-        });
-    };
 
     const updateScreenHeight = () => {
         if (backgroundRef) {
@@ -37,11 +27,11 @@ export const WorkTemplate: Component = () => {
 
     return (
         <>
-            <Stack direction="column" useFlexGap sx={`position: relative; overflow: hidden;`}>
+            <Stack direction="column" position="relative" useFlexGap sx={`overflow: hidden;`}>
                 <Stack sx={`${backgrounds.sunset}`} ref={backgroundRef}>
                     <Nav useBox />
 
-                    <Stack direction="row" sx={`justify-content: space-between; ${mobileHome.mobileStack}`}>
+                    <Stack direction="row" between sx={`${mobileHome.mobileStack}`}>
                         <Stack direction="row" sx="width: fit-content; height: 40px;">
                             <Box
                                 width="320px"
@@ -68,75 +58,7 @@ export const WorkTemplate: Component = () => {
                         />
                     </Stack>
 
-                    <For each={Object.values(projects)}>
-                        {(props, index) => (
-                            <Stack direction="row" sx={`justify-content: space-between; ${mobileHome.mobileStack}`}>
-                                <Stack direction="row" sx="width: fit-content; align-items: flex-start">
-                                    <Box
-                                        direction="column"
-                                        height="100%"
-                                        backgroundColor="#000"
-                                        sx={
-                                            /* css */ `
-                                                min-width: 320px;
-                                                flex-grow: 1; 
-                                                position: relative; border-radius: 0; justify-content: start; z-index: 2;
-                                                padding: 1rem 1.5rem 4rem;
-                                                ${mobileHome.mobileBox}
-                                                `
-                                        }
-                                    >
-                                        <CategoryCard
-                                            category={props.category}
-                                            organization={props.organizationTitle}
-                                            title={props.title}
-                                            content={props.organizationContent}
-                                            duration={props.organizationDuration}
-                                            show={showDetails()[index()]}
-                                            handleClick={() => handleClick(index())}
-                                        />
-                                    </Box>
-
-                                    <Image
-                                        src="/image/veranda.svg"
-                                        alt="veranda"
-                                        width={100}
-                                        sx="position: relative; align-items: start; object-fit: contain; left: -6px; top: 150px; margin-right: 4rem;"
-                                    />
-                                </Stack>
-
-                                <Box
-                                    width="90%"
-                                    height="auto"
-                                    backgroundColor="#000"
-                                    sx={
-                                        /* css */ `
-                                            flex-grow: 1;
-                                            position: relative; 
-                                            border-radius: 0; 
-                                            justify-content: start; 
-                                            z-index: 5;
-                                            padding: 1rem 1.5rem 4rem;
-                                            ${mobileHome.mobileBox}
-                                            `
-                                    }
-                                >
-                                    <HistoryCard
-                                        title={props.projectTitle}
-                                        subtitle={props.subtitle}
-                                        skills={projectSkills.blueMosaic.skills}
-                                        hashtag={props.hashtag}
-                                        projectImage={props.projectImage}
-                                        projectDuration={props.projectDuration}
-                                        show={showDetails()[index()]}
-                                        handleClick={() => handleClick(index())}
-                                    >
-                                        detail ... detail ... detail ... detail ... detail ... detail ... detail ...
-                                    </HistoryCard>
-                                </Box>
-                            </Stack>
-                        )}
-                    </For>
+                    <ProjectList projects={projects} projectSkills={projectSkills} />
                 </Stack>
 
                 <For each={dandelion}>
