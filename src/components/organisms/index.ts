@@ -6,3 +6,4 @@ export * from './CategoryCard';
 export * from './SkillList';
 export * from './BlogCard';
 export * from './BlogList';
+export * from './ProjectList';
