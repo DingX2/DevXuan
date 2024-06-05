@@ -13,9 +13,9 @@ interface Props {
 
 export const CategoryCard: Component<Props> = (props) => {
     return (
-        <Box backgroundColor="#fff" padding="1rem" pointer height="fit-content" sx="z-index: 20;">
+        <Box type="whiteBox" pointer height="fit-content" sx="z-index: 20;">
             <Stack direction="column" center useFlexGap spacing={10}>
-                <Box backgroundColor="#eee" width="fit-content" padding="0.5rem 1rem;">
+                <Box type="grayBox" fitContent>
                     <Text>{props.category}</Text>
                 </Box>
                 {props.title && <Text bold>{props.title}</Text>}

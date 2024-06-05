@@ -3,7 +3,7 @@ import { styled } from 'solid-styled-components';
 import type { Style } from '@/types';
 
 interface Props extends Style {
-    type?: 'whiteBox' | 'grayBox';
+    type?: 'whiteBox' | 'grayBox' | 'blackBox';
     width?: string;
     height?: string;
     backgroundColor?: string;
@@ -17,7 +17,7 @@ interface Props extends Style {
 }
 
 /**
- * @param {'whiteBox'|'grayBox'} type - type 종류
+ * @param {'whiteBox'|'grayBox'| 'blackBox'} type - type 종류
  * @param {string} width - 너비
  * @param {string} height - 높이
  * @param {string} backgroundColor - 배경색
@@ -32,6 +32,7 @@ interface Props extends Style {
 export const Box = styled(Motion.div)<Props>`
     ${({ type }) => (type === 'whiteBox' ? `background-color: #fff; padding: 1rem;` : '')};
     ${({ type }) => (type === 'grayBox' ? `background-color: #eee; padding: 0.5rem 1rem;` : '')};
+    ${({ type }) => (type === 'blackBox' ? `background-color: #000; padding: 1rem;` : '')};
     width: ${({ width }) => width || '100%'};
     height: ${({ height }) => height || '100%'};
     display: flex;

@@ -15,8 +15,8 @@ interface Props {
 export const ImageBox: ParentComponent<Props> = (props) => {
     return (
         <Box
+            type="whiteBox"
             direction="column"
-            backgroundColor="#fff"
             width={props.width}
             height="80px"
             useFlexGap
@@ -25,7 +25,6 @@ export const ImageBox: ParentComponent<Props> = (props) => {
             pointer
             onClick={props.onClick}
             sx="min-width: 70px; max-width: 200px;"
-            padding="1rem"
         >
             <Stack direction={!props.click ? 'column' : 'row'} useFlexGap spacing={4}>
                 <Image src={props.image} alt="Image" width={props.imgWidth} height={props.height} />
