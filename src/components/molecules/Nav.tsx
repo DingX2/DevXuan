@@ -6,6 +6,7 @@ import { links, mobileHome } from '@/constants';
 interface Props {
     useAbsolute?: boolean;
     useBox?: boolean;
+    hidden?: boolean;
 }
 
 const NavLinks: Component = () => {
@@ -30,32 +31,36 @@ const NavLinks: Component = () => {
 export const Nav: Component<Props> = (props) => {
     return (
         <>
-            <Show when={!props.useBox}>
-                <Stack
-                    direction="row"
-                    spacing="30"
-                    useFlexGap
-                    center
-                    sx={`position: ${props.useAbsolute ? 'absolute' : 'relative'}; top: 0; z-index: 99; ${mobileHome.mobile}`}
-                >
-                    <NavLinks />
-                </Stack>
-            </Show>
-            <Show when={props.useBox}>
-                <Stack sx="align-items: center;">
-                    <Box
-                        width="70%"
-                        height="40px"
-                        padding="1rem"
-                        useFlexGap
-                        spacing={30}
-                        backgroundColor="#fff"
-                        sx={`position: relative; align-items: center; margin-top: 2rem; top: 0; z-index: 99; ${mobileHome.mobile} ${mobileHome.tablet}`}
-                    >
-                        <NavLinks />
-                    </Box>
-                </Stack>
-            </Show>
+            {!props.hidden && (
+                <>
+                    <Show when={!props.useBox}>
+                        <Stack
+                            direction="row"
+                            spacing="30"
+                            useFlexGap
+                            center
+                            sx={`position: ${props.useAbsolute ? 'absolute' : 'relative'}; top: 0; z-index: 99; ${mobileHome.mobile}`}
+                        >
+                            <NavLinks />
+                        </Stack>
+                    </Show>
+                    <Show when={props.useBox}>
+                        <Stack sx="align-items: center;">
+                            <Box
+                                width="70%"
+                                height="40px"
+                                padding="1rem"
+                                useFlexGap
+                                spacing={30}
+                                backgroundColor="#fff"
+                                sx={`position: relative; align-items: center; margin-top: 2rem; top: 0; z-index: 99; ${mobileHome.mobile} ${mobileHome.tablet}`}
+                            >
+                                <NavLinks />
+                            </Box>
+                        </Stack>
+                    </Show>
+                </>
+            )}
         </>
     );
 };
