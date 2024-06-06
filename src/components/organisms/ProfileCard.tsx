@@ -28,9 +28,9 @@ export const ProfileCard: ParentComponent = ({ children }) => {
     return (
         <Motion.div {...animation().flip}>
             <ProfileCardComponent onClick={handleFlip}>
-                <Card width={80} height={550} middle borderColor="#fff" shadow>
-                    <Stack direction="column" sx="padding: 1rem;">
-                        <Nav useAbsolute sx={mobileHome.mobileHidden} />
+                <Card width={80} fitContent middle borderColor="#fff" shadow>
+                    <Stack direction="column" sx="padding: 5rem 2rem 6rem;">
+                        <Nav useAbsolute center sx={`${mobileHome.mobileHidden}`} />
                         {children}
                     </Stack>
                 </Card>
