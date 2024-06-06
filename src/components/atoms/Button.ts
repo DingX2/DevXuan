@@ -1,27 +1,29 @@
 import { styled } from 'solid-styled-components';
+import { type Style } from '@/types';
+import { css } from '@/styles';
 
-interface Props {
+interface Props extends Style {
+    variant?: 'primary' | 'secondary';
     backgroundColor?: string;
     color?: string;
     width?: string;
     height?: string;
     fontSize?: number;
-    link?: string;
     icon?: string;
 }
 
 /**
+ * @param {'primary' | 'secondary'} variant - primary, secondary 디자인 버튼
  * @param {string} backgroundColor - background-color
  * @param {string} color - color
  * @param {string} width - width 100% 기본
  * @param {string} height - height auto 기본
  * @param {number} fontSize - font-size
- * @param {string} link - link
  * @param {string} icon - 이미지 버튼, 24px 기본
  */
 
 export const Button = styled.button<Props>`
-    background-image: ${({ icon }) => (icon ? `url(${icon})` : 'none')};
+    background-image: ${({ icon = '' }) => (icon ? `url(${icon})` : 'none')};
     background-size: 1.5rem;
     background-repeat: no-repeat;
     background-position: center;
@@ -40,4 +42,7 @@ export const Button = styled.button<Props>`
     border-radius: 5px;
     font-size: ${({ fontSize }) => fontSize};
     cursor: pointer;
+    ${({ variant }) => (variant === 'primary' ? css.ButtonStylePrimary : '')}
+    ${({ variant }) => (variant === 'secondary' ? css.ButtonStyleSecondary : '')}
+    ${({ sx }) => sx}
 `;
