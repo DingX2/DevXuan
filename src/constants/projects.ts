@@ -95,7 +95,7 @@ export const projects: { [key: string]: ProjectItem } = {
         organizationDuration: '2023.11.01.~2023.11.15.',
         title: '2023 대구를 빛내는 SW 해커톤 최우수상 수상',
         project: true,
-        projectTitle: 'AhMorningDiary',
+        projectTitle: '앗!침에일기',
         subtitle: '치매 예방 음성 인식 일기 작성 및 퀴즈 풀이 SW',
         hashtag: '#STT #webSpeechAPI #시니어',
         projectImage: '/image/projects/AhMorningDiary.gif',
@@ -157,5 +157,25 @@ export const projects: { [key: string]: ProjectItem } = {
             `- 일시적 트래픽으로 인한 긴급점검`,
             `- vaporwave 스타일의 화면, Aseprite를 이용한 도트 디자인 제작`,
         ],
+    },
+    RemoteInternship: {
+        category: '🌟 대외활동',
+        organizationTitle: `CJ올리브네트웍스`,
+        organizationContent: `Bio IT에 관심있어 데이터 분석 및 시각화를 진행했어요.\n
+        Remote Internship PBL 방식의 데이터 분석가 과정 수료 '도달, 공유, 좋아요, 페이지 뷰간 상관관계 인과관계 파악과 AI 적용을 했어요.\n
+        "비즈니스 관점 강조, 텍스트 및 마케팅 경험으로 간주 가능"이라는 멘토님 피드백 결과를 받았어요`,
+        organizationDuration: '2022.09.~2022.11.',
+        title: 'Remote Internship 2기 Expert Track / DS',
+        project: false,
+    },
+    other: {
+        category: '🌟 대외활동',
+        organizationTitle: `코드잇`,
+        organizationContent: `- 코뮤니티 /파이썬 심화 : 크롤링편
+        - 코뮤니티 / C언어 메이트 : 심화편
+        - 코드잇 / 대학생 코딩 캠프 10기`,
+        organizationDuration: '2021.09. ~ 2022.01.28.',
+        title: 'Bio IT에 관심있어 참여했어요',
+        project: false,
     },
 };
