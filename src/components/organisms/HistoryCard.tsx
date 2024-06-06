@@ -31,7 +31,7 @@ export const HistoryCard: ParentComponent<Props> = (props) => {
                     sx="z-index: 20;"
                 >
                     <CardHeader
-                        category="자세히보기"
+                        category="프로젝트"
                         subtitle={props.subtitle}
                         title={props.title}
                         duration={props.projectDuration}
@@ -54,7 +54,7 @@ export const HistoryCard: ParentComponent<Props> = (props) => {
                     sx="z-index: 20;"
                 >
                     <CardHeader
-                        category="프로젝트"
+                        category="자세히보기"
                         subtitle={props.subtitle}
                         title={props.title}
                         duration={props.projectDuration}
