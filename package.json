@@ -17,11 +17,14 @@
     "@motionone/solid": "^10.16.4",
     "@solidjs/router": "^0.13.3",
     "@tanstack/solid-query": "^5.35.1",
+    "axios": "^1.7.2",
     "ky": "^1.2.4",
     "motion": "^10.17.0",
+    "react-markdown": "^9.0.1",
     "solid-fontawesome": "^0.2.1",
     "solid-js": "^1.8.15",
     "solid-motionone": "^1.0.0",
+    "solid-react-compat": "^0.0.2",
     "solid-styled-components": "^0.28.5"
   },
   "devDependencies": {
