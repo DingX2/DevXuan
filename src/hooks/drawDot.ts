@@ -106,5 +106,5 @@ export const drawDot = (
         }
     }
 
-    // console.log(x, y, dotsUtils?.dotsUtils.dot);
+    console.log(x, y);
 };
