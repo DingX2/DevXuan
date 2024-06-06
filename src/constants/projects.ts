@@ -1,6 +1,14 @@
 import type { ProjectItem } from '@/types';
 
 export const projects: { [key: string]: ProjectItem } = {
+    hanhwa: {
+        category: '🌟 이력',
+        organizationTitle: `한화시스템`,
+        organizationContent: '입사예정이에요 꺅! 인턴 !!',
+        organizationDuration: '2024-07 ~ ',
+        title: `한화시스템 ICT 2024 상반기`,
+        project: false,
+    },
     kakao: {
         category: '🌟 대외활동',
         organizationTitle: `카카오`,
@@ -9,7 +17,7 @@ export const projects: { [key: string]: ProjectItem } = {
         title: `카카오테크캠퍼스 2기`,
         project: false,
     },
-    blueMosaic: {
+    BlueMosaic: {
         category: '🌟 대외활동',
         organizationTitle: `Google Developer Social Clubs\n(GDSC) 3기`,
         organizationContent: '프로젝트와 세미나 위주로 진행했어요',
@@ -36,7 +44,6 @@ export const projects: { [key: string]: ProjectItem } = {
             '물결 라이브러리 적용 react-water-wave',
         ],
     },
-
     TadakTadak: {
         category: '🌟 대외활동',
         organizationTitle: `스마일게이트`,
@@ -60,38 +67,94 @@ export const projects: { [key: string]: ProjectItem } = {
         ],
     },
     HappyNewHere: {
-        category: '🌟 동아리 프로젝트',
+        category: '🌟 학술동아리',
         organizationTitle: `IT 학술동아리 해달`,
-        organizationContent: '2~6시 코어타임과 주간 정기회의로 진행했어요.',
-        organizationDuration: '2024-01 ~ 2024-02',
-        title: 'dev online camp',
+        organizationContent: `GDSC x 해달 프로젝트로 친구들과 진행했어요\n
+        교육운영진(C언어,리액트,알고리즘,프로젝트 부트캠프)를 맡았어요.`,
+        organizationDuration: '2023.11.18.~2024.01.02. (2개월)',
+        title: 'HappyNewHere',
         project: true,
-        projectTitle: 'TadakTadak',
-        subtitle: 'MSA구조 / 웹소켓 채팅 WebRTC / 화상채팅 서비스 / 이메일 인증 회원가입 / 홈화면 Grid',
-        hashtag: '#JWT #zustand #MSA',
-        projectImage: '/image/projects/tadakTadakHome.gif',
-        projectDuration: '2024-01-08 ~ 2024-02-19',
-        projectTeam: 'FE: 3명, BE: 3명',
+        projectTitle: 'HappyNewHere',
+        subtitle:
+            '117명 사용자의 마음을 담은 우편함 / 1월 1일 Y2K와 유사한 버그 발생 타입스크립트 전향 / 예외처리 중요성 체감 / 유료홍보 자처 → 웹사이트당 방문비용 1294원 → 868원 절감 / 광고비 100%지출 → 48%지출 (인스타로직)',
+        hashtag: '#실서비스 #유지보수',
+        projectImage: '/image/projects/happyNewHereHome.gif',
+        projectDuration: '2023.11.18.~2024.01.02. (2개월)',
+        projectTeam: 'FE: 4명, PM: 1명, BE: 3명, 디자이너: 1명',
         projectDetail: [
-            'JWT 이메일 인증 실사용과 유사한 회원가입(8개예외처리)',
-            'React-query + Skeleton UI와 로딩 컴포넌트 비동기 처리',
-            'flex, grid로 반응형 홈 디자인 구현',
-            'zustand useStore로 객체화, 재사용성 향상 및 devTools 선택적 적용으로 보안 강화',
-            'Figma Design (반응형)',
-            '재사용 가능 토스트알림구현',
+            '카카오톡 SNS 로그인 기능 (리다이렉트 페이지의 중요성)',
+            '달력컴포넌트 제작, Y2K버그와 유사한 오류 발생 수정 타입스크립트 전향',
+            '메세지 보기 기능 Redux 순차적인 연결',
+            'woff 로 폰트 최적화',
         ],
     },
-    MergeToon: {
-        category: '🌟 개인 프로젝트',
-        organizationTitle: `스마일게이트`,
-        organizationContent: '2~6시 코어타임과 주간 정기회의로 진행했어요.',
-        organizationDuration: '2024-01 ~ 2024-02',
-        title: 'dev online camp',
+    AhMorningDiary: {
+        category: '🌟 해커톤',
+        organizationTitle: `경북대학교 컴퓨터학부`,
+        organizationContent: `디자이너와 함께 린하게 작업했어요`,
+        organizationDuration: '2023.11.01.~2023.11.15.',
+        title: '2023 대구를 빛내는 SW 해커톤 최우수상 수상',
         project: true,
-        projectTitle: 'TadakTadak',
-        subtitle: 'MSA구조 / 웹소켓 채팅 WebRTC / 화상채팅 서비스 / 이메일 인증 회원가입 / 홈화면 Grid',
-        hashtag: '#JWT #zustand #MSA',
-        projectImage: '/image/projects/tadakTadakHome.gif',
-        projectDuration: '2024-01-08 ~ 2024-02-19',
+        projectTitle: 'AhMorningDiary',
+        subtitle: '치매 예방 음성 인식 일기 작성 및 퀴즈 풀이 SW',
+        hashtag: '#STT #webSpeechAPI #시니어',
+        projectImage: '/image/projects/AhMorningDiary.gif',
+        projectDuration: '2023.11.01.~2023.11.15.',
+        projectTeam: 'FE: 2명, BE: 2명',
+        projectDetail: [
+            `초고령화 사회는 치매가 심각한 문제이며 두뇌 자극을 위한 일기 작성과 퀴즈 풀이가 예방에 도움 되는 사실을 찾았어요.\n 가로모드와 같은 친화적인 UI를 제공하고 음성으로 일기를 작성이 가능하며 개인별 퀴즈 풀이 서비스를 통해 더욱 효과적인 치매 예방이 가능할 것으로 기대돼요`,
+            'Vite를 활용한 모던 프론트엔드 개발 최적화',
+            'webSpeechAPI로 사용자가 음성으로 입력한 데이터를 실시간으로 텍스트로 변환하여 사용자 인터페이스의 접근성과 편의성 향상',
+            'OpenAPI를 사용하여 사용자가 작성한 일기 내용을 기반으로 사용자 맞춤 퀴즈 제공',
+        ],
+    },
+    Udongsari: {
+        category: '🌟 대외활동',
+        organizationTitle: `멋쟁이사자처럼 11기`,
+        organizationContent: `SW교육원 아이디어 해커톤 경진대회 ⭐ 대상 "우동사리"\n
+        중앙해커톤 참가 "ShareIT"\n
+        아이디어톤 위기 상황 대비 플랫폼 “문단속” 참가`,
+        organizationDuration: '2023.01.~2024.01.',
+        title: '우동사리',
+        project: true,
+        projectTitle: '우동사리(우리동네 사진가 리스트)',
+        subtitle: `우리 동네 아마추어 사진가 매칭 플랫폼`,
+        hashtag: '#STT #webSpeechAPI #시니어',
+        projectImage: '/image/projects/Udongsari.png',
+        projectDuration: '2023.11.01.~2023.11.15.',
+        projectTeam: 'FE: 2명, BE: 3명',
+        projectDetail: [
+            `아마추어 사진가와 이용자를 연결해 주는 플랫폼이에요.\n
+            사진작가들은 데뷔 기회를 얻을 수 있으며, 이용자들은 저렴한 가격으로 서비스를 이용할 수 있어요.\n
+            동네 단위의 지역사회를 활성화하길 바랬어요`,
+            `웹소켓을 활용한 Chat, ChatHistory 연결 및 Web Socket Client를 활용한 채팅 구현`,
+            `Atomic Design 패턴을 적용하여 개발한 컴포넌트를 재사용의 편리함을 체감하고 두 프론트엔드의 코드 작성 스타일이 다름에도 통일된 디자인 패턴을 통해 시너지가 잘 맞을 수 있음을 확인`,
+            `로그인 / 회원가입 페이지 구현`,
+            `Figma Component 명명 정리 및 CSS 추출 간편화`,
+        ],
+    },
+    ShareIT: {
+        category: '🌟 해커톤',
+        organizationTitle: `멋쟁이사자처럼 11기`,
+        organizationContent: `중앙해커톤이후 디벨롭하고 7일간 사용자 피드백을 받았어요.`,
+        organizationDuration: '2023.07.01.~2023.11.11.',
+        title: 'shareIT',
+        project: true,
+        projectTitle: 'ShareIT',
+        subtitle: `디지털 격차 해소 플랫폼`,
+        hashtag: '#Nginx #트래픽긴급대응 #서버의속도차이 #예외처리집중',
+        projectImage: '/image/projects/shareIT.gif',
+        projectDuration: '2023.07.01.~2023.11.11.',
+        projectTeam: 'FE: 3명, BE: 2명',
+        projectDetail: [
+            `수도권과 지방 사이에서 발생하는 디지털 격차를 해결하는 방법에서 학생 개발자와 현업자들의 양방향 데이터를 모집해서 해결하고 싶었어요.
+            \n MBTI처럼 간단한 질문만으로 자신이 어떤 개발자가 적성에 맞는지 알 수 있는 서비스에요. \n
+            개발자끼리 공유하며 인사이트를 넓혀가면 좋겠어요.`,
+            `질문지창 모션 제작`,
+            `AWS + Nginx 배포`,
+            `실 사용자 경험 7일 165명 피드백 반영`,
+            `일시적 트래픽으로 인한 긴급점검`,
+            `vaporwave 스타일의 화면, Aseprite를 이용한 도트 디자인 제작`,
+        ],
     },
 };
