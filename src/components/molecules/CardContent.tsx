@@ -10,7 +10,7 @@ interface Props {
 export const CardContent: ParentComponent<Props> = (props) => {
     return (
         <>
-            <Text fontSize="14px;" color="#666">
+            <Text fontSize="0.875rem;" color="#666">
                 {props.content}
             </Text>
             {props.projectImage && (

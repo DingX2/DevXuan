@@ -16,11 +16,11 @@ export const CardHeader: ParentComponent<Props> = ({ category, subtitle, title, 
     return (
         <>
             <Speech>{category}</Speech>
-            <Text fontSize="16px">{subtitle}</Text>
-            <Text fontSize="18px" bold>
+            <Text fontSize="1rem">{subtitle}</Text>
+            <Text fontSize="1.25rem" bold>
                 {title}
             </Text>
-            <Text fontSize="12px">📅 {duration}</Text>
+            <Text fontSize="0.85rem">📅 {duration}</Text>
             <ColorBoxList textwithcolors={skills} />
             {children}
         </>

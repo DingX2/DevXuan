@@ -21,11 +21,10 @@ export const HistoryCard: ParentComponent<Props> = (props) => {
         <Stack direction="row" useFlexGap spacing={10} center>
             {props.show ? (
                 <Box
-                    backgroundColor="#fff"
+                    type="whiteBox"
                     direction="column"
                     useFlexGap
                     spacing={5}
-                    padding="1rem"
                     pointer
                     onClick={props.handleClick}
                     {...animation().pop}
