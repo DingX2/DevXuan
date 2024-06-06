@@ -1,7 +1,8 @@
 import { type Component, createSignal } from 'solid-js';
-import { Stack, Text, Box } from '@/components/atoms';
+import { Stack, Text, Box, Button } from '@/components/atoms';
 import { Canvas, Speech, autoplay } from '@/components/molecules';
 import { ProfileCard } from '@/components/organisms';
+import { mobileHome } from '@/constants';
 // import { DotsProvider, DotsContext, useCounter } from '@/contexts';
 
 export const AboutTemplate: Component = () => {
@@ -12,7 +13,6 @@ export const AboutTemplate: Component = () => {
         const newState = !clicked();
         // const [dots, { set, add, get }] = useCounter();
         // console.log(dots());
-
         autoplay(newState);
         setClicked(newState);
     };
@@ -21,12 +21,13 @@ export const AboutTemplate: Component = () => {
         <>
             {/* <DotsProvider> */}
             <Canvas width="100vw" height="100vh" ref={canvasRef} />
-            <button onClick={animateCanvas} style={{ position: 'relative', 'z-index': 2 }}>
-                Feedback
-            </button>
+            <Button variant="primary" onClick={animateCanvas} sx={`position: relative; z-index: 2;`}>
+                <span>🎉</span>
+                <span>피드백 받아보기</span>
+            </Button>
 
             <ProfileCard>
-                <Stack direction="row">
+                <Stack direction="row" useFlexGap spacing={20} sx={mobileHome.mobileStack}>
                     <Stack direction="column" useFlexGap spacing={10}>
                         <Box direction="column">
                             <Speech>피드백</Speech>

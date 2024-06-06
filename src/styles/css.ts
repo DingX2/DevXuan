@@ -1,79 +1,30 @@
 export const css = {
-    ButtonStylePrimary: `
-    background-color: #f0ecfc;
-    background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
-    line-height: 42px;
+    ButtonStylePrimary: ` cursor: pointer;
+    font: inherit;
+    margin: 0;
     padding: 0;
-    border: none;
+    
+    background-color: #404663;
+    color: #fff;
+    border: 0;
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 0.5em 1.25em;
+    border-radius: 0.5em;
+    z-index: 999;
     position: relative;
-
-    span {
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-
-    &:before,
-    &:after,
-    span:before,
-    span:after {
-      position: absolute;
-      content: "";
-      background: #c797eb;
-      transition: all 0.3s ease;
-    }
-
-    &:before {
-      right: 0;
-      bottom: 0;
-      width: 2px;
-      height: 0%;
-    }
-
-    &:after {
-      right: 0;
-      bottom: 0;
-      width: 0%;
-      height: 2px;
-    }
-
-    &:hover:before {
-      height: 100%;
-    }
-
-    &:hover:after {
-      width: 100%;
-    }
-
-    &:hover {
-      background: transparent;
-    }
-
-    span:hover {
-      color: #c797eb;
-    }
-
-    span:before {
-      left: 0;
-      top: 0;
-      width: 2px;
-      height: 0%;
-    }
-
-    span:after {
-      left: 0;
-      top: 0;
-      height: 2px;
-      width: 0%;
-    }
-
-    span:hover:before {
-      height: 100%;
-    }
-
-    span:hover:after {
-      width: 100%;
+    display: flex;
+    gap: 0.5em;
+    box-shadow: 
+      0px 1.7px 2.2px rgba(0, 0, 0, 0.02),
+      0px 4px 5.3px rgba(0, 0, 0, 0.028),
+      0px 7.5px 10px rgba(0, 0, 0, 0.035),
+      0px 13.4px 17.9px rgba(0, 0, 0, 0.042),
+      0px 25.1px 33.4px rgba(0, 0, 0, 0.05),
+      0px 60px 80px rgba(0, 0, 0, 0.07);
+  
+    &:active {
+      transform: scale(1.01);
     }
   `,
     ButtonStyleSecondary: `
