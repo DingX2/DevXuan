@@ -27,11 +27,12 @@ export const Image = styled(Motion.img)<Props>`
     z-index: ${({ zIndex }) => zIndex || 0};
     ${({ useAbsolute, bottom }) => (useAbsolute ? `bottom: ${bottom || 0}px` : '')};
     object-fit: cover;
-    ${({ center, width = '100%' }) => {
-        const numericWidth = typeof width === 'number' ? width : parseFloat(width);
-        const percentageWidth =
-            typeof width === 'string' && width.includes('%') ? parseFloat(width) / 100 : numericWidth;
-        return center ? `left: calc(50% - ${percentageWidth * 50}%);` : '';
-    }}
+    ${({ useAbsolute, center }) =>
+        useAbsolute && center
+            ? `
+                left: 50%;
+                transform: translateX(-50%);
+            `
+            : ''}
     ${({ sx }) => sx}
 `;
