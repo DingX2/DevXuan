@@ -29,7 +29,9 @@ export const Image = styled(Motion.img)<Props>`
     object-fit: cover;
     ${({ center, width = '100%' }) => {
         const numericWidth = typeof width === 'number' ? width : parseFloat(width);
-        return center ? `left: calc(50% - ${numericWidth / 2}px);` : '';
+        const percentageWidth =
+            typeof width === 'string' && width.includes('%') ? parseFloat(width) / 100 : numericWidth;
+        return center ? `left: calc(50% - ${percentageWidth * 50}%);` : '';
     }}
     ${({ sx }) => sx}
 `;
