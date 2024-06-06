@@ -12,7 +12,7 @@ export const HomeTemplate: Component = () => {
             <ProfileCard>
                 <Stack direction="row" sx={mobileHome.mobileStack}>
                     <Stack direction="column" useFlexGap spacing={10}>
-                        <Text fontStyle="Deco" component="h1" fontSize="3.5rem">
+                        <Text fontStyle="Deco" component="h1" fontSize="3.2rem">
                             FrontEnd {'\n'} Developer
                         </Text>
                         <Text fontStyle="Deco" component="span">
@@ -38,11 +38,12 @@ export const HomeTemplate: Component = () => {
                 <Image
                     src="/image/profile.png"
                     alt="profile"
-                    width={'30%'}
+                    width={'50%'}
                     useAbsolute
                     zIndex={100}
                     bottom={0}
                     center
+                    sx="max-width: 200px;"
                 />
             </ProfileCard>
         </Stack>
