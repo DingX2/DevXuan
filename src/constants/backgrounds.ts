@@ -13,4 +13,10 @@ export const backgrounds = {
         background: rgb(254,211,208);
         background: linear-gradient(0deg, rgba(254,211,208,1) 4%, rgba(251,202,229,1) 34%, rgba(193,155,221,1) 66%, rgba(107,104,191,1) 100%);
     `,
+    white: `
+        background: rgb(255,255,255);
+    `,
+    black: `
+        background: rgb(0,0,0);
+    `,
 };
