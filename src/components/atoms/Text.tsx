@@ -41,7 +41,7 @@ export const Text: ParentComponent<Props> = ({
     component = 'span',
     children,
     color,
-    fontSize = '16px',
+    fontSize = '1rem',
     fontStyle,
     textAlign,
     position,

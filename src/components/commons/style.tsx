@@ -39,6 +39,18 @@ export const GlobalStyle = () => {
         font-style: normal;
     }
 
+    @media (max-width: 768px) {
+        html {
+            font-size: 14px; 
+        }
+    }
+    
+    @media (max-width: 480px) {
+        html {
+            font-size: 12px; 
+        }
+    }
+
     `;
     return <GlobalStyleComponent />;
 };

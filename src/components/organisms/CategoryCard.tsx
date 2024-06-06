@@ -20,8 +20,8 @@ export const CategoryCard: Component<Props> = (props) => {
                 </Box>
                 {props.title && <Text bold>{props.title}</Text>}
                 <Text bold>{props.organization}</Text>
-                <Text fontSize="12px">📅 {props.duration}</Text>
-                <Text fontSize="14px;" color="#666">
+                <Text fontSize="0.8rem">📅 {props.duration}</Text>
+                <Text fontSize="0.8rem;" color="#666">
                     💡 {props.content}
                 </Text>
             </Stack>
