@@ -1,13 +1,29 @@
-import { type Component, For } from 'solid-js';
-import { Image, Stack, Text } from '@/components/atoms';
+import { type Component, For, createSignal } from 'solid-js';
+import { Image, Stack, Text, Box } from '@/components/atoms';
 import { ProfileCard } from '@/components/organisms';
 import { backgrounds, homeImages, mobileHome } from '@/constants';
+import { animation } from '@/utils';
 
 export const HomeTemplate: Component = () => {
+    const [animationSet] = createSignal(animation(0));
+    const [boxZIndex, setBoxZIndex] = createSignal(1);
+
+    const handleClick = (event?: MouseEvent) => {
+        if (event) {
+            event.stopPropagation();
+        }
+        setBoxZIndex(100);
+        setTimeout(() => {
+            setBoxZIndex(1);
+        }, 2000);
+    };
+
     return (
         <Stack position="relative" sx={`${backgrounds.gradient} padding-bottom: 5rem; overflow: hidden;`}>
             <For each={homeImages}>
-                {({ src, width, sx, zIndex }) => <Image src={src} width={width} sx={sx} zIndex={zIndex} useAbsolute />}
+                {({ src, width, sx, zIndex, animation }) => (
+                    <Image src={src} width={width} sx={sx} zIndex={zIndex} useAbsolute {...animationSet()[animation]} />
+                )}
             </For>
             <ProfileCard>
                 <Stack direction="row" sx={mobileHome.mobileStack}>
@@ -19,7 +35,7 @@ export const HomeTemplate: Component = () => {
                             @DevXuan
                         </Text>
                     </Stack>
-                    <Stack direction="column" center useFlexGap spacing={10}>
+                    <Stack direction="column" center useFlexGap spacing={10} sx="align-items: flex-end;">
                         <Text
                             fontStyle="MeongiW"
                             component="span"
@@ -27,24 +43,34 @@ export const HomeTemplate: Component = () => {
                             position="right"
                             fontSize="2rem"
                             bold
+                            sx="z-index: 100;"
                         >
                             이수현
                         </Text>
-                        <Text component="p" textAlign="end" position="right">
+                        <Box
+                            fitContent
+                            type="whiteBox"
+                            sx={`z-index: ${boxZIndex()};`}
+                            onMouseEnter={() => setBoxZIndex(100)}
+                            onMouseLeave={() => setBoxZIndex(1)}
+                            onClick={handleClick}
+                        >
                             더 나은 세상을 만들고 싶어요.
-                        </Text>
+                        </Box>
                     </Stack>
                 </Stack>
-                <Image
-                    src="/image/profile.png"
-                    alt="profile"
-                    width={'50%'}
-                    useAbsolute
-                    zIndex={100}
-                    bottom={0}
-                    center
-                    sx="max-width: 200px;"
-                />
+                <Stack>
+                    <Image
+                        src="/image/profile.png"
+                        alt="profile"
+                        width={'50%'}
+                        useAbsolute
+                        zIndex={20}
+                        bottom={0}
+                        center
+                        sx="max-width: 200px;"
+                    />
+                </Stack>
             </ProfileCard>
         </Stack>
     );
