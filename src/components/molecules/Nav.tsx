@@ -9,6 +9,7 @@ interface Props extends Style {
     useBox?: boolean;
     mobile?: boolean;
     hidden?: boolean;
+    center?: boolean;
 }
 
 const NavLinks: Component = () => {
@@ -31,6 +32,13 @@ const NavLinks: Component = () => {
 };
 
 export const Nav: Component<Props> = (props) => {
+    const style = {
+        center: `
+            left: 50%;
+            transform: translateX(-50%);
+        `,
+    };
+
     return (
         <>
             {!props.hidden && (
@@ -41,20 +49,27 @@ export const Nav: Component<Props> = (props) => {
                             spacing="30"
                             useFlexGap
                             center
-                            sx={`position: ${props.useAbsolute ? 'absolute' : 'relative'}; top: 0; z-index: 99; ${mobileHome.tablet} ${props.sx};`}
+                            sx={
+                                /* css */ `
+                                    position: ${props.useAbsolute ? 'absolute' : 'relative'}; 
+                                    top: 0; 
+                                    z-index: 99; 
+                                    ${mobileHome.tablet} 
+                                    ${props.useAbsolute && props.center ? style.center : ''}
+                                    ${props.sx};`
+                            }
                         >
                             <NavLinks />
                         </Stack>
                     </Show>
                     <Show when={props.useBox && !props.mobile}>
-                        <Stack sx="align-items: center;">
+                        <Stack alignItemCenter>
                             <Box
+                                type="whiteBox"
                                 width="70%"
                                 height="40px"
-                                padding="1rem"
                                 useFlexGap
                                 spacing={30}
-                                backgroundColor="#fff"
                                 sx={`position: relative; align-items: center; margin-top: 2rem; top: 0; z-index: 99; ${mobileHome.mobile} ${mobileHome.tablet} ${props.sx}`}
                             >
                                 <NavLinks />
@@ -62,12 +77,11 @@ export const Nav: Component<Props> = (props) => {
                         </Stack>
                     </Show>
                     <Show when={props.mobile}>
-                        <Stack sx="align-items: center;">
+                        <Stack alignItemCenter>
                             <Box
+                                type="whiteBox"
                                 width="100%"
                                 height="40px"
-                                padding="1rem"
-                                backgroundColor="#fff"
                                 sx={`display: flex; justify-content: space-around; position: fixed; bottom: 0; z-index: 99; ${mobileHome.mobileNav} ${props.sx}`}
                             >
                                 <NavLinks />
