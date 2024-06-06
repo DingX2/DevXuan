@@ -1,5 +1,5 @@
 import { type ParentComponent, For, createSignal } from 'solid-js';
-import { Stack, Box, Image } from '@/components/atoms';
+import { Stack, Box, Image, Text } from '@/components/atoms';
 import type { TextWithColor, ProjectItem } from '@/types';
 import { isDetailedProject } from '@/utils';
 import { mobileHome } from '@/constants';
@@ -24,8 +24,8 @@ export const ProjectList: ParentComponent<ProjectListProps> = ({ projects, proje
 
     return (
         <>
-            <For each={Object.values(projects)}>
-                {(project, index) => (
+            <For each={Object.entries(projects)}>
+                {([key, project], index) => (
                     <Stack direction="row" between sx={`${mobileHome.mobileStack}`}>
                         <Stack direction="row" sx="width: fit-content; align-items: flex-start">
                             <Box
@@ -77,14 +77,18 @@ export const ProjectList: ParentComponent<ProjectListProps> = ({ projects, proje
                                 <HistoryCard
                                     title={project.projectTitle}
                                     subtitle={project.subtitle}
-                                    skills={projectSkills.blueMosaic.skills}
+                                    skills={projectSkills[key]?.skills || []}
                                     hashtag={project.hashtag}
                                     projectImage={project.projectImage}
                                     projectDuration={project.projectDuration}
                                     show={showDetails()[index()]}
                                     handleClick={() => handleClick(index())}
                                 >
-                                    detail ... detail ... detail ... detail ... detail ... detail ... detail ...
+                                    <Stack left>
+                                        <For each={project.projectDetail}>
+                                            {(detail) => <Text fontSize={'0.875rem'}>{detail}</Text>}
+                                        </For>
+                                    </Stack>
                                 </HistoryCard>
                             )}
                         </Box>
