@@ -13,7 +13,7 @@ interface Props extends Style {
     padding?: string;
     pointer?: boolean;
     fitContent?: boolean;
-    onClick?: () => void;
+    onClick?: (event?: MouseEvent) => void;
 }
 
 /**
