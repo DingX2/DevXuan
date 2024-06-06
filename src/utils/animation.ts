@@ -57,6 +57,33 @@ export const animation = (screenWidth: number = 0): Animations => ({
             repeatType: 'mirror',
         },
     },
+    slide: {
+        initial: { x: -200 },
+        animate: { x: 400 },
+        transition: {
+            duration: 10,
+            ease: 'linear',
+            repeat: Infinity,
+        },
+    },
+    upDown: {
+        initial: { y: 0 },
+        animate: { y: [0, -50, 0, 50, 0] },
+        transition: {
+            duration: 8,
+            ease: 'linear',
+            repeat: Infinity,
+        },
+    },
+    upDown2: {
+        initial: { y: 0 },
+        animate: { y: [0, -30, 0, 30, 0] },
+        transition: {
+            duration: 10,
+            ease: 'linear',
+            repeat: Infinity,
+        },
+    },
     pop: {
         initial: { opacity: 0, y: 50, scale: 1 },
         animate: { opacity: 1, y: 0, transition: { delay: 0.05 } },
