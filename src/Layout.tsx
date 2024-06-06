@@ -1,5 +1,6 @@
 import type { ParentComponent } from 'solid-js';
 import { GlobalStyle } from '@/components/commons';
+import { Nav } from '@/components/molecules';
 import { Header, Footer } from '@/components/organisms';
 
 export const Layout: ParentComponent = ({ children }) => {
@@ -9,6 +10,7 @@ export const Layout: ParentComponent = ({ children }) => {
             <Header />
             <main>{children}</main>
             <Footer />
+            <Nav mobile />
         </>
     );
 };

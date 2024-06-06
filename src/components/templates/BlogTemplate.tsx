@@ -5,7 +5,7 @@ import { Stack, Text, Box, Button } from '@/components/atoms';
 import { Nav } from '@/components/molecules';
 import { BlogCard } from '@/components/organisms';
 import { type Blog } from '@/types';
-import { backgrounds } from '@/constants';
+import { backgrounds, mobileHome } from '@/constants';
 
 export const BlogTemplate: Component = () => {
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ export const BlogTemplate: Component = () => {
 
     return (
         <Stack sx={backgrounds.white}>
-            <Nav useBox />
+            <Nav useBox sx={mobileHome.mobileHidden} />
 
             <Stack direction="column" position="relative" useFlexGap spacing={10} center sx="padding: 3rem;">
                 <Stack direction="row" alignItemCenter>

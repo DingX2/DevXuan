@@ -29,8 +29,7 @@ export const WorkTemplate: Component = () => {
         <>
             <Stack direction="column" position="relative" useFlexGap sx={`overflow: hidden;`}>
                 <Stack sx={`${backgrounds.sunset}`} ref={backgroundRef}>
-                    <Nav useBox />
-
+                    <Nav useBox sx={mobileHome.mobileHidden} />
                     <Stack direction="row" between sx={`${mobileHome.mobileStack}`}>
                         <Stack direction="row" sx="width: fit-content; height: 40px;">
                             <Box

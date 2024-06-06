@@ -5,6 +5,7 @@ import { styled } from 'solid-styled-components';
 import { Stack } from '@/components/atoms';
 import { Card, Nav } from '@/components/molecules';
 import { animation } from '@/utils';
+import { mobileHome } from '@/constants';
 
 export const ProfileCard: ParentComponent = ({ children }) => {
     const [flipped, setFlipped] = createSignal(false);
@@ -29,7 +30,7 @@ export const ProfileCard: ParentComponent = ({ children }) => {
             <ProfileCardComponent onClick={handleFlip}>
                 <Card width={80} height={550} middle borderColor="#fff" shadow>
                     <Stack direction="column" sx="padding: 1rem;">
-                        <Nav useAbsolute />
+                        <Nav useAbsolute sx={mobileHome.mobileHidden} />
                         {children}
                     </Stack>
                 </Card>

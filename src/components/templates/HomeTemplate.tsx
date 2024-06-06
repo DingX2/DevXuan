@@ -1,7 +1,7 @@
 import { type Component, For } from 'solid-js';
 import { Image, Stack, Text } from '@/components/atoms';
 import { ProfileCard } from '@/components/organisms';
-import { backgrounds, homeImages } from '@/constants';
+import { backgrounds, homeImages, mobileHome } from '@/constants';
 
 export const HomeTemplate: Component = () => {
     return (
@@ -10,15 +10,24 @@ export const HomeTemplate: Component = () => {
                 {({ src, width, sx, zIndex }) => <Image src={src} width={width} sx={sx} zIndex={zIndex} useAbsolute />}
             </For>
             <ProfileCard>
-                <Stack direction="row">
+                <Stack direction="row" sx={mobileHome.mobileStack}>
                     <Stack direction="column" useFlexGap spacing={10}>
-                        <Text component="h1" fontSize="50px">
+                        <Text fontStyle="Deco" component="h1" fontSize="3.5rem">
                             FrontEnd {'\n'} Developer
                         </Text>
-                        <Text component="span">@DevXuan</Text>
+                        <Text fontStyle="Deco" component="span">
+                            @DevXuan
+                        </Text>
                     </Stack>
                     <Stack direction="column" center useFlexGap spacing={10}>
-                        <Text component="span" textAlign="end" position="right" fontSize="40px" bold>
+                        <Text
+                            fontStyle="MeongiW"
+                            component="span"
+                            textAlign="end"
+                            position="right"
+                            fontSize="2rem"
+                            bold
+                        >
                             이수현
                         </Text>
                         <Text component="p" textAlign="end" position="right">
@@ -26,7 +35,15 @@ export const HomeTemplate: Component = () => {
                         </Text>
                     </Stack>
                 </Stack>
-                <Image src="/image/profile.png" alt="profile" width={300} useAbsolute zIndex={100} bottom={0} center />
+                <Image
+                    src="/image/profile.png"
+                    alt="profile"
+                    width={'30%'}
+                    useAbsolute
+                    zIndex={100}
+                    bottom={0}
+                    center
+                />
             </ProfileCard>
         </Stack>
     );

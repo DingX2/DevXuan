@@ -33,8 +33,8 @@ export const SkillTemplate: Component = () => {
 
     return (
         <Stack direction="column" useFlexGap spacing={10} sx={`${backgrounds.grid}`}>
-            <Nav useAbsolute useBox hidden={!isSkillPage} />
-            <Stack sx="padding: 2rem;">
+            <Nav useAbsolute useBox hidden={!isSkillPage} sx={mobileHome.mobileHidden} />
+            <Stack sx="padding: 3rem;">
                 <Text fontSize="30px" sx="margin-top: 1rem;">
                     Skill
                 </Text>
