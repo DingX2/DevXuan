@@ -9,7 +9,7 @@ export const BlogListTemplate: Component = () => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get<Blog>('/api/posts');
+            const res = await axios.get<Blog>(`${import.meta.env.VITE_BASE_URL}/api/post`);
             setData(res.data);
         } catch (error) {
             console.error('Error fetching posts:', error);

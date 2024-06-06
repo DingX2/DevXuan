@@ -17,7 +17,7 @@ export const BlogTemplate: Component = () => {
 
     createEffect(() => {
         axios
-            .get<Blog[]>('http://localhost:3000/api/posts')
+            .get<Blog[]>(`${import.meta.env.VITE_BASE_URL}/api/posts`)
             .then((response) => setData<Blog[]>(response.data))
             .catch((error) => console.error('Error fetching posts:', error));
     });
