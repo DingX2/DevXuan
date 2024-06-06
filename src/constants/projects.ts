@@ -27,10 +27,13 @@ export const projects: { [key: string]: ProjectItem } = {
         projectTitle: 'BlueMosaic',
         subtitle: 'Gemini API / 이미지 인식 컬렉션 서비스',
         hashtag: '#1인FE개발 #zustand+swagger API객체리터럴최적화 #짧은기간',
-        projectImage: '/image/projects/blueMosaic.png',
+        projectImage: '/image/projects/blueMosaic.gif',
         projectDuration: '2024-01-22 ~ 2024-02-26',
         projectTeam: 'FE: 1명, BE: 2명, AI: 1명',
         projectDetail: [
+            ` UN의 지속 가능발전 목표 중 하나인 수중 생활을 구상하며 다량의 해양 쓰레기 문제를 접했어요.\n
+            사용자가 사진을 업로드하면 Gemini API를 활용해 쓰레기와 어류의 종류를 분류하고 점수화하
+            여 해양 생태계를 더욱 깨끗하게 유지하기 위해 보탬이 됐으면 좋겠어요.\n\n`,
             '- 스웨거 최적의 객체리터럴 방식으로 3분 내 BE 코드 확인 가능',
             '- zustand getState로 hook pattern 오류 방지 설계',
             '- 실시간 화면공유를 통해 API를 연결하여 프로젝트를 완수',
@@ -58,6 +61,10 @@ export const projects: { [key: string]: ProjectItem } = {
         projectDuration: '2024-01-08 ~ 2024-02-19',
         projectTeam: 'FE: 3명, BE: 3명',
         projectDetail: [
+            `회의 진행을 위한 화상 채팅 서비스에요.\n
+            유연한 대처를 위한 MSA구조며 웹소켓 WebRTC 기반의 화상채팅이 가능해요.\n
+           오늘의집 회원가입을 참고하여 실제 서비스와 유사한 이메일 인증 회원가입을 구현했고 예외처
+           리에 집중했어요.\n\n`,
             '- JWT 이메일 인증 실사용과 유사한 회원가입(8개예외처리)',
             '- React-query + Skeleton UI와 로딩 컴포넌트 비동기 처리',
             '- flex, grid로 반응형 홈 디자인 구현',
