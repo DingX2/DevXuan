@@ -7,7 +7,7 @@ import { mobileHome } from '@/constants';
 
 export const AboutTemplate: Component = () => {
     let canvasRef!: HTMLCanvasElement;
-    const [clicked, setClicked] = createSignal<boolean>(true);
+    const [clicked, setClicked] = createSignal<boolean>(false);
 
     const animateCanvas = () => {
         const newState = !clicked();

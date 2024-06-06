@@ -23,10 +23,11 @@ export const autoplay = (mode: boolean) => {
     const drawRandomDot = () => {
         const x = Math.random() * rect.width;
         const y = Math.random() * rect.height;
+        console.log(x, y, mode);
         drawDot(x, y, 'Image', canvasRef!, canvas.colors, [], setDots, canvas.imageSources, imageCache, setImageCache);
     };
 
-    if (mode && !isAutoplayRunning) {
+    if (mode && isAutoplayRunning) {
         intervalId = setInterval(drawRandomDot, 2000);
         isAutoplayRunning = true;
     } else if (!mode && intervalId) {
@@ -98,9 +99,6 @@ export const Canvas: Component<Props> = (props) => {
                     if (canvasRef) handleClick(e, canvasRef);
                 }}
             />
-            <span>
-                x:{pos().x} y:{pos().y}
-            </span>
         </>
     );
 };
