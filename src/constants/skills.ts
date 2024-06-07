@@ -174,7 +174,7 @@ export const skills = [
             {
                 name: 'Nginx',
                 image: '/image/skills/nginx_logo.svg',
-                description: 'Figma plugin으로 추출해서 사용하고 있어요',
+                description: 'AWS로 배포할 때 사용해요',
                 level: 1,
             },
             {
@@ -208,19 +208,19 @@ export const skills = [
             {
                 name: 'Linux',
                 image: '/image/skills/linux_logo.svg',
-                description: 'Figma plugin으로 추출해서 사용하고 있어요',
+                description: 'WSL로 개발해요',
                 level: 1,
             },
             {
                 name: 'Window',
                 image: '/image/skills/window_logo.svg',
-                description: 'Figma plugin으로 추출해서 사용하고 있어요',
+                description: '개발환경으로 사용해요',
                 level: 1,
             },
             {
                 name: 'Ubuntu',
                 image: '/image/skills/ubuntu_logo.svg',
-                description: 'Figma plugin으로 추출해서 사용하고 있어요',
+                description: '사용해본 경험이 있어요',
                 level: 1,
             },
         ],
