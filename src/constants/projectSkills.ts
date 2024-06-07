@@ -75,4 +75,20 @@ export const projectSkills: ProjectSkills = {
         ],
         roles: [{ text: 'FE', color: colors.blue }],
     },
+    Capstone: {
+        skills: [
+            { text: 'Kotlin', color: colors.blue },
+            { text: 'Figma', color: colors.yellow },
+        ],
+        roles: [{ text: 'FE', color: colors.blue }],
+    },
+    BadNews: {
+        skills: [
+            { text: 'Redux', color: colors.blue },
+            { text: 'React', color: colors.blue },
+            { text: 'Nginx', color: colors.yellow },
+            { text: 'AWS', color: colors.yellow },
+        ],
+        roles: [{ text: 'FE', color: colors.blue }],
+    },
 };

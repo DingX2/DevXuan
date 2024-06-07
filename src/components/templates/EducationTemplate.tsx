@@ -51,6 +51,7 @@ export const EducationTemplate: Component<Props> = () => {
                             🏆 수상경력 및 자격증
                         </Box>
                         <Stack direction="column" spacing={10}>
+                            <Text>📝정보처리기사 23.11.15.</Text>
                             <Text>🥈[최우수상] 2023 대구를 빛내는 SW해커톤 - 앗!침에일기 23.11.22.</Text>
                             <Text>
                                 🥇[대상] SW교육원 아이디어 해커톤 경진대회 (멋쟁이 사자처럼 11기) - 우동사리 23.10.31.

@@ -6,7 +6,7 @@ export const projects: { [key: string]: ProjectItem } = {
         organizationTitle: `한화시스템`,
         organizationContent: '입사예정이에요 꺅! 인턴 !!',
         organizationDuration: '2024-07 ~ ',
-        title: `한화시스템 ICT 2024 상반기`,
+        title: `한화시스템 ICT 2024 상반기 신입사원`,
         project: false,
     },
     kakao: {
@@ -14,7 +14,7 @@ export const projects: { [key: string]: ProjectItem } = {
         organizationTitle: `카카오`,
         organizationContent: 'Vanila JS와 TS를 병행하고 있어요',
         organizationDuration: '2024-04 ~ ',
-        title: `카카오테크캠퍼스 2기`,
+        title: `카카오테크캠퍼스 2기 FE`,
         project: false,
     },
     BlueMosaic: {
@@ -31,9 +31,8 @@ export const projects: { [key: string]: ProjectItem } = {
         projectDuration: '2024-01-22 ~ 2024-02-26',
         projectTeam: 'FE: 1명, BE: 2명, AI: 1명',
         projectDetail: [
-            ` UN의 지속 가능발전 목표 중 하나인 수중 생활을 구상하며 다량의 해양 쓰레기 문제를 접했어요.\n
-            사용자가 사진을 업로드하면 Gemini API를 활용해 쓰레기와 어류의 종류를 분류하고 점수화하
-            여 해양 생태계를 더욱 깨끗하게 유지하기 위해 보탬이 됐으면 좋겠어요.\n\n`,
+            `🔎 UN의 지속 가능발전 목표 중 하나인 수중 생활을 구상하며 다량의 해양 쓰레기 문제를 접했어요.\n
+            사용자가 사진을 업로드하면 Gemini API를 활용해 쓰레기와 어류의 종류를 분류하고 점수화하여 해양 생태계를 더욱 깨끗하게 유지하기 위해 보탬이 됐으면 좋겠어요.\n\n`,
             '- 스웨거 최적의 객체리터럴 방식으로 3분 내 BE 코드 확인 가능',
             '- zustand getState로 hook pattern 오류 방지 설계',
             '- 실시간 화면공유를 통해 API를 연결하여 프로젝트를 완수',
@@ -61,10 +60,9 @@ export const projects: { [key: string]: ProjectItem } = {
         projectDuration: '2024-01-08 ~ 2024-02-19',
         projectTeam: 'FE: 3명, BE: 3명',
         projectDetail: [
-            `회의 진행을 위한 화상 채팅 서비스에요.\n
+            `🔎 회의 진행을 위한 화상 채팅 서비스에요.\n
             유연한 대처를 위한 MSA구조며 웹소켓 WebRTC 기반의 화상채팅이 가능해요.\n
-           오늘의집 회원가입을 참고하여 실제 서비스와 유사한 이메일 인증 회원가입을 구현했고 예외처
-           리에 집중했어요.\n\n`,
+           오늘의집 회원가입을 참고하여 실제 서비스와 유사한 이메일 인증 회원가입을 구현했고 예외처리에 집중했어요.\n\n`,
             '- JWT 이메일 인증 실사용과 유사한 회원가입(8개예외처리)',
             '- React-query + Skeleton UI와 로딩 컴포넌트 비동기 처리',
             '- flex, grid로 반응형 홈 디자인 구현',
@@ -78,7 +76,7 @@ export const projects: { [key: string]: ProjectItem } = {
         organizationTitle: `IT 학술동아리 해달`,
         organizationContent: `GDSC x 해달 프로젝트로 친구들과 진행했어요\n
         교육운영진(C언어,리액트,알고리즘,프로젝트 부트캠프)를 맡았어요.`,
-        organizationDuration: '2023.11.18.~2024.01.02. (2개월)',
+        organizationDuration: '2023.02.~2024.02.',
         title: 'HappyNewHere',
         project: true,
         projectTitle: 'HappyNewHere',
@@ -89,7 +87,7 @@ export const projects: { [key: string]: ProjectItem } = {
         projectDuration: '2023.11.18.~2024.01.02. (2개월)',
         projectTeam: 'FE: 4명, PM: 1명, BE: 3명, 디자이너: 1명',
         projectDetail: [
-            `'내 트리를 꾸며줘'와 같이 연말에 추억을 돌아보는 이벤트성 편지 전달 서비스에요.\n
+            `🔎'내 트리를 꾸며줘'와 같이 연말에 추억을 돌아보는 이벤트성 편지 전달 서비스에요.\n
             117명이 일주일간 편지를 작성했으며 1월 1일에 편지를 공개했어요. \n
            한 해를 돌아보며 전하지 못했던 따뜻한 마음이 전달되었길 바라요.\n\n`,
             '- 카카오톡 SNS 로그인 기능 (리다이렉트 페이지의 중요성)',
@@ -112,7 +110,7 @@ export const projects: { [key: string]: ProjectItem } = {
         projectDuration: '2023.11.01.~2023.11.15.',
         projectTeam: 'FE: 2명, BE: 2명',
         projectDetail: [
-            `초고령화 사회는 치매가 심각한 문제이며 두뇌 자극을 위한 일기 작성과 퀴즈 풀이가 예방에 도움 되는 사실을 찾았어요.
+            `🔎 초고령화 사회는 치매가 심각한 문제이며 두뇌 자극을 위한 일기 작성과 퀴즈 풀이가 예방에 도움 되는 사실을 찾았어요.
             \n 가로모드와 같은 친화적인 UI를 제공하고 음성으로 일기를 작성이 가능하며 개인별 퀴즈 풀이 서비스를 통해 더욱 효과적인 치매 예방이 가능할 것으로 기대돼요.\n\n`,
             '- Vite를 활용한 모던 프론트엔드 개발 최적화',
             '- webSpeechAPI로 사용자가 음성으로 입력한 데이터를 실시간으로 텍스트로 변환하여 사용자 인터페이스의 접근성과 편의성 향상',
@@ -132,12 +130,12 @@ export const projects: { [key: string]: ProjectItem } = {
         subtitle: `우리 동네 아마추어 사진가 매칭 플랫폼`,
         hashtag: '#STT #webSpeechAPI #시니어',
         projectImage: '/image/projects/Udongsari.png',
-        projectDuration: '2023.11.01.~2023.11.15.',
+        projectDuration: '2023.09.07.~2023.09.17.',
         projectTeam: 'FE: 2명, BE: 3명',
         projectDetail: [
-            `아마추어 사진가와 이용자를 연결해 주는 플랫폼이에요.\n
+            `🔎 아마추어 사진가와 이용자를 연결해 주는 플랫폼이에요.\n
             사진작가들은 데뷔 기회를 얻을 수 있으며, 이용자들은 저렴한 가격으로 서비스를 이용할 수 있어요.\n
-            동네 단위의 지역사회를 활성화하길 바랬어요.\n`,
+            동네 단위의 지역사회를 활성화하길 바랬어요.\n\n`,
             `- 웹소켓을 활용한 Chat, ChatHistory 연결 및 Web Socket Client를 활용한 채팅 구현`,
             `- Atomic Design 패턴을 적용하여 개발한 컴포넌트를 재사용의 편리함을 체감하고 두 프론트엔드의 코드 작성 스타일이 다름에도 통일된 디자인 패턴을 통해 시너지가 잘 맞을 수 있음을 확인`,
             `- 로그인 / 회원가입 페이지 구현`,
@@ -158,14 +156,60 @@ export const projects: { [key: string]: ProjectItem } = {
         projectDuration: '2023.07.01.~2023.11.11.',
         projectTeam: 'FE: 3명, BE: 2명',
         projectDetail: [
-            `수도권과 지방 사이에서 발생하는 디지털 격차를 해결하는 방법에서 학생 개발자와 현업자들의 양방향 데이터를 모집해서 해결하고 싶었어요.
+            `🔎 수도권과 지방 사이에서 발생하는 디지털 격차를 해결하는 방법에서 학생 개발자와 현업자들의 양방향 데이터를 모집해서 해결하고 싶었어요.
             \n MBTI처럼 간단한 질문만으로 자신이 어떤 개발자가 적성에 맞는지 알 수 있는 서비스에요. \n
-            개발자끼리 공유하며 인사이트를 넓혀가면 좋겠어요.`,
+            개발자끼리 공유하며 인사이트를 넓혀가면 좋겠어요.\n\n`,
             `- 질문지창 모션 제작`,
             `- AWS + Nginx 배포`,
             `- 실 사용자 경험 7일 165명 피드백 반영`,
             `- 일시적 트래픽으로 인한 긴급점검`,
             `- vaporwave 스타일의 화면, Aseprite를 이용한 도트 디자인 제작`,
+        ],
+    },
+    Capstone: {
+        category: '🌟 논문',
+        organizationTitle: `종합설계프로젝트`,
+        organizationContent: `컴퓨터학부 산합협력 졸업프로젝트에요.`,
+        organizationDuration: '2023.04.~2023.07.',
+        title: '스마트폰 (Android, iPhone)기반의 N:N 위치 관제 고도화',
+        project: true,
+        projectTitle: '스마트폰 (Android, iPhone)기반의 N:N 위치 관제 고도화',
+        subtitle: `아키텍처로 서버 부하를 줄이는 위치 정보 수집 서버 개발`,
+        hashtag: '#Kotiln #IOCP #산학협력',
+        projectImage: '/image/projects/Capstone.png',
+        projectDuration: '2023.04.~2023.07.',
+        projectTeam: 'FE: 3명, BE: 2명',
+        projectDetail: [
+            `🔎 컴퓨터공학 산학 협력 졸업프로젝트에요\n
+            전국에서 운행 중인 기사 위치를 실시간으로 수집하면서 서버의 트래픽이 증가하고 메인 서비스의 부하가 발생함에 따라, 별도의 위치 정보 수집 서버를 개발했어요.\n
+            단말기별 위치 정보 수집 모듈 개발 및 위치 정보 조회 시스템의 개발하는 프로젝트에요.\n\n`,
+            `- TCP/UDP 프로토콜 소켓 연결을 이용한 라이더 앱 개발 및 관제 앱 개발 담당`,
+            `- Fused Location Provider Client API(카카오 API)`,
+            `- 대학원, 기업과 협업하면서 주기적인 미팅으로 간접적인 실무 체험`,
+        ],
+    },
+    BadNews: {
+        category: '🌟 해커톤',
+        organizationTitle: `학술동아리 해달`,
+        organizationContent: `제안을 받고 합류하였고 FE 팀원들 모두 GDSC 합격했어요.`,
+        organizationDuration: '2023.08.23.~2023.09.08.',
+        title: 'BadNews',
+        project: true,
+        projectTitle: 'BadNews',
+        subtitle: `NLP 기술을 적용한 관심 뉴스 요약 서비스`,
+        hashtag: '#NLP #Nginx #Redux #반응형디자인',
+        projectImage: '/image/projects/BadNews.jpg',
+        projectDuration: '2023.08.23.~2023.09.08.',
+        projectTeam: 'FE: 3명, BE: 2명',
+        projectDetail: [
+            `🔎 아이디어톤으로 구성된 팀에 개발 제안을 받아 합류한 프로젝트에요.\n
+            자연어처리(NLP) 기술을 적용한 관심 뉴스 요약 서비스며 좋지 않은 뉴스를 선별하려고 했어요.\n
+             AWS AI분야 프리티어 서버용량 문제로 뉴스 요약까지 구현되었어요. \n
+            백엔드 3명, 프론트 3명이 모르는 부분을 맞대가며 구현했어요.\n\n`,
+            `- 코드 리팩토링 및 API 연결`,
+            `- AWS + Nginx 배포`,
+            `- Redux 적용 및 로그인 기능 구현`,
+            `- 반응형 디자인 적용`,
         ],
     },
     RemoteInternship: {
