@@ -11,11 +11,11 @@ interface Props {
 
 export const BlogCard: ParentComponent<Props> = (props) => {
     return (
-        <Box width="300px" backgroundColor="#fff" pointer padding="0.5rem 1rem" sx="border: dashed #f5f5f5;">
+        <Box width="300px" type="whiteBox" pointer padding="0.5rem 1rem" sx="border: dashed #f5f5f5;">
             <Stack direction="column" useFlexGap spacing={8}>
-                <Text fontSize="16px">{props.title}</Text>
-                <Text fontSize="14px">{props.subtitle}</Text>
-                <Text fontSize="12px">📅 {props.writeDate}</Text>
+                <Text>{props.title}</Text>
+                <Text fontSize="0.875rem">{props.subtitle}</Text>
+                <Text fontSize="0.75rem">📅 {props.writeDate}</Text>
                 <Image src={props.image} />
             </Stack>
         </Box>

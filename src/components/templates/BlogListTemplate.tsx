@@ -1,39 +1,26 @@
-import { type Component, createEffect, createSignal } from 'solid-js';
-import axios from 'axios';
+import { type ParentComponent } from 'solid-js';
 import { Stack } from '@/components/atoms';
 import { BlogList } from '@/components/organisms';
 import type { Blog } from '@/types';
 
-export const BlogListTemplate: Component = () => {
-    const [data, setData] = createSignal<Blog | undefined>(undefined);
+interface Props {
+    data: Blog[];
+}
 
-    const fetchData = async () => {
-        try {
-            const res = await axios.get<Blog>(`${import.meta.env.VITE_BASE_URL}/api/post`);
-            setData(res.data);
-        } catch (error) {
-            console.error('Error fetching posts:', error);
-        }
-    };
-
-    createEffect(() => {
-        fetchData().then(
-            () => {},
-            () => {},
-        );
-    });
-
+export const BlogListTemplate: ParentComponent<Props> = ({ data }) => {
     return (
         <Stack>
-            {data() ? (
-                <BlogList
-                    id={data()!.id}
-                    title={data()!.title}
-                    subtitle={data()!.subtitle}
-                    content={data()!.content}
-                    writeDate={data()!.writeDate}
-                    image={data()!.image}
-                />
+            {data.length > 0 ? (
+                data.map((blog) => (
+                    <BlogList
+                        id={blog.id}
+                        title={blog.title}
+                        subtitle={blog.subtitle}
+                        content={blog.content}
+                        writeDate={blog.writeDate}
+                        image={blog.image}
+                    />
+                ))
             ) : (
                 <p>Loading...</p>
             )}

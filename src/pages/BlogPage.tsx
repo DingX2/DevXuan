@@ -1,6 +1,13 @@
-import { type Component } from 'solid-js';
+import { type Component, Suspense } from 'solid-js';
 import { BlogListTemplate } from '@/components/templates/BlogListTemplate';
+import { useGetPost } from '@/hooks/apis';
 
 export const BlogPage: Component = () => {
-    return <BlogListTemplate />;
+    const blogList = useGetPost();
+
+    return (
+        <Suspense fallback="isLoading...">
+            <BlogListTemplate data={blogList.data || []} />;
+        </Suspense>
+    );
 };

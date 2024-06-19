@@ -1,7 +1,8 @@
 import { type Component, For, createSignal } from 'solid-js';
-import { Image, Stack, Text, Box } from '@/components/atoms';
+import { Image, Stack, Text, Box, Link } from '@/components/atoms';
 import { ProfileCard } from '@/components/organisms';
-import { backgrounds, homeImages, mobileHome } from '@/constants';
+import { homeImages, mobileHome } from '@/constants';
+import { backgrounds } from '@/styles';
 import { animation } from '@/utils';
 
 export const HomeTemplate: Component = () => {
@@ -27,13 +28,13 @@ export const HomeTemplate: Component = () => {
             </For>
             <ProfileCard>
                 <Stack direction="row" sx={mobileHome.mobileStack}>
-                    <Stack direction="column" useFlexGap spacing={10}>
+                    <Stack direction="column" useFlexGap spacing={10} alignItemStart>
                         <Text fontStyle="Deco" component="h1" fontSize="3.2rem">
                             FrontEnd {'\n'} Developer
                         </Text>
-                        <Text fontStyle="Deco" component="span">
+                        <Link href="https://github.com/DingX2" target="_blank">
                             @DevXuan
-                        </Text>
+                        </Link>
                     </Stack>
                     <Stack direction="column" center useFlexGap spacing={10} sx="align-items: flex-end;">
                         <Text

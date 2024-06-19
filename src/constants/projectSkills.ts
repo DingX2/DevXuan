@@ -1,5 +1,5 @@
 import { type ProjectSkills } from '@/types';
-import { colors } from '@/constants/colors';
+import { colors } from '@/styles';
 
 export const projectSkills: ProjectSkills = {
     BlueMosaic: {

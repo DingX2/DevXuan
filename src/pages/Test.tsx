@@ -1,7 +1,7 @@
 import { createSignal } from 'solid-js';
 import { Stack, Box, Button, Image, Logo, Text } from '@/components/atoms';
 import { Background, Card, Speech, Content, Canvas, autoplay } from '@/components/molecules';
-import { backgrounds } from '@/constants';
+import { backgrounds } from '@/styles';
 
 export const Test = () => {
     let canvasRef!: HTMLCanvasElement;
