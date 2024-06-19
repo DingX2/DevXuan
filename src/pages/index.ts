@@ -4,6 +4,6 @@ export * from './Skill';
 export * from './Work';
 export * from './NotFound';
 export * from './Test';
-export * from './Blog';
+export * from './BlogTest';
 export * from './BlogCreate';
 export * from './BlogPage';
