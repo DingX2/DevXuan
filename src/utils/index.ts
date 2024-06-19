@@ -6,3 +6,4 @@ export * from './animation';
 export * from './getCategoryIndex';
 export * from './isDetailProject';
 export * from './ky';
+export * from './makeArray';
