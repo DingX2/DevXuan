@@ -1,26 +1,21 @@
-import { type Component, createEffect, createSignal, For } from 'solid-js';
+import { type ParentComponent, For } from 'solid-js';
 import { useNavigate } from '@solidjs/router';
-import axios from 'axios';
 import { Stack, Text, Box, Button } from '@/components/atoms';
 import { Nav } from '@/components/molecules';
 import { BlogCard } from '@/components/organisms';
-import { type Blog } from '@/types';
 import { backgrounds, mobileHome } from '@/constants';
+import type { Blog } from '@/types';
 
-export const BlogTemplate: Component = () => {
+interface Props {
+    data: Blog[];
+}
+
+export const BlogTemplate: ParentComponent<Props> = ({ data }) => {
     const navigate = useNavigate();
-    const [data, setData] = createSignal<Blog[]>();
 
     const handleClick = () => {
         navigate('/blog/create');
     };
-
-    createEffect(() => {
-        axios
-            .get<Blog[]>(`${import.meta.env.VITE_BASE_URL}/api/posts`)
-            .then((response) => setData<Blog[]>(response.data))
-            .catch((error) => console.error('Error fetching posts:', error));
-    });
 
     return (
         <Stack sx={backgrounds.white}>
@@ -46,7 +41,7 @@ export const BlogTemplate: Component = () => {
                 <Box width="80%" height="1px" sx="border: dashed #f5f5f5;" />
 
                 <Stack direction="row" useFlexGap spacing={10} sx="flex-wrap: wrap;">
-                    <For each={data()}>
+                    <For each={data}>
                         {(item) => (
                             <BlogCard
                                 id={item.id}
