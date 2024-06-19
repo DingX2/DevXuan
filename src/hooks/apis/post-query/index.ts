@@ -14,6 +14,7 @@ export const useGetPost = () => {
         queryKey: queryKey.all,
         queryFn: async () => PostRepository.getPost(),
         ...QUERY_OPTIONS,
+        suspense: true,
     }));
 };
 
@@ -22,5 +23,6 @@ export const useHello = () => {
         queryKey: queryKey.checkHello(),
         queryFn: async () => PostRepository.hello(),
         ...QUERY_OPTIONS,
+        suspense: true,
     }));
 };
