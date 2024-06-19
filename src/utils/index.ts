@@ -5,3 +5,4 @@ export * from './useCachedImage';
 export * from './animation';
 export * from './getCategoryIndex';
 export * from './isDetailProject';
+export * from './ky';
