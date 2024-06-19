@@ -1,6 +1,12 @@
 import type { Component } from 'solid-js';
-import { HomeTemplate } from '@/components/templates';
+import { EducationTemplate, HomeTemplate, SkillTemplate } from '@/components/templates';
 
 export const Home: Component = () => {
-    return <HomeTemplate />;
+    return (
+        <>
+            <HomeTemplate />
+            <SkillTemplate />
+            <EducationTemplate />
+        </>
+    );
 };

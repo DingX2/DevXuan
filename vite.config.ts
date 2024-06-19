@@ -4,4 +4,8 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
     plugins: [solid(), tsconfigPaths()],
+    build: {
+        outDir: 'dist',
+        target: 'esnext',
+      },
 });

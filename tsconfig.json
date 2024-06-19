@@ -12,6 +12,8 @@
             "@/package": ["package.json"]
         },
 
+        "types": ["vite/client"],
+
         /* Bundler mode */
         "moduleResolution": "bundler",
         "allowImportingTsExtensions": true,
