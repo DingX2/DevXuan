@@ -8,6 +8,7 @@ interface Props extends Style, ParentProps {
     spacing?: number | string;
     useFlexGap?: boolean;
     alignItemCenter?: boolean;
+    alignItemStart?: boolean;
     left?: boolean;
     center?: boolean;
     right?: boolean;
@@ -33,7 +34,11 @@ export const Stack = styled.div<Props>`
     display: flex;
     width: 100%;
     flex-direction: ${({ direction }) => direction || 'column'};
-    align-items: ${({ alignItemCenter }) => (alignItemCenter ? 'center' : '')};
+    align-items: ${({ alignItemCenter, alignItemStart }) => {
+        if (alignItemCenter) return 'center';
+        if (alignItemStart) return 'flex-start';
+        return '';
+    }};
     ${({ position }) => `position: ${position};`}
     ${({ useFlexGap, spacing }) => (useFlexGap ? `gap: ${spacing || 0}px; ` : `margin-top: ${spacing || 0}px;`)}
     ${({ sx }) => sx}
