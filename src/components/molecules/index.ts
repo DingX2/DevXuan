@@ -8,3 +8,4 @@ export * from './Canvas';
 export * from './ColorBoxList';
 export * from './CardContent';
 export * from './CardHeader';
+export * from './Skeleton';
