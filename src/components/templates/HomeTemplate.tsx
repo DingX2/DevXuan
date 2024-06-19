@@ -1,7 +1,8 @@
 import { type Component, For, createSignal } from 'solid-js';
 import { Image, Stack, Text, Box, Link } from '@/components/atoms';
 import { ProfileCard } from '@/components/organisms';
-import { backgrounds, homeImages, mobileHome } from '@/constants';
+import { homeImages, mobileHome } from '@/constants';
+import { backgrounds } from '@/styles';
 import { animation } from '@/utils';
 
 export const HomeTemplate: Component = () => {

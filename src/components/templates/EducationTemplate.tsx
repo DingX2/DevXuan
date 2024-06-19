@@ -1,7 +1,8 @@
 import { type Component } from 'solid-js';
 import { useNavigate } from '@solidjs/router';
 import { Stack, Box, Text, Image, Button } from '@/components/atoms';
-import { backgrounds, mobileHome } from '@/constants';
+import { mobileHome } from '@/constants';
+import { backgrounds } from '@/styles';
 
 interface Props {}
 

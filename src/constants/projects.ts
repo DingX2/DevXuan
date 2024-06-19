@@ -4,7 +4,7 @@ export const projects: { [key: string]: ProjectItem } = {
     hanhwa: {
         category: '🌟 이력',
         organizationTitle: `한화시스템`,
-        organizationContent: '입사예정이에요 꺅! 인턴 !!',
+        organizationContent: '입사예정이에요 꺅! 인턴부터!!',
         organizationDuration: '2024-07 ~ ',
         title: `한화시스템 ICT 2024 상반기 신입사원`,
         project: false,
@@ -13,7 +13,7 @@ export const projects: { [key: string]: ProjectItem } = {
         category: '🌟 대외활동',
         organizationTitle: `카카오`,
         organizationContent: 'Vanila JS와 TS를 병행하고 있어요',
-        organizationDuration: '2024-04 ~ ',
+        organizationDuration: '2024-04 ~ 06',
         title: `카카오테크캠퍼스 2기 FE`,
         project: false,
     },

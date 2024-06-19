@@ -3,7 +3,8 @@ import { useLocation } from '@solidjs/router';
 import { Text, Stack } from '@/components/atoms';
 import { Nav } from '@/components/molecules';
 import { SkillList } from '@/components/organisms';
-import { skills, backgrounds, mobileHome } from '@/constants';
+import { skills, mobileHome } from '@/constants';
+import { backgrounds } from '@/styles';
 import { getCategoryIndex } from '@/utils';
 
 export const SkillTemplate: Component = () => {

@@ -3,7 +3,8 @@ import { useNavigate } from '@solidjs/router';
 import { Stack, Text, Box, Button } from '@/components/atoms';
 import { Nav } from '@/components/molecules';
 import { BlogCard } from '@/components/organisms';
-import { backgrounds, mobileHome } from '@/constants';
+import { mobileHome } from '@/constants';
+import { backgrounds } from '@/styles';
 import type { Blog } from '@/types';
 
 interface Props {
