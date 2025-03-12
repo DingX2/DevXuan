@@ -10,7 +10,7 @@ export const projects: { [key: string]: ProjectItem } = {
         project: true,
         projectTitle: 'HpsCRM',
         subtitle: 'LCAP기반 첫 대규모 프로젝트 안정화(11월 오픈)',
-        hashtag: '#LowCode #Outsystems #React #C# #AWS #Nginx',
+        hashtag: '#LowCode #Outsystems #SaaS #React #C# #AWS #Nginx',
         projectImage: '/',
         projectDuration: '2024-04-01 ~ 2024-11-31 / 안정화 진행중',
         projectTeam: 'ITO(SM) 3명 + 프로젝트팀 지원',
@@ -29,7 +29,7 @@ export const projects: { [key: string]: ProjectItem } = {
             '🤔 LCAP(Low Code)란?',
             '- 공통 컴포넌트로 반복되는 작업을 줄여, 더 중요한 프로세스에 집중할 수 있는 개발 방법이에요.',
             '- 아토믹 디자인패턴과 Figma UI와 비슷한 React 환경 + Aggregate로 시각적인 SQL을 제공해요',
-            '- MSA 모듈 설계로 Agile 방법론과 적합해요.',
+            '- SaaS기반 MSA 모듈 설계로 Agile 방법론과 적합해요.',
         ],
     },
     Buzzle: {

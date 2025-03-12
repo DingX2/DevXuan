@@ -20,6 +20,7 @@ export const projectSkills: ProjectSkills = {
             { text: 'Next.js', color: colors.blue },
             { text: 'Emotion', color: colors.pink },
             { text: 'MUI', color: colors.pink },
+            { text: 'Storybook', color: colors.pink },
             { text: 'Tanstack Query', color: colors.pink },
             { text: 'ESLint', color: colors.yellow },
             { text: 'husky', color: colors.yellow },
