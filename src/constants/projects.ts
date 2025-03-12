@@ -1,13 +1,35 @@
 import type { ProjectItem } from '@/types';
 
 export const projects: { [key: string]: ProjectItem } = {
-    hanhwa: {
+    hanwha: {
         category: '🌟 이력',
         organizationTitle: `한화시스템`,
-        organizationContent: '입사예정이에요 꺅! 인턴부터!!',
-        organizationDuration: '2024-07 ~ ',
+        organizationContent: '신기술 부서 Outsystems LCAP #LowCode 시스템 개발 및 운영',
+        organizationDuration: '2024-07 ~ 현재',
         title: `한화시스템 ICT 2024 상반기 신입사원`,
-        project: false,
+        project: true,
+        projectTitle: 'HpsCRM',
+        subtitle: 'LCAP기반 첫 대규모 프로젝트 안정화(11월 오픈)',
+        hashtag: '#LowCode #Outsystems #React #C# #AWS',
+        projectImage: '/',
+        projectDuration: '2024-04-01 ~ 2024-11-31',
+        projectTeam: 'ITO(SM) 3명 + 프로젝트팀 지원',
+        projectDetail: [
+            `🔎 10년간 사용한 레거시 시스템을 고도화한 CRM 서비스(2024.04~2024.11 (약 1X억)
+            
+            엑셀을 통한 수기 작업을 시스템화 및 사업부 확대에 의의가 있어요.
+            안건관리와 수주보고 등 영업직무에서 사용하는 고객관계관리 서비스에요.\n\n`,
+            '- 사내 신기술 LCAP 첫 대규모 프로젝트',
+            '- 전체 38X건의 CSR/SR요청, 12 월 말 이후 SM부서 5X/7X건 수행',
+            '- 레퍼런스가 없는 신기술에 대처 및 최전방에서 사용자의 Needs 긴급 대응 및 운영배포',
+            '- 4월 고도화 예정 / 리포트 고도화 디자인시스템 예정',
+            '- 7, 8월 신기술 LCAP학습 및 9월 정규직 전환 후 투입\n\n',
+
+            '🤔 LCAP(Low Code)란?',
+            '- 공통 컴포넌트로 반복되는 작업을 줄여, 더 중요한 프로세스에 집중할 수 있는 개발 방법이에요.',
+            '- 아토믹 디자인패턴과 Figma UI와 비슷한 React 환경 + Aggregate로 시각적인 SQL을 제공해요',
+            '- MSA 모듈 설계로 Agile 방법론과 적합해요.',
+        ],
     },
     kakao: {
         category: '🌟 대외활동',
