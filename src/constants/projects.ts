@@ -12,10 +12,10 @@ export const projects: { [key: string]: ProjectItem } = {
         subtitle: 'LCAP기반 첫 대규모 프로젝트 안정화(11월 오픈)',
         hashtag: '#LowCode #Outsystems #React #C# #AWS',
         projectImage: '/',
-        projectDuration: '2024-04-01 ~ 2024-11-31',
+        projectDuration: '2024-04-01 ~ 2024-11-31 / 안정화 진행중',
         projectTeam: 'ITO(SM) 3명 + 프로젝트팀 지원',
         projectDetail: [
-            `🔎 10년간 사용한 레거시 시스템을 고도화한 CRM 서비스(2024.04~2024.11 (약 1X억)
+            `🔎 10년간 사용한 레거시 시스템을 고도화한 CRM 서비스(2024.04~2024.11 (약 1X억))
             
             엑셀을 통한 수기 작업을 시스템화 및 사업부 확대에 의의가 있어요.
             안건관리와 수주보고 등 영업직무에서 사용하는 고객관계관리 서비스에요.\n\n`,
@@ -29,6 +29,33 @@ export const projects: { [key: string]: ProjectItem } = {
             '- 공통 컴포넌트로 반복되는 작업을 줄여, 더 중요한 프로세스에 집중할 수 있는 개발 방법이에요.',
             '- 아토믹 디자인패턴과 Figma UI와 비슷한 React 환경 + Aggregate로 시각적인 SQL을 제공해요',
             '- MSA 모듈 설계로 Agile 방법론과 적합해요.',
+        ],
+    },
+    buzzle: {
+        category: '🌟 이력',
+        organizationTitle: `Buzzle`,
+        organizationContent: '노코드 사이드 프로젝트',
+        organizationDuration: '2024-09 ~ 현재',
+        title: `노코드 사이드 프로젝트 + 디자인시스템`,
+        project: true,
+        projectTitle: 'Buzzle',
+        subtitle: '누구나 쉽게 홈페이지를 생성할 수 있는 노코드 프로젝트',
+        hashtag: '#NoCode',
+        projectImage: '/',
+        projectDuration: '2024-09.01 ~ 현재',
+        projectTeam: 'FE(3명)',
+        projectDetail: [
+            `🔎 노코드 사이드 프로젝트 + 디자인 시스템
+            
+            누구나 쉽게 웹페이지를 생성할 수 있는 노코드 사이드 프로젝트에요. 
+            LCAP과 유사한 아토믹 디자인 패턴 개발방법 및 기술적 디테일을 위해 진행하고 있어요.\n\n`,
+            '- css-module을 아토믹 디자인 패턴으로 리팩토링',
+            '- headless UI 및 MUI기반 디자인 시스템 도입 진행중',
+            '- D사 디자인시스템팀 과제로 아토믹에 적합한 Props 통일 인사이트 습득 및 SSR 환경에 적합한 디자인 시스템 도입중',
+            '- pN룰 기반 코드리뷰 & Jira 이슈\n\n',
+
+            '✨링크',
+            '- [Github] https://github.com/teamBuzzle\n\n',
         ],
     },
     kakao: {
