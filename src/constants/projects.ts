@@ -1,7 +1,7 @@
 import type { ProjectItem } from '@/types';
 
 export const projects: { [key: string]: ProjectItem } = {
-    hanwha: {
+    Hanwha: {
         category: '🌟 이력',
         organizationTitle: `한화시스템`,
         organizationContent: '신기술 부서 Outsystems LCAP #LowCode 시스템 개발 및 운영',
@@ -31,7 +31,7 @@ export const projects: { [key: string]: ProjectItem } = {
             '- MSA 모듈 설계로 Agile 방법론과 적합해요.',
         ],
     },
-    buzzle: {
+    Buzzle: {
         category: '🌟 이력',
         organizationTitle: `Buzzle`,
         organizationContent: '노코드 사이드 프로젝트',
@@ -58,7 +58,7 @@ export const projects: { [key: string]: ProjectItem } = {
             '- [Github] https://github.com/teamBuzzle\n\n',
         ],
     },
-    portfolio: {
+    Portfolio: {
         category: '🌟 이력',
         organizationTitle: `portfolio`,
         organizationContent: 'Solid.js로 제작한 포트폴리오 사이트',
@@ -88,7 +88,7 @@ export const projects: { [key: string]: ProjectItem } = {
             '- [Github/BackEnd] https://github.com/DingX2/DevXuan-backend',
         ],
     },
-    kakao: {
+    Kakao: {
         category: '🌟 대외활동',
         organizationTitle: `카카오`,
         organizationContent: 'Vanila JS와 TS를 병행하고 있어요',
