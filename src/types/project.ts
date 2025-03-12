@@ -30,8 +30,9 @@ export interface DetailedProject extends BaseProject {
     projectTitle: string;
     subtitle: string;
     hashtag: string;
-    projectImage: string;
+    projectImage?: string;
     projectDuration: string;
     projectTeam: string;
     projectDetail: string[];
+    link?: { label: string; url: string }[];
 }
