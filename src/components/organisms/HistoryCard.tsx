@@ -1,17 +1,12 @@
 import type { ParentComponent } from 'solid-js';
-import type { TextWithColor } from '@/types';
+import type { DetailedProject, TextWithColor } from '@/types';
 import { Box, Stack } from '@/components/atoms';
 import { CardHeader, CardContent } from '@/components/molecules';
 import { animation } from '@/utils';
 
-interface Props {
+interface Props extends Pick<DetailedProject, 'subtitle' | 'projectDuration' | 'hashtag' | 'projectImage' | 'link'> {
     title: string;
-    subtitle: string;
-    projectDuration: string;
     skills: TextWithColor[];
-    hashtag: string;
-    projectImage?: string;
-    link?: string;
     show: boolean;
     handleClick: () => void;
 }

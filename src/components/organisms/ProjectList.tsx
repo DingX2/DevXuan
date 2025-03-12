@@ -83,6 +83,7 @@ export const ProjectList: ParentComponent<ProjectListProps> = ({ projects, proje
                                     projectDuration={project.projectDuration}
                                     show={showDetails()[index()]}
                                     handleClick={() => handleClick(index())}
+                                    link={project.link}
                                 >
                                     <Stack left>
                                         <For each={project.projectDetail}>
