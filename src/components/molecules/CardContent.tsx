@@ -15,7 +15,11 @@ export const CardContent: ParentComponent<Props> = (props) => {
             </Text>
             {props.projectImage && (
                 <Box>
-                    <Image src={props.projectImage} height="auto" sx="margin: 0 -24px;" />
+                    <Image
+                        src={props.projectImage}
+                        height="auto"
+                        sx="margin: 0 -24px; max-width: 100%; max-height: 80vh; object-fit:contain;"
+                    />
                 </Box>
             )}
             {props.link && (
