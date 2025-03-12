@@ -54,10 +54,10 @@ export const projects: { [key: string]: ProjectItem } = {
             '- headless UI 및 MUI기반 디자인 시스템 도입 진행중',
             '- D사 디자인시스템팀 과제로 아토믹에 적합한 Props 통일 인사이트 습득 및 SSR 환경에 적합한 디자인 시스템 도입중',
             '- pN룰 기반 코드리뷰 & Jira 이슈\n\n',
-
-            '✨링크',
-            '- [Github] https://github.com/teamBuzzle',
-            '- [Github/DesignSystem] https://github.com/teamBuzzle/bds\n\n',
+        ],
+        link: [
+            { label: '[Github]', url: 'https://github.com/teamBuzzle' },
+            { label: '[Github/DesignSystem]', url: 'https://github.com/teamBuzzle/bds' },
         ],
     },
     Portfolio: {
@@ -84,10 +84,10 @@ export const projects: { [key: string]: ProjectItem } = {
             '- 블로그 관리자페이지(Next.js) 및 게시판 구현, LCAP을 통한 확장 확인',
             '- 반응형 디자인',
             '- Lighthouse 최적화 \n\n',
-
-            '✨링크',
-            '- [Github/FrontEnd] https://github.com/DingX2/DevXuan',
-            '- [Github/BackEnd] https://github.com/DingX2/DevXuan-backend',
+        ],
+        link: [
+            { label: '[Github/Frontend]', url: 'https://github.com/DingX2/DevXuan' },
+            { label: '[Github/Backend]', url: 'https://github.com/DingX2/DevXuan-backend' },
         ],
     },
     Kakao: {
@@ -161,9 +161,8 @@ export const projects: { [key: string]: ProjectItem } = {
         title: 'HappyNewHere',
         project: true,
         projectTitle: 'HappyNewHere',
-        subtitle:
-            '117명 사용자의 마음을 담은 우편함 / 1월 1일 Y2K와 유사한 버그 발생 타입스크립트 전향 / 예외처리 중요성 체감 / 유료홍보 자처 → 웹사이트당 방문비용 1294원 → 868원 절감 / 광고비 100%지출 → 48%지출 (인스타로직)',
-        hashtag: '#실서비스 #유지보수',
+        subtitle: '117명 사용자의 마음을 담은 우편함 / 1월 1일 Y2K와 유사한 버그 발생 타입스크립트 전향',
+        hashtag: '#실서비스 #유지보수 #결함관리',
         projectImage: '/image/projects/happyNewHereHome.gif',
         projectDuration: '2023.11.18.~2024.01.02. (2개월)',
         projectTeam: 'FE: 4명, PM: 1명, BE: 3명, 디자이너: 1명',
@@ -175,6 +174,7 @@ export const projects: { [key: string]: ProjectItem } = {
             '- 달력컴포넌트 제작, Y2K버그와 유사한 오류 발생 수정 타입스크립트 전향',
             '- 메세지 보기 기능 Redux 순차적인 연결',
             '- woff 로 폰트 최적화',
+            '- 유료홍보 자처 → 웹사이트당 방문비용 1294원 → 868원 절감 / 광고비 100%지출 → 48%지출 (인스타로직)',
         ],
     },
     AhMorningDiary: {
