@@ -58,6 +58,36 @@ export const projects: { [key: string]: ProjectItem } = {
             '- [Github] https://github.com/teamBuzzle\n\n',
         ],
     },
+    portfolio: {
+        category: '🌟 이력',
+        organizationTitle: `portfolio`,
+        organizationContent: 'Solid.js로 제작한 포트폴리오 사이트',
+        organizationDuration: '2024-07 ~ 2024.08',
+        title: `포트폴리오 사이트`,
+        project: true,
+        projectTitle: '프론트엔드 포트폴리오',
+        subtitle: 'FE뉴스에서 양방향 상태관리 Signal의 가능성을 보고 Solid.js로 제작',
+        hashtag: '#1인개발',
+        projectImage: '/',
+        projectDuration: '2024-07',
+        projectTeam: '본인',
+        projectDetail: [
+            `🔎 포트폴리오 사이트 개발
+            
+            FE뉴스를 보고 Signal의 양방향 상태관리의 가능성을 보고 기술적 호기심 및 운영할 목적으로 개인 포트폴리오 사이트를 개발했어요.
+            구현하고 싶은 기능이 많으면서도 1인 개발이라 끊임없이 개선한 경험이에요.\n\n`,
+            '- MUI 기반의 아토믹 디자인 패턴 적용',
+            '- Canvas 클릭 이벤트 및 Autoplay 기능 구현',
+            '- 애니메이션 모션 적용',
+            '- 블로그 관리자페이지(Next.js) 및 게시판 구현, LCAP을 통한 확장 확인',
+            '- 반응형 디자인',
+            '- Lighthouse 최적화 \n\n',
+
+            '✨링크',
+            '- [Github/FrontEnd] https://github.com/DingX2/DevXuan',
+            '- [Github/BackEnd] https://github.com/DingX2/DevXuan-backend',
+        ],
+    },
     kakao: {
         category: '🌟 대외활동',
         organizationTitle: `카카오`,
