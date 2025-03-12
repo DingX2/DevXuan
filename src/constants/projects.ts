@@ -40,7 +40,7 @@ export const projects: { [key: string]: ProjectItem } = {
         project: true,
         projectTitle: 'Buzzle',
         subtitle: '누구나 쉽게 홈페이지를 생성할 수 있는 노코드 프로젝트',
-        hashtag: '#NoCode',
+        hashtag: '#NoCode #Design System',
         projectImage: '/',
         projectDuration: '2024-09.01 ~ 현재',
         projectTeam: 'FE(3명)',
@@ -55,7 +55,8 @@ export const projects: { [key: string]: ProjectItem } = {
             '- pN룰 기반 코드리뷰 & Jira 이슈\n\n',
 
             '✨링크',
-            '- [Github] https://github.com/teamBuzzle\n\n',
+            '- [Github] https://github.com/teamBuzzle',
+            '- [Github/DesignSystem] https://github.com/teamBuzzle/bds\n\n',
         ],
     },
     Portfolio: {
