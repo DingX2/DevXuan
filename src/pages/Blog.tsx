@@ -8,7 +8,7 @@ export const Blog: Component = () => {
 
     return (
         <>
-            <Skeleton />
+            {/* <Skeleton/> */}
             <Suspense fallback={<Skeleton />}>
                 <BlogTemplate data={datas.data || []} />
             </Suspense>
