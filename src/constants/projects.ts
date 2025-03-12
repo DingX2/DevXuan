@@ -10,7 +10,7 @@ export const projects: { [key: string]: ProjectItem } = {
         project: true,
         projectTitle: 'HpsCRM',
         subtitle: 'LCAP기반 첫 대규모 프로젝트 안정화(11월 오픈)',
-        hashtag: '#LowCode #Outsystems #React #C# #AWS',
+        hashtag: '#LowCode #Outsystems #React #C# #AWS #Nginx',
         projectImage: '/',
         projectDuration: '2024-04-01 ~ 2024-11-31 / 안정화 진행중',
         projectTeam: 'ITO(SM) 3명 + 프로젝트팀 지원',
@@ -20,7 +20,8 @@ export const projects: { [key: string]: ProjectItem } = {
             엑셀을 통한 수기 작업을 시스템화 및 사업부 확대에 의의가 있어요.
             안건관리와 수주보고 등 영업직무에서 사용하는 고객관계관리 서비스에요.\n\n`,
             '- 사내 신기술 LCAP 첫 대규모 프로젝트',
-            '- 전체 38X건의 CSR/SR요청, 12 월 말 이후 SM부서 5X/7X건 수행',
+            '- 전체 38X건의 CSR/SR요청, 12 월 말 이후 SM부서 5X/7X건 수행 / 결함관리',
+            '- SOAP ERP(삼성SDS) + 사내시스템 인터페이스(I/F) 관리',
             '- 레퍼런스가 없는 신기술에 대처 및 최전방에서 사용자의 Needs 긴급 대응 및 운영배포',
             '- 4월 고도화 예정 / 리포트 고도화 디자인시스템 예정',
             '- 7, 8월 신기술 LCAP학습 및 9월 정규직 전환 후 투입\n\n',

@@ -2,6 +2,16 @@ import { type ProjectSkills } from '@/types';
 import { colors } from '@/styles';
 
 export const projectSkills: ProjectSkills = {
+    Hanwha: {
+        skills: [
+            { text: 'LCAP', color: colors.blue },
+            { text: 'React.js', color: colors.blue },
+            { text: 'Nginx', color: colors.blue },
+            { text: 'AWS', color: colors.yellow },
+            { text: 'Figma', color: colors.yellow },
+        ],
+        roles: [{ text: 'ITO', color: colors.blue }],
+    },
     Buzzle: {
         skills: [
             { text: 'Vite', color: colors.blue },
