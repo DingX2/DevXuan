@@ -18,7 +18,7 @@ export const CardContent: ParentComponent<Props> = (props) => {
                     <Image
                         src={props.projectImage}
                         height="auto"
-                        sx="margin: 0 -24px; max-width: 100%; max-height: 80vh; object-fit:contain;"
+                        sx="margin: 0 -24px; max-width: 100%; max-height: 500px; object-fit:contain;"
                     />
                 </Box>
             )}
