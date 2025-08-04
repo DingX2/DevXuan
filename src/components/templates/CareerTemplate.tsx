@@ -2,7 +2,7 @@ import { type Component, For, onMount } from 'solid-js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Stack, Text } from '@/components/atoms';
-import { Card } from '@/components/molecules';
+import { Card, ScrollFloat } from '@/components/molecules';
 import { careerData, careerStats } from '@/constants/career';
 import { backgrounds } from '@/styles';
 
@@ -304,22 +304,23 @@ export const CareerTemplate: Component = () => {
             {/* 헤더 섹션 */}
             <Stack
                 ref={headerRef}
-                style={{ 'text-align': 'center', 'margin-bottom': '3rem', 'will-change': 'transform, opacity' }}
+                style={{ 'text-align': 'center', 'margin-bottom': '4rem', 'will-change': 'transform, opacity' }}
             >
-                <Text
+                <ScrollFloat
                     fontStyle="Deco"
                     fontSize="3.5rem"
                     component="h1"
                     sx="color: #2d3748; margin-bottom: 1rem; text-shadow: 0 2px 4px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.1);"
                 >
                     Career Portfolio
-                </Text>
-                <Text
-                    fontSize="1.2rem"
-                    sx="color: #4a5568; max-width: 600px; margin: 0 auto; line-height: 1.6; text-shadow: 0 1px 3px rgba(255,255,255,0.6);"
+                </ScrollFloat>
+                <ScrollFloat
+                    fontSize="1rem"
+                    component="p"
+                    sx="color: #4a5568; max-width: 600px; margin: 0 auto; line-height: 1.6; text-shadow: 0 1px 3px rgba(255,255,255,0.6); font-weight: 400;"
                 >
                     핵심 업무에 몰입할 수 있도록, 일하기 편한 구조를 설계합니다.
-                </Text>
+                </ScrollFloat>
             </Stack>
 
             {/* 통계 섹션 */}
