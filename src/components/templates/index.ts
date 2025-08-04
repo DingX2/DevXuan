@@ -4,3 +4,4 @@ export * from './SkillTemplate';
 export * from './WorkTemplate';
 export * from './BlogTemplate';
 export * from './EducationTemplate';
+export * from './CareerTemplate';
