@@ -8,6 +8,6 @@ export * from './Canvas';
 export * from './ColorBoxList';
 export * from './CardContent';
 export * from './CardHeader';
-export * from './ScrollFloatText';
+export * from './ScrollFloat/ScrollFloat';
 export * from './SimpleCursor';
 export * from './Skeleton';
