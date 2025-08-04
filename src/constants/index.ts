@@ -2,6 +2,7 @@ export * from './query';
 export * from './skills';
 export * from './links';
 export * from './canvas';
+export * from './career';
 export * from './projectSkills';
 export * from './homeImage';
 export * from './projects';
