@@ -143,6 +143,24 @@ const CareerCard: Component<CareerCardProps> = (props) => {
                         {props.item.description}
                     </Text>
 
+                    {/* 이미지 섹션 */}
+                    {props.item.image && (
+                        <div style={{ 'margin-bottom': '1.5rem' }}>
+                            <img
+                                src={props.item.image}
+                                alt={props.item.title}
+                                style={{
+                                    width: '100%',
+                                    'max-width': '600px',
+                                    height: 'auto',
+                                    'border-radius': '12px',
+                                    'box-shadow': '0 4px 20px rgba(0, 0, 0, 0.1)',
+                                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                                }}
+                            />
+                        </div>
+                    )}
+
                     {/* 태그 섹션 */}
                     <Stack direction="row" sx="margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
                         <For each={props.item.tags}>

@@ -25,6 +25,7 @@ export const careerData: CareerItem[] = [
         period: '2025.01 ~ 현재',
         status: '진행중',
         icon: '🎤',
+        image: '/image/OSUG_usergroup_conference.png',
         links: [
             {
                 label: 'Outsystems User Group 2025 링크',
@@ -48,7 +49,6 @@ export const careerData: CareerItem[] = [
         period: '2024.07 ~ 현재',
         status: '운영중',
         icon: '🏢',
-        image: '/image/projects/Capstone.png',
         links: [
             {
                 label: '프로젝트 상세 정보',
