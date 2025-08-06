@@ -18,7 +18,7 @@ export const Card: ParentComponent<Props> = styled.div`
     display: flex;
     flex-direction: column;
     width: ${({ width }) => (typeof width === 'number' ? `${width}vw` : width)};
-    max-width: 1080px;
+    max-width: 1280px;
     height: ${({ height }) => (typeof height === 'number' ? `${height}vh` : height)};
     height: ${({ fitContent }) => (fitContent ? 'fit-content' : 'auto')};
     ${({ padding }) => `padding: ${padding};`}
