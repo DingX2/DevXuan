@@ -1,0 +1,177 @@
+---
+description: 코드 가독성 규칙. 맥락 줄이기, 이름 붙이기, 위에서 아래로 읽히게 하기. (출처: frontend-fundamentals.com)
+globs: **/*.ts,**/*.tsx
+alwaysApply: false
+---
+# 가독성 (Readability)
+
+## A. 맥락 줄이기
+
+### 1. 같이 실행되지 않는 코드 분리하기
+
+동시에 실행되지 않는 코드가 하나의 함수/컴포넌트에 있으면 동작을 한눈에 파악하기 어렵다.
+
+```tsx
+// Bad
+function SubmitButton() {
+  const isViewer = useRole() === "viewer";
+  useEffect(() => {
+    if (isViewer) return;
+    showButtonAnimation();
+  }, [isViewer]);
+  return isViewer ? <TextButton disabled>Submit</TextButton> : <Button type="submit">Submit</Button>;
+}
+
+// Good - 상충되는 조건을 독립 컴포넌트로 분리
+function SubmitButton() {
+  const isViewer = useRole() === "viewer";
+  return isViewer ? <ViewerSubmitButton /> : <AdminSubmitButton />;
+}
+function ViewerSubmitButton() {
+  return <TextButton disabled>Submit</TextButton>;
+}
+function AdminSubmitButton() {
+  useEffect(() => { showButtonAnimation(); }, []);
+  return <Button type="submit">Submit</Button>;
+}
+```
+
+### 2. 구현 상세 추상화하기
+
+사람이 동시에 고려할 수 있는 맥락은 6~7개 정도. 복잡한 구현 세부사항은 별도 컴포넌트/함수로 추상화한다.
+
+```tsx
+// Bad - 로그인 체크와 리다이렉트 로직이 노출
+function LoginStartPage() {
+  useCheckLogin({
+    onChecked: (status) => {
+      if (status === "LOGGED_IN") { location.href = "/home"; }
+    }
+  });
+  return <>{/* ... */}</>;
+}
+
+// Good - AuthGuard로 추상화
+function App() {
+  return <AuthGuard><LoginStartPage /></AuthGuard>;
+}
+function LoginStartPage() {
+  return <>{/* ... */}</>;
+}
+```
+
+### 3. 로직 종류에 따라 합쳐진 함수 쪼개기
+
+한 Hook에서 모든 쿼리 파라미터를 관리하면 책임 범위가 무한정 증가하고, 불필요한 리렌더링이 발생한다.
+
+```typescript
+// Bad - 모든 쿼리 파라미터를 한 Hook에서 관리
+function usePageState() {
+  const [query, setQuery] = useQueryParams({ cardId: NumberParam, dateFrom: DateParam, ... });
+  return { values: { ... }, controls: { ... } };
+}
+
+// Good - 각 파라미터별 독립 Hook
+function useCardIdQueryParam() {
+  const [cardId, _setCardId] = useQueryParam("cardId", NumberParam);
+  const setCardId = useCallback((cardId: number) => { _setCardId({ cardId }, "replaceIn"); }, []);
+  return [cardId ?? undefined, setCardId] as const;
+}
+```
+
+---
+
+## B. 이름 붙이기
+
+### 1. 복잡한 조건에 이름 붙이기
+
+복잡한 조건식에 이름을 부여하면 의도가 명확해진다.
+
+```typescript
+// Bad
+const result = products.filter((product) =>
+  product.categories.some((category) =>
+    category.id === targetCategory.id &&
+    product.prices.some((price) => price >= minPrice && price <= maxPrice)
+  )
+);
+
+// Good
+const matchedProducts = products.filter((product) => {
+  return product.categories.some((category) => {
+    const isSameCategory = category.id === targetCategory.id;
+    const isPriceInRange = product.prices.some(
+      (price) => price >= minPrice && price <= maxPrice
+    );
+    return isSameCategory && isPriceInRange;
+  });
+});
+```
+
+**이름을 붙이는 기준:**
+- 복잡한 로직이 여러 줄에 걸칠 때
+- 동일 로직을 여러 곳에서 반복 사용할 때
+- `arr.map(x => x * 2)` 같이 간단하면 안 붙여도 됨
+
+### 2. 매직 넘버에 이름 붙이기
+
+숫자 값의 의도를 상수명으로 명확히 드러낸다.
+
+```typescript
+// Bad
+await delay(300);
+
+// Good
+const ANIMATION_DELAY_MS = 300;
+await delay(ANIMATION_DELAY_MS);
+```
+
+---
+
+## C. 위에서 아래로 읽히게 하기
+
+### 1. 시점 이동 줄이기
+
+코드를 위아래로 왕복하며 읽는 시점 이동을 최소화한다.
+
+```typescript
+// Bad - policy.canInvite를 이해하려면 getPolicyByRole → POLICY_SET으로 3번 이동
+const policy = getPolicyByRole(user.role);
+return <Button disabled={!policy.canInvite}>Invite</Button>;
+
+// Good - 조건을 한눈에 볼 수 있는 객체
+const policy = {
+  admin: { canInvite: true, canView: true },
+  viewer: { canInvite: false, canView: true }
+}[user.role];
+return <Button disabled={!policy.canInvite}>Invite</Button>;
+```
+
+### 2. 삼항 연산자 단순하게 하기
+
+중첩된 삼항 연산자는 if문으로 풀어 작성한다.
+
+```typescript
+// Bad
+const status = A조건 && B조건 ? "BOTH" : A조건 || B조건 ? (A조건 ? "A" : "B") : "NONE";
+
+// Good
+const status = (() => {
+  if (A조건 && B조건) return "BOTH";
+  if (A조건) return "A";
+  if (B조건) return "B";
+  return "NONE";
+})();
+```
+
+### 3. 왼쪽에서 오른쪽으로 읽히게 하기
+
+범위 비교는 수학 부등식처럼 작성한다.
+
+```typescript
+// Bad
+if (score >= 80 && score <= 100) { ... }
+
+// Good - 80 ≤ score ≤ 100 처럼 읽힘
+if (80 <= score && score <= 100) { ... }
+```

@@ -1,0 +1,114 @@
+---
+description: 코드 결합도 규칙. 책임 분리, 중복 코드 허용, Props Drilling 제거. (출처: frontend-fundamentals.com)
+globs: **/*.ts,**/*.tsx
+alwaysApply: false
+---
+# 결합도 (Coupling)
+
+## A. 책임을 하나씩 관리하기
+
+쿼리 파라미터, 상태, API 호출 등을 한 곳에서 모두 관리하면 맥락이 복잡해지고 수정 영향 범위가 급격히 확장된다.
+
+```typescript
+// Bad - 모든 쿼리 파라미터를 한 Hook에서 관리
+function usePageState() {
+  const [query, setQuery] = useQueryParams({
+    cardId: NumberParam, statementId: NumberParam,
+    dateFrom: DateParam, dateTo: DateParam, statusList: ArrayParam
+  });
+  return { values: { ... }, controls: { ... } };
+}
+
+// Good - 각 파라미터별 독립 Hook
+function useCardIdQueryParam() {
+  const [cardId, _setCardId] = useQueryParam("cardId", NumberParam);
+  const setCardId = useCallback((cardId: number) => {
+    _setCardId({ cardId }, "replaceIn");
+  }, []);
+  return [cardId ?? undefined, setCardId] as const;
+}
+```
+
+**효과:**
+- 각 Hook이 단일 책임만 담당
+- 수정 영향 범위가 좁아짐
+- 필요한 값만 참조하는 컴포넌트만 리렌더링
+
+---
+
+## B. 중복 코드 허용하기
+
+반복되는 코드를 무조건 공통화하면 불필요한 결합도가 증가한다.
+
+```typescript
+// Bad - 공통 Hook이지만 페이지마다 로깅 값, UI, 동작이 달라질 수 있음
+const useOpenMaintenanceBottomSheet = () => {
+  const maintenanceBottomSheet = useMaintenanceBottomSheet();
+  const logger = useLogger();
+  return async (info: TelecomMaintenanceInfo) => {
+    logger.log("점검 바텀시트 열림");
+    const result = await maintenanceBottomSheet.open(info);
+    if (result) { logger.log("알림받기 클릭"); }
+    closeView();
+  };
+};
+```
+
+**공통화의 기준 - 다음을 모두 만족할 때만:**
+- 로깅 값이 동일
+- 동작이 동일
+- UI 표현이 동일
+- 앞으로도 변하지 않을 것으로 예상
+
+**중복을 허용하면:**
+- 각 페이지가 독립적으로 변경 가능
+- 다른 페이지 영향 없이 테스트 가능
+- 코드 변경 추적이 명확
+
+> 반복되어 보이는 코드일지라도, 앞으로 다를 여지가 있다면 중복 코드를 허용하는 것이 결합도를 낮추고 유지보수성을 높이는 현명한 선택이다.
+
+---
+
+## C. Props Drilling 지우기
+
+부모-자식 간 불필요한 prop 전달은 결합도를 높인다. prop 이름이 변경되면 모든 중간 컴포넌트를 수정해야 한다.
+
+### 방법 1: 조합(Composition) 패턴
+
+```tsx
+// Bad - props가 여러 계층을 거쳐 전달
+function ItemEditModal({ open, items, recommendedItems, onConfirm, onClose }) {
+  return (
+    <Modal open={open} onClose={onClose}>
+      <ItemEditBody items={items} recommendedItems={recommendedItems}
+        onConfirm={onConfirm} onClose={onClose} />
+    </Modal>
+  );
+}
+
+// Good - children으로 직접 전달
+function ItemEditModal({ open, items, recommendedItems, onConfirm, onClose }) {
+  const [keyword, setKeyword] = useState("");
+  return (
+    <Modal open={open} onClose={onClose}>
+      <ItemEditBody keyword={keyword} onKeywordChange={setKeyword} onClose={onClose}>
+        <ItemEditList keyword={keyword} items={items}
+          recommendedItems={recommendedItems} onConfirm={onConfirm} />
+      </ItemEditBody>
+    </Modal>
+  );
+}
+```
+
+### 방법 2: Context API (최후의 수단)
+
+```tsx
+function ItemEditList({ keyword, onConfirm }) {
+  const { items, recommendedItems } = useItemEditModalContext();
+  return ( /* ... */ );
+}
+```
+
+**우선순위:**
+1. 먼저 조합 패턴으로 depth 줄이기 시도
+2. Context API는 깊은 트리에서 최후의 수단으로 사용
