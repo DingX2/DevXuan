@@ -1,0 +1,54 @@
+---
+description: Buzzle 프로젝트 TypeScript 규칙.
+globs: **/*.ts,**/*.tsx,**/*.d.ts
+alwaysApply: false
+---
+# TypeScript Rules
+
+## 프로젝트 타입 규칙 (필수)
+
+- `any` 타입 사용 금지 (`@typescript-eslint/no-explicit-any`로 강제)
+- type-only import 시 `import type` 구문 사용 (`consistent-type-imports`로 강제)
+- Props 인터페이스 이름은 `Props`로 통일 (`ComponentNameProps` 사용하지 않음)
+- children을 받는 경우 `PropsWithChildren<{...}>` 사용
+- 외부에서 사용하지 않는 타입은 `export` 하지 않음
+- barrel file (index.ts) 금지 — 항상 개별 파일에서 직접 import
+
+## Type System
+- Prefer interfaces over types for object definitions
+- Use type for unions, intersections, and mapped types
+- Avoid using `any`, prefer `unknown` for unknown types
+- Use strict TypeScript configuration
+- Leverage TypeScript's built-in utility types
+- Use generics for reusable type patterns
+
+## Naming Conventions
+- Use PascalCase for type names and interfaces
+- Use camelCase for variables and functions
+- Use UPPER_CASE for constants
+- Use descriptive names with auxiliary verbs (e.g., isLoading, hasError)
+
+## Code Organization
+- Keep type definitions close to where they're used
+- Export types and interfaces from dedicated type files when shared
+- Do NOT use barrel exports (index.ts) — always import from specific files
+- Co-locate component props with their components
+
+## Functions
+- Use arrow functions for components and callbacks (ESLint 강제)
+- Use explicit return types for public functions
+- Implement proper error handling with custom error types
+- Prefer async/await over Promises
+
+## Best Practices
+- Enable strict mode in tsconfig.json
+- Use readonly for immutable properties
+- Leverage discriminated unions for type safety
+- Use type guards for runtime type checking
+- Implement proper null checking
+- Avoid type assertions unless necessary
+
+## Error Handling
+- Create custom error types for domain-specific errors
+- Use try-catch blocks with typed catch clauses
+- Handle Promise rejections properly

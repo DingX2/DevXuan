@@ -1,0 +1,27 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build",
+			"dependsOn": ["타입체크", "프로젝트 실행"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"command": "bun run dev",
+			"group": "build",
+			"label": "프로젝트 실행",
+			"detail": "vite"
+		},
+		{
+			"type": "shell",
+			"command": "bun run type-check:watch",
+			"group": "build",
+			"label": "타입체크",
+			"detail": "tsc --noEmit --watch"
+		}
+	]
+}

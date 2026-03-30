@@ -1,0 +1,125 @@
+---
+description: MUI 스타일링 규칙 및 BDS (Buzzle Design System) 사용 가이드.
+globs: src/components/**
+alwaysApply: false
+---
+# MUI 스타일링 규칙
+
+## 전환 방법
+- 디자인요소는 연결된 css파일을 참고하여 매칭될 수 있는 mui 컴포넌트로 대체합니다
+- 이모지나 아이콘은 @mui/icons-material를 사용해주세요
+- 뎁스가 깊어질 경우 최소화할 수 있는 방법을 적용해야 합니다
+- 기존 디자인과 mui전환된 디자인이 차이점이 없어야 합니다
+- 가능하다면 Bds 패키지에 있는 값과 컴포넌트들을 적극 활용해야 합니다
+
+## 주의 사항
+- 모든 div태그를 Box컴포넌트로 변환하지 말고 Container와 Stack 컴포넌트를 적절하게 사용해주세요
+- `display: flex`가 있는 요소는 Box 대신 Stack 컴포넌트를 사용해주세요
+- MUI 컴포넌트의 기본 prop이 있는 경우 sx 대신 해당 prop을 우선적으로 사용해주세요 (예: Button의 size, variant, fullWidth 등)
+- 가능하면 styled-component가 아닌 mui를 사용해주세요
+- react hook을 사용한다면 상단에 'use client' 를 추가해주세요
+- 타이포그래피 컴포넌트를 사용해서 기존 폰트 크기, 스타일 똑같이 적용해주세요
+
+## 스타일 작성 패턴
+- sx 내부에 `const S = { ... }` 객체로 스타일을 만들고 사용해주세요
+
+```tsx
+const S = {
+	header: {
+		height: 60,
+		borderBottom: 2,
+		borderColor: 'black',
+	},
+	button: {
+		p: 1.4,
+	},
+	'&:hover': {
+		opacity: 0.5,
+	},
+};
+
+<Button sx={S.button} variant="contained">
+  1:1 문의하기
+</Button>
+```
+
+---
+
+# BDS (Buzzle Design System) 사용 가이드
+
+MUI를 기반으로 확장된 디자인 시스템. 완전한 TypeScript 지원.
+
+## 기본 설정
+
+```tsx
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline, Container } from '@mui/material';
+import { bdsTheme, Button, Text, Input } from '@buzzle/bds';
+
+export const App = () => (
+	<ThemeProvider theme={bdsTheme}>
+		<CssBaseline />
+		<Container>
+			<Text variant="h1" gradient>Buzzle Design System</Text>
+			<Input label="이메일" placeholder="이메일을 입력해주세요" />
+			<Button variant="contained">시작하기</Button>
+		</Container>
+	</ThemeProvider>
+);
+```
+
+## Atoms 컴포넌트
+
+### Button
+- `variant`: `"contained"` | `"outlined"`
+- `size`: `"small"` | `"medium"` | `"large"`
+- `fullWidth`, `disabled`: boolean
+
+### Input
+- `label`, `placeholder`: string
+- `type`: `"text"` | `"password"` | `"email"` | `"number"`
+- `helperText`, `errorMessage`, `successMessage`: string
+
+### Text
+- `variant`: `"largeTitle"` | `"title1"` ~ `"caption2"`
+- `gradient`: boolean, `fontWeight`: `"regular"` | `"medium"` | `"semibold"` | `"bold"`
+- `color`: `"title"` | `"base"` | `"summary"` | `"subtitle"` | `"link"` 등
+
+### Link
+- `href`: string, `target`: `"_blank"` | `"_self"` 등
+
+### Logo
+- `size`: `"small"` | `"medium"` | `"large"`
+
+### IconButton
+- `size`: `"small"` | `"medium"` | `"large"`, `disabled`: boolean
+
+## Molecules 컴포넌트
+
+### BarGraph / LineGraph / PieGraph / DonutGraph
+- `data`: 배열, `width`: number, `height`: number
+
+### NavBar
+- `logo`: ReactNode, `menuItems`: `Array<{label, href}>`
+
+### Table
+- `columns`: `Array<{header, accessorKey}>`, `data`: `Array<object>`
+
+### FaqItem
+- `question`: string, `answer`: string
+
+## 디자인 토큰
+
+색상 네이밍: `bds.token.color.[mode].[category].[variant]`
+
+**라이트 모드 주요 색상:**
+- Primary: `#6174FB`, Secondary: `#F34541`
+- Success: `#15D267`, Information: `#3272FF`
+- Warning: `#FF8210`, Danger: `#FC2B1C`
+
+**그레이스케일:** `bds.token.color.gray.gray005` (#fafafa) ~ `gray100` (#0A0A0A)
+
+## 참고 링크
+- 레포지토리: https://github.com/teamBuzzle/bds
+- 문서: https://teambuzzle.github.io/bds
+- npm: https://www.npmjs.com/package/@buzzle/bds

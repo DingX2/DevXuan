@@ -55,33 +55,15 @@ export const ScrollFloat: Component<ScrollFloatProps> = (allProps) => {
     let containerRef!: HTMLHeadingElement;
     let scrollTriggerInstances: ScrollTrigger[] = [];
 
-    // Extract reactive values at component level
-    const {
-        scrollContainerRef,
-        containerClassName = '',
-        textClassName = '',
-        animationDuration = 1,
-        ease = 'power2.out',
-        scrollStart = 'top 80%',
-        yOffset = 50,
-        delay = 0,
-        fontSize,
-        fontWeight,
-        color,
-        textAlign,
-        fontStyle,
-        sx,
-    } = local;
-
     // 스타일 생성 함수
     const getContainerStyles = () => {
         let styles = '';
 
-        if (fontSize) styles += `font-size: ${fontSize}; `;
-        if (fontWeight) styles += `font-weight: ${fontWeight}; `;
-        if (color) styles += `color: ${color}; `;
-        if (textAlign) styles += `text-align: ${textAlign}; `;
-        if (fontStyle) {
+        if (local.fontSize) styles += `font-size: ${local.fontSize}; `;
+        if (local.fontWeight) styles += `font-weight: ${local.fontWeight}; `;
+        if (local.color) styles += `color: ${local.color}; `;
+        if (local.textAlign) styles += `text-align: ${local.textAlign}; `;
+        if (local.fontStyle) {
             const fontFamilyMap: Record<string, string> = {
                 Deco: 'Cafe24Decoshadow',
                 MeongiB: 'Cafe24Meongi-B',
@@ -89,10 +71,10 @@ export const ScrollFloat: Component<ScrollFloatProps> = (allProps) => {
                 Ssurround: 'Cafe24SsurroundAir',
                 Pretendard: 'Pretendard-Regular',
             };
-            const fontFamily = fontFamilyMap[fontStyle] || fontStyle;
+            const fontFamily = fontFamilyMap[local.fontStyle] || local.fontStyle;
             styles += `font-family: ${fontFamily}; `;
         }
-        if (sx) styles += sx;
+        if (local.sx) styles += local.sx;
 
         return styles;
     };
@@ -102,7 +84,7 @@ export const ScrollFloat: Component<ScrollFloatProps> = (allProps) => {
     onMount(() => {
         if (!containerRef) return;
 
-        const scroller = scrollContainerRef || window;
+        const scroller = local.scrollContainerRef || window;
 
         // GPU 가속을 위한 초기 설정
         gsap.set(containerRef, {
@@ -112,19 +94,19 @@ export const ScrollFloat: Component<ScrollFloatProps> = (allProps) => {
         const animation = gsap.fromTo(
             containerRef,
             {
-                y: yOffset,
+                y: local.yOffset ?? 50,
                 opacity: 0,
             },
             {
                 y: 0,
                 opacity: 1,
-                duration: animationDuration,
-                delay,
-                ease,
+                duration: local.animationDuration ?? 1,
+                delay: local.delay ?? 0,
+                ease: local.ease ?? 'power2.out',
                 scrollTrigger: {
                     trigger: containerRef,
                     scroller,
-                    start: scrollStart,
+                    start: local.scrollStart ?? 'top 80%',
                     toggleActions: 'play none none reverse',
                     fastScrollEnd: true,
                 },
@@ -142,8 +124,8 @@ export const ScrollFloat: Component<ScrollFloatProps> = (allProps) => {
     });
 
     return (
-        <h2 ref={containerRef} class={`scroll-float ${containerClassName}`} style={getContainerStyles()} {...others}>
-            <span class={`scroll-float-text ${textClassName}`}>{local.children}</span>
+        <h2 ref={containerRef} class={`scroll-float ${local.containerClassName ?? ''}`} style={getContainerStyles()} {...others}>
+            <span class={`scroll-float-text ${local.textClassName ?? ''}`}>{local.children}</span>
         </h2>
     );
 };

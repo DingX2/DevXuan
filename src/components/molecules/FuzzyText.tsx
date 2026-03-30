@@ -1,4 +1,4 @@
-import { type Component, onCleanup, onMount, type JSX } from 'solid-js';
+import { type Component, onCleanup, onMount, untrack, type JSX } from 'solid-js';
 
 interface FuzzyTextProps {
     children: JSX.Element;
@@ -21,6 +21,14 @@ const FuzzyText: Component<FuzzyTextProps> = (props) => {
         if (!canvas) return;
 
         const init = async () => {
+            const fontSize = untrack(() => props.fontSize) ?? 'clamp(2rem, 10vw, 10rem)';
+            const fontWeight = untrack(() => props.fontWeight) ?? 900;
+            const fontFamily = untrack(() => props.fontFamily) ?? 'inherit';
+            const color = untrack(() => props.color) ?? '#fff';
+            const enableHover = untrack(() => props.enableHover) ?? true;
+            const baseIntensity = untrack(() => props.baseIntensity) ?? 0.18;
+            const hoverIntensity = untrack(() => props.hoverIntensity) ?? 0.5;
+
             if (document.fonts) {
                 await document.fonts.ready;
             }
@@ -28,16 +36,6 @@ const FuzzyText: Component<FuzzyTextProps> = (props) => {
 
             const ctx = canvas.getContext('2d');
             if (!ctx) return;
-
-            const {
-                fontSize = 'clamp(2rem, 10vw, 10rem)',
-                fontWeight = 900,
-                fontFamily = 'inherit',
-                color = '#fff',
-                enableHover = true,
-                baseIntensity = 0.18,
-                hoverIntensity = 0.5,
-            } = props;
 
             const computedFontFamily =
                 fontFamily === 'inherit' ? window.getComputedStyle(canvas).fontFamily || 'sans-serif' : fontFamily;

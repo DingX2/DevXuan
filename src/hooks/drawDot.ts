@@ -105,6 +105,4 @@ export const drawDot = (
             ctx.fill();
         }
     }
-
-    console.log(x, y);
 };
