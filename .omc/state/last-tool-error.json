@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"gh pr edit 21 --body \\\"$(cat <<'EOF'\\n## ✨ 이번 PR 한줄 요약\\nCareer 페이지 추가, 커서·애니메이션 컴포넌트 구현, AI 개발 초기 환경 세팅\\n\\n---\\n\\n## 📅 기본 정보\\n- 일자: 2026-03-30\\n- 작성자: AI Agent\\n- 작업 시간: 다수 세션에 걸친 작업\\n\\n-...",
-  "error": "Exit code 1\nGraphQL: Projects (classic) is being deprecated in favor of the new Projects experience, see: https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/. (repository.pullRequest.projectCards)",
-  "timestamp": "2026-03-30T12:38:43.038Z",
-  "retry_count": 1
-}
