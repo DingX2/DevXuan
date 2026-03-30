@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Stack, Text } from '@/components/atoms';
 import { Card, ScrollFloat } from '@/components/molecules';
-import { careerData, careerStats } from '@/constants/career';
+import { careerData, careerStats, careerSummary } from '@/constants/career';
 import { backgrounds } from '@/styles';
 
 // GSAP 플러그인 등록 및 성능 최적화
@@ -182,32 +182,79 @@ const CareerCard: Component<CareerCardProps> = (props) => {
                     </Stack>
 
                     {/* 하이라이트 섹션 */}
-                    <Stack direction="column" useFlexGap spacing={8} sx="margin-bottom: 1.5rem;">
-                        <Text
-                            fontSize="1.1rem"
-                            bold
-                            sx="color: #2d3748; margin-bottom: 0.5rem; text-shadow: 0 1px 2px rgba(255,255,255,0.6);"
-                        >
-                            주요 성과
-                        </Text>
-                        <For each={props.item.highlights}>
-                            {(highlight) => (
-                                <Stack direction="row" alignItemStart>
-                                    <Text
-                                        fontSize="0.8rem"
-                                        sx="color: #4c51bf; margin-right: 0.5rem; margin-top: 0.1rem;"
-                                    >
-                                        •
-                                    </Text>
-                                    <Text
-                                        fontSize="0.9rem"
-                                        sx="color: #4a5568; line-height: 1.5; text-shadow: 0 1px 1px rgba(255,255,255,0.5);"
-                                    >
-                                        {highlight}
-                                    </Text>
-                                </Stack>
-                            )}
-                        </For>
+                    <Stack direction="column" useFlexGap spacing={16} sx="margin-bottom: 1.5rem;">
+                        {/* 문제 */}
+                        <Stack direction="column" useFlexGap spacing={6}>
+                            <Text fontSize="0.85rem" bold sx="color: #e53e3e;">
+                                🔴 문제
+                            </Text>
+                            <For each={props.item.highlights.problem}>
+                                {(item) => (
+                                    <Stack direction="row" alignItemStart>
+                                        <Text
+                                            fontSize="0.8rem"
+                                            sx="color: #e53e3e; margin-right: 0.5rem; margin-top: 0.1rem;"
+                                        >
+                                            •
+                                        </Text>
+                                        <Text
+                                            fontSize="0.9rem"
+                                            sx="color: #4a5568; line-height: 1.5; text-shadow: 0 1px 1px rgba(255,255,255,0.5);"
+                                        >
+                                            {item}
+                                        </Text>
+                                    </Stack>
+                                )}
+                            </For>
+                        </Stack>
+                        {/* 해결 */}
+                        <Stack direction="column" useFlexGap spacing={6}>
+                            <Text fontSize="0.85rem" bold sx="color: #3182ce;">
+                                🔵 해결
+                            </Text>
+                            <For each={props.item.highlights.solution}>
+                                {(item) => (
+                                    <Stack direction="row" alignItemStart>
+                                        <Text
+                                            fontSize="0.8rem"
+                                            sx="color: #3182ce; margin-right: 0.5rem; margin-top: 0.1rem;"
+                                        >
+                                            •
+                                        </Text>
+                                        <Text
+                                            fontSize="0.9rem"
+                                            sx="color: #4a5568; line-height: 1.5; text-shadow: 0 1px 1px rgba(255,255,255,0.5);"
+                                        >
+                                            {item}
+                                        </Text>
+                                    </Stack>
+                                )}
+                            </For>
+                        </Stack>
+                        {/* 성과 */}
+                        <Stack direction="column" useFlexGap spacing={6}>
+                            <Text fontSize="0.85rem" bold sx="color: #6b46c1;">
+                                🏆 성과
+                            </Text>
+                            <For each={props.item.highlights.result}>
+                                {(item) => (
+                                    <Stack direction="row" alignItemStart>
+                                        <Text
+                                            fontSize="0.8rem"
+                                            sx="color: #6b46c1; margin-right: 0.5rem; margin-top: 0.1rem;"
+                                        >
+                                            •
+                                        </Text>
+                                        <Text
+                                            fontSize="0.9rem"
+                                            sx="color: #4a5568; line-height: 1.5; text-shadow: 0 1px 1px rgba(255,255,255,0.5);"
+                                        >
+                                            {item}
+                                        </Text>
+                                    </Stack>
+                                )}
+                            </For>
+                        </Stack>
                     </Stack>
 
                     {/* 링크 섹션 */}
@@ -335,9 +382,9 @@ export const CareerTemplate: Component = () => {
                 <ScrollFloat
                     fontSize="1rem"
                     component="p"
-                    sx="color: #4a5568; max-width: 600px; margin: 0 auto; line-height: 1.6; text-shadow: 0 1px 3px rgba(255,255,255,0.6); font-weight: 400;"
+                    sx="color: #4a5568; max-width: 700px; margin: 0 auto; line-height: 1.6; text-shadow: 0 1px 3px rgba(255,255,255,0.6); font-weight: 400; white-space: pre-wrap;"
                 >
-                    핵심 업무에 몰입할 수 있도록, 일하기 편한 구조를 설계합니다.
+                    {careerSummary.join('\n')}
                 </ScrollFloat>
             </Stack>
 
