@@ -164,6 +164,12 @@
       "type": "file"
     },
     {
+      "path": ".claude/skills/pr/SKILL.md",
+      "accessCount": 3,
+      "lastAccessed": 1774873895480,
+      "type": "file"
+    },
+    {
       "path": "package.json",
       "accessCount": 1,
       "lastAccessed": 1774872212618,
