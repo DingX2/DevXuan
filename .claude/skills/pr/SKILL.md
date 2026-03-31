@@ -78,78 +78,32 @@ Determine the mode label by examining commit messages and the conversation conte
 
 ### 4. Fill PR template
 
-Use the repository's PR template at `.github/pull_request_template.md`. Fill in all sections based on your analysis:
+Use the repository's PR template at `.github/pull_request_template.md`:
 
 ```markdown
-## ✨ 이번 PR 한줄 요약
-<!-- 변경 내용을 한 줄로 요약 -->
+## Summary
 
----
+<!-- Describe what this PR changes, in Korean -->
 
-## 📅 기본 정보
-- 일자: <!-- yyyy-mm-dd (오늘 날짜) -->
-- 작성자: AI Agent
-- 작업 시간: <!-- 커밋 히스토리로 추정 -->
+## Impact
 
----
+- Scope: <!-- affected area: e.g., 교사 관리, 일일 보고서 -->
+- Risk: <!-- low / medium / high -->
+- Rollback: <!-- how to revert if needed -->
 
-## 🤖 AI 사용 정보 (선택)
-- OMC 사용 여부: <!-- 커밋에 Co-Authored-By: Claude 있으면 O, 없으면 X -->
-- OMC 작동 시간: <!-- 추정 불가 시 생략 -->
-- 사용 토큰 수: <!-- 추정 불가 시 생략 -->
-- 주요 사용 목적:
-  - <!-- 코드 생성 / 리팩토링 / 디버깅 / 환경 세팅 등 -->
+## Checks
 
----
+- Tests: <!-- pass / fail / not applicable -->
+- Lint/Build: <!-- pass / fail -->
+- Preview: <!-- link or N/A -->
+- Evidence: <!-- screenshots, test output, etc. -->
 
-## ✨ 무엇을 했나요?
--
--
--
+## Review Focus
 
----
-
-## 🤔 왜 했나요?
--
--
-
----
-
-## 🧠 작업하면서 느낀 점 (선택)
--
--
-
----
-
-## 📈 Before / After (선택)
-- Before:
-- After:
-
----
-
-## 👀 보면 좋은 포인트
--
--
-
----
-
-## 🧪 어떻게 확인하나요?
--
--
-
----
-
-## ⚠️ 참고 / 리스크
--
--
-
----
-
-## 💬 한마디
-<!-- 자유롭게 -->
+- <!-- Key areas reviewers should focus on -->
 ```
 
-Fill in all sections based on your analysis. Write in Korean.
+Fill in all sections based on your analysis. Write in Korean for user-facing text.
 
 ### 5. Push and create PR
 
