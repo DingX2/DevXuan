@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"git rm src/constants/image/OSUG_usergroup_conference.png && git add bun.lockb package.json package-lock.json src/components/molecules/Canvas.tsx src/hooks/drawDot.ts src/pages/Test.tsx src...",
-  "error": "Exit code 128\nfatal: pathspec 'src/constants/image/OSUG_usergroup_conference.png' did not match any files",
-  "timestamp": "2026-03-30T12:10:50.460Z",
-  "retry_count": 3
-}
