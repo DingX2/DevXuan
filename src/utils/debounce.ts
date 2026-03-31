@@ -14,7 +14,7 @@ interface Props<T extends (...args: unknown[]) => void> {
  */
 
 export const debounce = <T extends (...args: unknown[]) => void>({ func, delay }: Props<T>) => {
-    let debounceTimer: NodeJS.Timeout;
+    let debounceTimer: ReturnType<typeof setTimeout>;
 
     return (...args: Parameters<T>): void => {
         clearTimeout(debounceTimer);
