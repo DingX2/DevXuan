@@ -1,6 +1,9 @@
 [build]
   publish = "dist"
-  command = "npm run build"
+  command = "bun run build"
+
+[build.environment]
+  BUN_VERSION = "latest"
 
 [[redirects]]
   from = "/*"

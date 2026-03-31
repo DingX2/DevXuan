@@ -13,7 +13,7 @@ export const [canvasState, setCanvasState] = createSignal<CanvasState>({
 const [dots, setDots] = createSignal<Dot[]>([]);
 const [imageCache, setImageCache] = createSignal<{ [key: string]: HTMLImageElement }>({});
 
-let intervalId: NodeJS.Timeout | undefined;
+let intervalId: ReturnType<typeof setTimeout> | undefined;
 let isAutoplayRunning = true;
 
 export const autoplay = (mode: boolean) => {

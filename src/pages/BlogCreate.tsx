@@ -1,6 +1,8 @@
-import { type ParentComponent, createSignal } from 'solid-js';
+import { type ParentComponent, type Component, createSignal } from 'solid-js';
 import ReactMarkdown from 'react-markdown';
 import { Stack, Box } from '@/components/atoms';
+
+const Markdown = ReactMarkdown as unknown as Component<{ children: string }>;
 
 export const BlogCreate: ParentComponent = () => {
     const [markdown, setMarkdown] = createSignal<string>('');
@@ -24,7 +26,7 @@ export const BlogCreate: ParentComponent = () => {
                 />
             </Box>
             <Box>
-                <ReactMarkdown>{markdown()}</ReactMarkdown>
+                <Markdown>{markdown()}</Markdown>
             </Box>
         </Stack>
     );
