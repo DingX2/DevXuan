@@ -1,0 +1,95 @@
+---
+description: 코드 예측 가능성 규칙. 이름 겹침 방지, 반환 타입 통일, 숨은 로직 드러내기. (출처: frontend-fundamentals.com)
+globs: **/*.ts,**/*.tsx
+alwaysApply: false
+---
+# 예측 가능성 (Predictability)
+
+## A. 이름 겹치지 않게 관리하기
+
+동일한 이름의 함수/변수는 동일한 동작을 수행해야 한다. 이름이 같지만 동작이 다르면 버그가 발생한다.
+
+```typescript
+// Bad - http.get이 라이브러리의 것과 동작이 다름 (토큰 추가 등)
+import { http as httpLibrary } from "@some-library/http";
+export const http = {
+  async get(url: string) {
+    const token = await fetchToken();
+    return httpLibrary.get(url, { headers: { Authorization: `Bearer ${token}` } });
+  }
+};
+
+// Good - 이름으로 차이를 명시
+import { http as httpLibrary } from "@some-library/http";
+export const httpService = {
+  async getWithAuth(url: string) {
+    const token = await fetchToken();
+    return httpLibrary.get(url, { headers: { Authorization: `Bearer ${token}` } });
+  }
+};
+```
+
+**핵심:** 래핑 함수를 만들 때 원본과 다른 이름을 사용하여 추가 로직의 존재를 드러낸다.
+
+---
+
+## B. 같은 종류의 함수는 반환 타입 통일하기
+
+같은 종류의 함수/Hook이 서로 다른 반환 타입을 가지면 일관성이 떨어지고 버그가 발생한다.
+
+```typescript
+// Bad - useUser는 Query 객체, useServerTime은 data만 반환
+function useUser() { return useQuery({ ... }); }          // Query 객체
+function useServerTime() { return useQuery({ ... }).data; } // data만
+
+// Good - 같은 종류는 같은 타입 반환
+function useUser() { return useQuery({ ... }); }       // Query 객체
+function useServerTime() { return useQuery({ ... }); } // Query 객체
+```
+
+### 유효성 검사 함수의 반환 타입 통일
+
+```typescript
+// Bad - boolean과 객체가 섞임
+function checkIsNameValid(name: string) { return name.length > 0; }         // boolean
+function checkIsAgeValid(age: number) { return { ok: true }; }              // 객체 → if(checkIsAgeValid(age))는 항상 truthy!
+
+// Good - Discriminated Union으로 통일
+type ValidationResult = { ok: true } | { ok: false; reason: string };
+
+function checkIsNameValid(name: string): ValidationResult {
+  if (name.length === 0) return { ok: false, reason: "이름을 입력해주세요." };
+  return { ok: true };
+}
+function checkIsAgeValid(age: number): ValidationResult {
+  if (age < 18) return { ok: false, reason: "나이는 18세 이상이어야 해요." };
+  return { ok: true };
+}
+```
+
+---
+
+## C. 숨은 로직 드러내기
+
+함수의 이름, 파라미터, 반환값에 드러나지 않는 숨은 로직(부수 효과)을 제거한다.
+
+```typescript
+// Bad - fetchBalance에 로깅이 숨어있음
+async function fetchBalance(): Promise<number> {
+  const balance = await http.get<number>("...");
+  logging.log("balance_fetched");  // 숨은 로직
+  return balance;
+}
+
+// Good - 함수는 순수하게, 부수 효과는 호출부에서 명시적으로
+async function fetchBalance(): Promise<number> {
+  const balance = await http.get<number>("...");
+  return balance;
+}
+
+// 호출부
+const balance = await fetchBalance();
+logging.log("balance_fetched");  // 명시적
+```
+
+**원칙:** 함수의 책임을 명확하게 제한하고, 부수 효과(side effects)는 호출자가 명시적으로 관리한다.

@@ -1,6 +1,7 @@
 import type { ParentComponent } from 'solid-js';
 import { styled } from 'solid-styled-components';
 import { Motion } from 'solid-motionone';
+import { textColorTokens, textSizeTokens, type TextRole, type TextSize } from '@/styles/tokens/text';
 import type { Style } from '@/types';
 
 interface PositionSelector {
@@ -18,6 +19,23 @@ const positionSelector: PositionSelector = {
 
 type ComponentType = keyof HTMLElementTagNameMap;
 
+const isTextRole = (value: string): value is TextRole => value in textColorTokens;
+const isTextSize = (value: string): value is TextSize => value in textSizeTokens;
+
+const getResolvedFontSize = (fontSize: string | number) => {
+    if (typeof fontSize === 'number') return `${fontSize}px`;
+    if (isTextSize(fontSize)) return textSizeTokens[fontSize];
+    return fontSize;
+};
+
+const getFontFamily = (fontStyle?: 'MeongiW' | 'MeongiB' | 'Deco' | 'SurroundAir') => {
+    if (fontStyle === 'MeongiW') return 'Cafe24MeongiW';
+    if (fontStyle === 'MeongiB') return 'Cafe24MeongiB';
+    if (fontStyle === 'Deco') return 'Cafe24Decoshadow';
+    if (fontStyle === 'SurroundAir') return 'Cafe24SsurroundAir';
+    return 'Pretendard-Regular';
+};
+
 interface Props extends Style {
     color?: string;
     fontSize?: string | number;
@@ -28,19 +46,27 @@ interface Props extends Style {
     component?: ComponentType;
 }
 
-/**
- * @param {string} color - color
- * @param {string | number} fontSize - font-size 16px
- * @param {'MeongiW' | 'MeongiB' | 'Deco' | 'SurroundAir';} fontStyle - font-style 기본: pretendard
- * @param {'start' | 'center' | 'end' | 'justify'} textAlign - text-align
- * @param {'left' | 'center' | 'right'} position - position
- * @param {boolean} bold - 굵게 유무
- */
+interface StyledTextProps extends Props {
+    resolvedColor?: string;
+    resolvedFontSize?: string;
+}
+
+const StyledText = styled(Motion)<StyledTextProps>`
+    display: inline-block;
+    ${({ resolvedColor }) => (resolvedColor ? `color: ${resolvedColor};` : '')}
+    ${({ textAlign }) => (textAlign ? `text-align: ${textAlign};` : '')}
+    ${({ position }) => (position ? `justify-content: ${positionSelector[position]};` : '')}
+    ${({ fontStyle }) => `font-family: ${getFontFamily(fontStyle)};`}
+    white-space: pre-line;
+    ${({ resolvedFontSize }) => (resolvedFontSize ? `font-size: ${resolvedFontSize};` : '')}
+    ${({ bold }) => (bold ? 'font-weight: 700;' : '')}
+    ${({ sx }) => sx || ''}
+`;
 
 export const Text: ParentComponent<Props> = ({
     component = 'span',
     children,
-    color,
+    color = 'primary',
     fontSize = '1rem',
     fontStyle,
     textAlign,
@@ -48,30 +74,21 @@ export const Text: ParentComponent<Props> = ({
     bold,
     sx,
 }) => {
-    const TextComponent = styled(Motion)<Props>`
-        display: flex;
-        display: inline-block;
-        ${color ? `color: ${color};` : ''}
-        ${textAlign ? `text-align: ${textAlign};` : ''}
-        ${position ? `justify-content: ${positionSelector[position]};` : ''}
-
-        font-family: ${({ fontStyle }) => {
-            if (fontStyle === 'MeongiW') return 'Cafe24MeongiW';
-            if (fontStyle === 'MeongiB') return 'Cafe24MeongiB';
-            if (fontStyle === 'Deco') return 'Cafe24Decoshadow';
-            if (fontStyle === 'SurroundAir') return 'Cafe24SsurroundAir';
-            return 'Pretendard-Regular';
-        }};
-
-        white-space: pre-line;
-        font-size: ${typeof fontSize === 'number' ? `${fontSize}px` : fontSize};
-        ${bold ? `font-weight: 700;` : ''}
-        ${sx || ''}
-    `;
+    const resolvedColor = isTextRole(color) ? textColorTokens[color] : color;
+    const resolvedFontSize = getResolvedFontSize(fontSize);
 
     return (
-        <TextComponent as={component} fontStyle={fontStyle}>
+        <StyledText
+            as={component}
+            fontStyle={fontStyle}
+            textAlign={textAlign}
+            position={position}
+            bold={bold}
+            sx={sx}
+            resolvedColor={resolvedColor}
+            resolvedFontSize={resolvedFontSize}
+        >
             {children}
-        </TextComponent>
+        </StyledText>
     );
 };

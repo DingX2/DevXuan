@@ -7,9 +7,11 @@ export const Layout: ParentComponent = ({ children }) => {
     return (
         <>
             <GlobalStyle />
-            <Header />
-            <main>{children}</main>
-            <Footer />
+            <div style={{ display: 'flex', 'flex-direction': 'column', 'min-height': '100vh' }}>
+                <Header />
+                <main style={{ flex: '1' }}>{children}</main>
+                <Footer />
+            </div>
             <Nav mobile />
         </>
     );

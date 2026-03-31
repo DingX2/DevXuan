@@ -1,0 +1,19 @@
+/* src/styles/tokens.css */
+:root {
+    --color-text-primary: #111827;
+    --color-text-secondary: #4b5563;
+    --color-text-tertiary: #6b7280;
+    --color-text-inverse: #ffffff;
+    --color-text-brand: #4f46e5;
+    --color-text-danger: #dc2626;
+    --color-text-success: #16a34a;
+    --color-text-warning: #d97706;
+
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+}

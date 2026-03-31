@@ -13,7 +13,7 @@ export const [canvasState, setCanvasState] = createSignal<CanvasState>({
 const [dots, setDots] = createSignal<Dot[]>([]);
 const [imageCache, setImageCache] = createSignal<{ [key: string]: HTMLImageElement }>({});
 
-let intervalId: NodeJS.Timeout | undefined;
+let intervalId: ReturnType<typeof setTimeout> | undefined;
 let isAutoplayRunning = true;
 
 export const autoplay = (mode: boolean) => {
@@ -23,7 +23,6 @@ export const autoplay = (mode: boolean) => {
     const drawRandomDot = () => {
         const x = Math.random() * rect.width;
         const y = Math.random() * rect.height;
-        console.log(x, y, mode);
         drawDot(x, y, 'Image', canvasRef!, canvas.colors, [], setDots, canvas.imageSources, imageCache, setImageCache);
     };
 
@@ -66,7 +65,8 @@ export const Canvas: Component<Props> = (props) => {
     });
 
     const style = {
-        canvas: /* css */ `
+        get canvas() {
+            return /* css */ `
             position: absolute;
             top: 0;
             left: 0;
@@ -75,7 +75,8 @@ export const Canvas: Component<Props> = (props) => {
             border: none;
             z-index: 0;
             ${props.sx}
-        `,
+        `;
+        },
     };
 
     onMount(() => {
