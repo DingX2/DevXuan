@@ -5,3 +5,4 @@ bun.lockb
 .github
 dist
 vite.config.ts
+*.stories.tsx
